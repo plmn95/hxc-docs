@@ -31,8 +31,9 @@ audio sources; on every other source it is greyed out. See [Audio-Reactive](../.
 Mixer controls can also be modulated from the controls themselves; see
 [Mixer Mode](../../../concepts/mixer-mode/).
 
-In the Mixer Mode matrix, `TARGET` is a single list of mixer controls,
-grouped under the Mixer panel's section names. Mixer assignments are shared
+In the Mixer Mode matrix, `TARGET` offers `MIXER` (the mixer controls,
+grouped under the Mixer panel's section names) and the settings of Mixer
+Mode's own LFO, Envelope and Time banks. Mixer assignments are shared
 across every patch in the same bank and are saved with the bank rather than
 with any individual patch. **NOTE:** the Mixer Mode matrix has no
 meta-modulation: an assignment's `AMOUNT` there cannot itself be a target.

@@ -25,13 +25,23 @@ Center (Clean/Hot) mode, Invert A, Invert B and Hard-cut Rockers, and an
 Artifacts section (H-Tear, V-Roll, RGB Bleed, Dropout), each with its own
 Rocker and its own amount.
 
-Right-clicking a modulatable mixer control assigns an LFO, Envelope, Time,
-audio or Macro source to it, replacing any modulation already on that
-control, same as a patch parameter. `Clear All Modulation` removes it, and
-`Open Mod Matrix` opens the Mixer Mode matrix, where several sources can be
-stacked on one control. With more than one assignment on a control, the
-menu's Amount slider gives way to a count, and each assignment is edited in
-the matrix.
+Modulatable mixer controls behave like patch parameters. A modulated
+slider's handle moves with its source, with an amber marker and a tick at
+the base setting, and hovering lists the sources. Double-click resets a
+slider to a fresh mixer's value. The Chroma Key colour swatch shows the
+modulated colour, with each channel handled like a slider.
+
+`Negative (invert B)`, `Invert A`, `Invert B` and `Hard-cut` are on/off
+gates. The Rocker shows the base setting; while a source drives it, its
+lamp shows the live gated state.
+
+Right-clicking a modulatable control offers `MIDI Learn`, `Reset to
+Default`, `Copy Value`, `Paste Value`, an Assign submenu per source type,
+`Clear All Modulation` and `Open Mod Matrix`. Assigning replaces any
+modulation already on that control, same as a patch parameter. Dragging a
+Mixer LFO, Envelope or Time header onto a control assigns it the same way.
+Several sources can be stacked on one control in the Mixer Mode matrix;
+with more than one, the menu's Amount slider gives way to a count.
 
 Related: [Mixer Mode](../../../concepts/mixer-mode/),
 [Mod Matrix](../mod-matrix/).
