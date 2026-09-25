@@ -22,6 +22,12 @@ Depth inverts the modulation. `Offset` adds a constant shift.
 
 A source can modulate another assignment's Depth.
 
+Every active assignment also shows up in the
+[Mod Matrix](../../reference/windows/mod-matrix/) window, which lists and
+edits them from one place instead of hunting through each module's own
+parameters. Mixer Mode keeps its modulation in a separate Mod Matrix of its
+own.
+
 Removing sources and using `Clear All Modulation` can be undone.
 
 The [Mod Matrix](../../reference/windows/mod-matrix/) window lists the

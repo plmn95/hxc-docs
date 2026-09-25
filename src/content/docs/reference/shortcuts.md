@@ -14,7 +14,7 @@ The in-app shortcut list is available from `Help > Keyboard Shortcuts`.
 | Double-click | Double-click | Enlarge the Output view to fullscreen |
 | `M` | `M` | Toggle MIDI Learn mode |
 | `O` | `O` | Toggle OpenSoundControl Learn mode |
-| `X` | `X` | Toggle Mod Matrix window |
+| `X` | `X` | Toggle the current mode's Mod Matrix window (Editor and Mixer Mode each have their own) |
 | `T` | `T` | Tap tempo |
 | `Ctrl+S` | `Cmd+S` | Save patch |
 | `Ctrl+Shift+S` | `Cmd+Shift+S` | Save patch as (force dialog) |

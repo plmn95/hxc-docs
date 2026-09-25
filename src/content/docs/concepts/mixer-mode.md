@@ -14,7 +14,9 @@ deck-scoped source, four per deck, named `A1` to `A4` and `B1` to `B4`.
 Each deck also loads a patch, which brings that patch's own modulators with
 it. Right-clicking any mixer control offers the same `Edit Modulation` window
 as a patch parameter, using the Mixer's own sources, and `MIDI Learn`. A dot
-marks each control that is being modulated.
+marks each control that is being modulated. Mixer modulation also has its
+own [Mod Matrix](../../reference/windows/mod-matrix/), a tab beside the
+Mixer panel that `X` shows or hides while in Mixer Mode.
 
 `H` hides or shows the controls. `Escape` first restores hidden controls;
 if they are already visible, it exits Mixer Mode.

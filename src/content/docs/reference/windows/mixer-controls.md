@@ -25,4 +25,13 @@ Center (Clean/Hot) mode, Invert A, Invert B and Hard-cut Rockers, and an
 Artifacts section (H-Tear, V-Roll, RGB Bleed, Dropout), each with its own
 Rocker and its own amount.
 
-Related: [Mixer Mode](../../../concepts/mixer-mode/).
+Right-clicking a modulatable mixer control assigns an LFO, Envelope, Time,
+audio or Macro source to it, replacing any modulation already on that
+control, same as a patch parameter. `Clear All Modulation` removes it, and
+`Open Mod Matrix` opens the Mixer Mode matrix, where several sources can be
+stacked on one control. With more than one assignment on a control, the
+menu's Amount slider gives way to a count, and each assignment is edited in
+the matrix.
+
+Related: [Mixer Mode](../../../concepts/mixer-mode/),
+[Mod Matrix](../mod-matrix/).

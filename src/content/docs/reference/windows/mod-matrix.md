@@ -3,7 +3,14 @@ title: "Mod Matrix"
 description: "Inspect and edit modulation assignments in the current patch."
 ---
 
-Every active modulation assignment in the current patch, in one table: `SOURCE`, `DEPTH`, `TARGET`, `LIVE`, `BYP`, and a delete column.
+A table of modulation assignments: `SOURCE`, `DEPTH`, `TARGET`, `LIVE`,
+`BYP`, and a delete column. There are two, one per mode. `X` toggles the one
+belonging to the current mode, and each remembers whether it was open.
+
+| Matrix | Lists | Sources | Undo |
+|---|---|---|---|
+| Editor | The active patch's assignments. | The patch's own LFO, Envelope, Time and Macro banks, plus MIDI, audio, CV/Gate and OpenSoundControl. | Editor undo stack. |
+| Mixer Mode | Mixer control assignments only. Opens as a tab beside the Mixer panel. | Mixer Mode's own LFO, Envelope and Time banks and deck Macros `A1` to `B4`, plus MIDI, audio and OpenSoundControl. No CV/Gate. | Mixer undo stack. |
 
 `LIVE` shows how strongly the assignment is moving its target right now, as
 a share of the target's range. At the source's peak the meter reaches the
@@ -21,7 +28,14 @@ constant offset on top of the swing, and a shaping control. The shaping
 control is live only for assignments driven by the `L Level` or `R Level`
 audio sources; on every other source it is greyed out. See [Audio-Reactive](../../modulation/audio-reactive/).
 
-Mixer Mode's modulation is not listed here. It is set up on the mixer
-controls themselves; see [Mixer Mode](../../../concepts/mixer-mode/).
+Mixer controls can also be modulated from the controls themselves; see
+[Mixer Mode](../../../concepts/mixer-mode/).
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+In the Mixer Mode matrix, `TARGET` is a single list of mixer controls,
+grouped under the Mixer panel's section names. Mixer assignments are shared
+across every patch in the same bank and are saved with the bank rather than
+with any individual patch. **NOTE:** the Mixer Mode matrix has no
+meta-modulation: an assignment's `AMOUNT` there cannot itself be a target.
+
+Related: [Modulation Matrix](../../../concepts/modulation-matrix/),
+[Mixer Controls](../mixer-controls/).
