@@ -27,6 +27,14 @@ NDI, Spout (Windows), and Syphon (macOS) each send the same output live to
 another program instead of, or alongside, a file. Each is enabled
 separately in `Settings > Output`, under its own sender name.
 
+NDI needs the free NDI Runtime from NDI itself. On Windows and macOS,
+install it from [ndi.video](https://ndi.video). On Linux, NDI publishes no
+separate runtime installer: install `libndi` from the NDI SDK for Linux
+into `/usr/local/lib`, or use your distribution's NDI package. Until the
+runtime is found, the NDI controls stay grey with a note saying so. They
+turn on by themselves within a couple of seconds of installing it, with no
+restart, including when Hex Composer was started from Steam.
+
 Parts of the picture that no module has drawn on are empty. The `Output`
 window, `Dual Monitor Output`, recordings and snapshots show them as black.
 NDI, Spout and Syphon send them as transparency. A receiving program that

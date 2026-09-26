@@ -19,5 +19,9 @@ another program's NDI/Spout/Syphon output.
 **NOTE:** with nothing loaded, the module adds nothing and the chain passes
 through unchanged in every `Blend` mode.
 
+NDI In needs the free NDI Runtime, the same one NDI output uses. See
+[Output and Recording](../../../concepts/output-and-recording/) for where to
+get it.
+
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).
