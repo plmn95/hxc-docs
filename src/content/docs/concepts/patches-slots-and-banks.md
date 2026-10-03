@@ -25,6 +25,14 @@ extension.
 
 Factory patches are excluded from `File > Recent Patches`.
 
+Patches and banks record the version of the app that saved them. Opening
+one from a newer version asks first, because an older version may not read
+it correctly: `Cancel` is the safe choice, and `Open anyway` goes ahead at
+your own risk. A newer patch set as the startup default, or reopened last,
+is skipped at launch with a message instead of a prompt. Files saved before
+this was added carry no version and open without a warning, and versions
+from before it cannot warn about newer files.
+
 A slot can also be set as the startup default, from its right-click menu's
 `Set as Startup Default` or from `File > Set Active Patch as Startup
 Default`, so it opens automatically the next time Hex Composer launches, in place
