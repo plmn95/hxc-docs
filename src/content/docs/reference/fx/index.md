@@ -17,4 +17,4 @@ control in addition to the effect's parameters.
 | [KEY](key/) | Luma Key, Chroma Key, Channel Select, Motion Key, Despill, Luma Range, Edge Key, Sat Isolate, Dominant Channel |
 | [BLUR](blur/) | Gaussian Blur, Box Blur, Motion Blur, Radial Blur |
 | [GRADE](grade/) | Channel Attenuverter, Channel Curves, Contrast, Saturation Adjust, White Balance |
-| [SIMULATE](simulate/) | Fluid, Ripple |
+| [SIMULATE](simulate/) | Fluid, Ripple, Reaction-Diffusion |
