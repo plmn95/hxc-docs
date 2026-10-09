@@ -19,6 +19,12 @@ adjustable persistence.
 | Generator A / Generator B | Selector, Trough | Wave (Sine, Square, Sawtooth, Triangle, S+H, and the same 6 noise waves LFO offers), Freq, Phase, Amp. Square adds Duty, the share of each cycle spent high (1-99%, default 50). S+H jumps to a new random level once per cycle, with no glide. Seed picks the random sequence for S+H and the noise waves; the noise waves also add Harmonics/Spread/Gain/Density. |
 | Reset Generators | Button | Synchronizes Generator A/B phases, restarts S+H's sequence, and clears the trace. Shown when a generator drives either axis. |
 
+With an Audio source, the trace runs about one frame behind the sound.
+SCOPE holds back a few milliseconds of audio so that every frame draws an
+even share of it, which keeps the trace as steady as the generators. An
+axis set to Audio draws nothing while no audio arrives, for example before
+an input is opened.
+
 Insert FX on SCOPE applies to the full composited result, backdrop and
 phosphor trace together, not the trace alone. The effects see it over black; areas they leave dark stay empty. See
 [Insert FX Chains](../../../concepts/insert-fx-chains/).
