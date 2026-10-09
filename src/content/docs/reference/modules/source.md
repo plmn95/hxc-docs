@@ -13,7 +13,7 @@ another program's NDI/Spout/Syphon output.
 | File / Device | file picker, text field | Meaning depends on Input: a file path for Video File, an OS capture handle for Camera / Capture, or a sender/server name to connect to for NDI/Spout/Syphon In. |
 | Loop | Rocker | File input only. |
 | Speed | Trough | 0 to 4.0x. At 0 the value field reads `Pause`. Playback is forward only; there is no reverse. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix into the chain. |
+| Blend | Selector | How the source lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Mix | Trough | Wet/dry of the source against what's beneath it. |
 
 **NOTE:** with nothing loaded, the module adds nothing and the chain passes

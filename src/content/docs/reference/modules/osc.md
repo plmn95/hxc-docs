@@ -9,7 +9,7 @@ phased, amplitude-scaled, and time-scaled across R, G, and B.
 | Parameter | Control | Notes |
 |---|---|---|
 | Waveform | Selector | Sine, Square, Sawtooth, Triangle, Noise, Custom. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix into the chain. |
+| Blend | Selector | How the oscillator lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Freq X / Freq Y | Pad | X and Y frequency read as one gesture; a Link ties Y to X's position. |
 | Phase R/G/B | Wheel | Ganged, one ring per channel. |
 | Amp R/G/B | Trough | Ganged. |

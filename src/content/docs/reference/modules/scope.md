@@ -11,7 +11,7 @@ adjustable persistence.
 | X Source / Y Source | Selector | Manual, Audio L, Audio R, Generator A, or Generator B, independently per axis. |
 | X / Y | Trough | Manual axis value; only live when its Source is Manual. |
 | X Scale / Y Scale | Trough | Axis gain, 0 to 2, default 1. Shown for Audio and Generator sources. Can correct trace proportions on a non-square canvas. |
-| Blend / Mix | Selector, Trough | Same blend-mode family every other module uses (Replace, Add, etc.) plus a 0-1 Mix amount, applied to the composited trace+backdrop result. |
+| Blend / Mix | Selector, Trough | The same [Blend modes](../../../concepts/signal-chain/#blend-modes) every other module uses, plus a 0-1 Mix amount, applied to the composited trace+backdrop result. |
 | Persistence | Trough | Per-second exponential decay of the phosphor trace. |
 | Brightness / Width | Trough | Line width in line mode; also sizes points when Points Only is on. |
 | Points Only | Rocker | Renders each frame's beam position as a discrete point-glow instead of a connected line between positions. |

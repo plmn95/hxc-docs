@@ -15,8 +15,9 @@ Controls for mixing the two decks.
 | BPM | The shared transport tempo, with a `TAP` button beside it. A Lamp reads `strobe-sync` while Strobe is locked to a division. |
 | `Hide Controls` | Hides the on-screen controls, same as `H`. |
 
-Each Mode adds its own controls: Crossfade / Blend picks a blend sub-mode
-(Crossfade, Add, Screen, Multiply, Difference); Luma Key and Chroma Key each
+Each Mode adds its own controls: Crossfade / Blend picks how Deck B lands
+on Deck A from the shared [Blend modes](../../../concepts/signal-chain/#blend-modes),
+with Crossfade in place of Replace; Luma Key and Chroma Key each
 add a Threshold and Softness (Chroma Key also adds a key-color swatch);
 Strobe adds a rate, free-running in Hz or locked to a BPM division; Dirty
 Mix adds its own Sum (Add/Difference) and Overflow (Clip/Wrap) modes, a

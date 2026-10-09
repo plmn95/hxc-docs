@@ -16,7 +16,7 @@ bulges with the audio input, and stays flat with no audio.
 | Color Source | Selector | `Chain composite (default)` or `AUX 1` to `AUX 8`. |
 | Depth Source | Selector | `Generated (default)` derives depth from Color Source's brightness; `AUX 1` to `AUX 8` read depth from a bus. |
 | Mix | Trough | 0-1. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix. |
+| Blend | Selector | How the point cloud lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Shape | Selector | Grouped list. Surfaces: Flat, Sphere. Volumes: Sphere Volume, Box Volume, Torus. Organic: Flow, Galaxy Spiral, Noise Blob. Math: Strange Attractor. Audio: Spectrum. Greyed out and fixed to Flat while the style is Voxels. |
 | Thickness / Shell / Fill / Arms / Twist / Turbulence / Tube Size / Detail / Speed / Height / Smoothing | Trough | 0-1. Sphere Volume: Thickness (0 is a hollow shell, 1 a solid ball). Box Volume: Shell (0 is a solid block, 1 only the outside faces). Torus: Fill (0 is a thin skin, 1 a filled tube) and Tube Size. Galaxy Spiral: Arms (2 to 6) and Twist. Noise Blob: Turbulence and Thickness. Strange Attractor: Detail (higher costs more on slow graphics cards) and Speed. Spectrum: Height and Smoothing. |
 | Curve | Selector | Strange Attractor only: Lorenz, Aizawa, or Thomas. |

@@ -9,7 +9,7 @@ Generates procedural noise in 2D or 3D.
 |---|---|---|
 | Type | Selector | Random, Perlin, Simplex, Sparse Convolution, Hermite, Harmonic Summation, Alligator. |
 | Dimension | Selector | 2D or 3D. Hidden for Random, which has no spatial dimensionality to choose. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix into the chain. |
+| Blend | Selector | How the noise lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Seed | value field, button | 0 to 999, typed directly or rolled with `Randomize`. |
 | Period | Trough | Base noise frequency. |
 | Position X/Y/Z | Trough | Scroll/offset through the noise field. Z is drawn only for a 3D type. |

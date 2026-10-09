@@ -8,7 +8,7 @@ Draws 2D shapes with symmetry, fill, and outline controls.
 | Parameter | Control | Notes |
 |---|---|---|
 | Primitive | Selector | Circle, Square, Triangle, Star, Polygon, Superellipse, Lissajous, Spirograph. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Phoenix, or Replace into the chain. |
+| Blend | Selector | How the shape lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Symmetry | Selector | None, Bilateral, RotationalN, Kaleidoscope. |
 | Sym N / Poly N / Depth | Trough | Symmetry repeat count, polygon side count, and IFS recursion depth. |
 | Size / Position | Knob, Pad | Overall scale and X/Y offset. |

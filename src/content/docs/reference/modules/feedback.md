@@ -12,7 +12,7 @@ much of the loop reaches the output in place of the incoming frame.
 | Parameter | Control | Notes |
 |---|---|---|
 | Dry/Wet | Trough | 0 shows only the incoming frame. 0.50 shows the incoming frame and the loop together, combined by `Blend`. 1 shows only the loop; transparent areas of the loop stay transparent. Default 0.50. |
-| Blend | Selector | `Add`, `Multiply`, `Screen`, `Difference`, `XOR`, `Replace`, or `Phoenix`. How the incoming frame and the loop combine in the middle of the `Dry/Wet` range. At 0.50, `Add` shows both at full strength and `Replace` puts the loop on top. At 1, `Blend` has no effect. |
+| Blend | Selector | Any of the [Blend modes](../../../concepts/signal-chain/#blend-modes). How the incoming frame and the loop combine in the middle of the `Dry/Wet` range. At 0.50, `Add` shows both at full strength and `Replace` puts the loop on top. At 1, `Blend` has no effect. |
 
 ## Loop
 
@@ -20,7 +20,7 @@ much of the loop reaches the output in place of the incoming frame.
 |---|---|---|
 | Amount | Trough | How strongly the incoming frame is fed into the loop, 0-1. At 0 nothing new enters and the loop fades away. |
 | Decay | Trough | How much of the loop survives each lap, 0-1. 1 never fades. |
-| Loop Blend | Selector | Same seven modes as `Blend`, default `Screen`. How each new frame recombines with what is already circulating. `Add` builds the trail up, `Difference` and `XOR` churn on the edges between laps, `Multiply` and `Screen` keep it bounded. `Replace` paints each new frame over the echoes: where the frame has picture it replaces them and `Decay` has no effect; where it is empty the echoes stay and fade by `Decay`. `Decay` 0 makes Replace a plain delay. |
+| Loop Blend | Selector | Same modes as `Blend`, default `Screen`. How each new frame recombines with what is already circulating. `Add` builds the trail up, `Difference` and `XOR` churn on the edges between laps, `Multiply` and `Screen` keep it bounded. `Replace` paints each new frame over the echoes: where the frame has picture it replaces them and `Decay` has no effect; where it is empty the echoes stay and fade by `Decay`. `Decay` 0 makes Replace a plain delay. |
 
 ## Timing and routing
 
@@ -65,8 +65,8 @@ so under `Loop Blend` Replace older echoes show wherever the new frame is
 empty. OSC, NOISE and video from SOURCE fill the whole frame: add `Luma Key`
 to that module's own Insert FX, or place an INSERT with `Luma Key` or
 `Chroma Key` right before FEEDBACK, so their dark parts count as empty.
-`Loop Blend` Multiply, Screen, Difference, XOR and Phoenix treat empty parts
-of the incoming frame as black.
+Every other `Loop Blend` mode treats empty parts of the incoming frame as
+black.
 
 **NOTE:** with `Feed back to` set to an earlier module, `Dry/Wet` is applied
 where the loop enters that module, so everything shown passes through the

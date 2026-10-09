@@ -9,7 +9,7 @@ The shader's inputs determine the available parameters.
 | Parameter | Control | Notes |
 |---|---|---|
 | Shader | file picker (`Load .fs...`) | |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix into the chain. |
+| Blend | Selector | How the shader's result lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Mix | Trough | Wet/dry of the shader's result. |
 | Shader Inputs | varies | Generated from the loaded shader's own metadata; shape and count vary shader to shader. |
 

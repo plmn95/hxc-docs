@@ -12,7 +12,7 @@ Draws text with font, layout, styling, and scrolling controls.
 | Style | Dropdown |  |
 | B / I / U / S | Rocker | Bold, italic, underline, strikethrough. `B` and `I` switch Style to the family's real bold or italic when it has one and simulate it otherwise; hovering a lit `B` or `I` says when it is simulated. Cannot be modulated. |
 | Mix | Trough | Opacity of the module's contribution to the chain. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix into the chain. |
+| Blend | Selector | How the text lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Alignment | Selector, Trough | `L`, `C`, `R` snap lines to the left, centre or right of the block; the Trough (0 to 1) places them anywhere in between. |
 | Line Spacing | Trough | Distance between lines, 0.5 to 3 times the font's line height. |
 | Letter Spacing | Trough | Extra space between letters, -0.1 to 1 em. Applies on release. Cannot be modulated. |

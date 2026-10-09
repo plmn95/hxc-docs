@@ -12,7 +12,7 @@ instances.
 |---|---|---|
 | Source | Selector | File (loaded via the file picker) or Pixel Art (drawn in the built-in pixel editor). |
 | Display Mode | Selector | Sprite, Tile, Fractal, or Scatter. |
-| Blend | Selector | Add, Multiply, Screen, Difference, XOR, Replace, or Phoenix into the chain. |
+| Blend | Selector | How the sprite lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
 | Position / Size / Rotation | Pad, Knob, Wheel | |
 | Alpha Mode | Selector | Per-Pixel, Threshold, or Blend. |
 | Tint | Trough | Color and amount, applied on top of the source image. |

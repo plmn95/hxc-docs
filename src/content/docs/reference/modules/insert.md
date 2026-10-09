@@ -8,7 +8,7 @@ Applies Insert FX to the chain composite or an AUX bus.
 | Parameter | Control | Notes |
 |---|---|---|
 | Source | Selector | `Chain composite (default)`, or `AUX 1` through `AUX 8`. |
-| Blend | Selector | Additive, Multiply, Screen, Difference, XOR, Replace, or Phoenix. Shown only when Source is a bus. |
+| Blend | Selector | How the bus lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). Shown only when Source is a bus. |
 | Amount | Trough | Shown only when Source is a bus. |
 
 See [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/) for how
