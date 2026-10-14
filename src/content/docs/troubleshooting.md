@@ -47,5 +47,5 @@ Include:
   embedded media before sharing the file.
 
 Use [the Hex Composer Discord](https://discord.gg/Mfx6Jkffkj) to report an
-app problem. Use `Describe a problem` on the relevant documentation page
+app problem. In the app, `Help > Join the Discord...` opens it. Use `Describe a problem` on the relevant documentation page
 to report unclear or incorrect instructions.

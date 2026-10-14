@@ -23,6 +23,9 @@ patch, build a kaleidoscope, animate it with an LFO, and record a short clip.
   a clip or send the output to another application.
 - [Troubleshoot a problem](troubleshooting/): check recording, controller
   input, and external output by symptom.
+- [Get help and shared patches](https://discord.gg/Mfx6Jkffkj): ask in the
+  Hex Composer Discord's help channel or download patches from its forum. In
+  the app, use `Help > Join the Discord...`.
 
 ## Understand the system
 
