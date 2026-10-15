@@ -6,9 +6,11 @@ description: "Renders the chain, or an AUX bus, as a 3D field of points or lines
 Renders the chain, or an AUX bus, as a 3D field of points or lines, displaced
 by brightness.
 
-The volume shapes, Galaxy Spiral, Noise Blob and Strange Attractor take their
-colour from the picture where each point lands on screen, so the picture stays
-recognisable behind the points. Spectrum wraps the picture into a ring that
+In the volume shapes, Galaxy Spiral, Noise Blob and Strange Attractor, each
+point takes its colour from the picture where it sits before the shape is
+turned, and the brightness at that same spot pushes it in or out. From the
+front the picture is recognisable; turning the shape turns the picture and its
+bumps with it, and the back shows it mirrored. Spectrum wraps the picture into a ring that
 bulges with the audio input, and stays flat with no audio.
 
 | Parameter | Control | Notes |
