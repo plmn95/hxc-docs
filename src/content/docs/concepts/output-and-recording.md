@@ -1,6 +1,6 @@
 ---
 title: "Output and Recording"
-description: "Record video and send output through NDI, Spout, Syphon, or a second window."
+description: "Record or export video and send output through NDI, Spout, Syphon, or a second window."
 ---
 
 `Output` shows the last module's result, or the mix of both decks in Mixer
@@ -22,6 +22,28 @@ the background, and a message then names the saved file. When finishing
 takes more than a moment, the timer shows `Saving...` and `REC` is dimmed
 until the file is complete. Quitting while a file is still being written
 waits for it to finish.
+
+## Export Video
+
+Recording captures the session as it plays, including its timing. When a
+clip has to be exact, for a social post, a loop or a GIF,
+`File > Export Video` renders the patch frame by frame instead, so every
+frame lands at its exact time even when the patch is too heavy to play
+smoothly. The export always starts the patch from its beginning, so the
+same patch gives the same file every time.
+
+The export runs on a copy of the patch. The live view pauses while it runs
+and continues from the same point afterwards. MIDI, OpenSoundControl and
+macro values are held at what they were when the export started, and audio
+input is silent. Video clips play from their first frame at their own
+speed. Cameras and NDI, Spout or Syphon sources show the picture they had
+when the export started, without moving.
+
+An export saves to the folder and filename set in `Settings > Recording`,
+with the extension of its format. It carries no audio. Export is not
+available in Mixer Mode or while a recording is running.
+
+The settings are in [Export Video](../../reference/windows/export-video/).
 
 NDI, Spout (Windows), and Syphon (macOS) each send the same output live to
 another program instead of, or alongside, a file. Each is enabled
