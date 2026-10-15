@@ -24,7 +24,7 @@ bulges with the audio input, and stays flat with no audio.
 | Curve | Selector | Strange Attractor only: Lorenz, Aizawa, or Thomas. |
 | Density | Trough | 0-1. Point and line grid resolution. In Voxels, how many cubes fit across the longest side, from 8 to 256. |
 | Depth Amount | Trough | 0-1. How strongly depth pushes points off their shape. In Voxels, how tall the cube columns can get. In the volume shapes, Noise Blob and Strange Attractor, brightness pushes points out from the centre or in toward it; in Galaxy Spiral, toward or away from the camera. |
-| Perspective | Trough | 0-2. 0 is flat. |
+| Perspective | Trough | 0-2. 0 gives the strongest perspective; 2 is close to flat. |
 | Zoom | Trough | 0.1-4. |
 | Orbit / Tilt | Wheel | -180 to 180 degrees. |
 | Point Size | Trough | 0.5-8 px. |
