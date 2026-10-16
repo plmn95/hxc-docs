@@ -28,6 +28,8 @@ With [Perfect loop](../../windows/export-video/#perfect-loop) on, every
 LFO starts again at each loop start, `S+H` repeats its values every loop
 (`Cycle` glide runs from the loop's last value into its first), and noise
 waves repeat once per loop. A rate that doesn't fit whole cycles into the
-loop jumps at the loop point until `Snap` rounds it.
+loop jumps at the loop point until `Snap` rounds it. A synced LFO fits
+every loop of whole bars; in a loop of beats, `Snap` moves one that doesn't
+fit to the longest sync that does.
 
 Related: [Modulation Matrix](../../../concepts/modulation-matrix/).

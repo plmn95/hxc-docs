@@ -45,7 +45,7 @@ available in Mixer Mode or while a recording is running.
 
 For a clip that repeats without a jump, turn on
 [Perfect loop](../../reference/windows/export-video/#perfect-loop): the
-file is then exactly one loop in bars or seconds, and its last frame flows
+file is then exactly one loop in bars, beats or seconds, and its last frame flows
 into its first. While the loop is on, the toolbar shows a `LOOP` plate after
 `TAP`, and the live view snaps its built-in motion to the loop too.
 

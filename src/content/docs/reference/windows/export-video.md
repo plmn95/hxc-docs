@@ -15,8 +15,8 @@ the folder.
 | Format | `MP4` (H.264), `WebM` (VP9) or `GIF`. A format this computer's build can't write is unavailable. |
 | Size | The long edge in pixels: `Output size`, `1920`, `1080`, `720` or `480`. Each entry shows the resulting width and height. The shape always follows the Output; change it in `Settings > Output`. The dialog notes when the preset's platform expects another shape, for example 9:16 for Instagram and TikTok. |
 | Perfect loop | Rocker. Renders one loop whose last frame flows into the first, so the file repeats without a jump. Saved with the patch. See [Perfect loop](#perfect-loop). |
-| Length | Seconds to render, up to 60 for a GIF and 600 for MP4 and WebM. With `Perfect loop` on: whole bars (1 to 64) at the current BPM, or seconds (0.5 to 600), chosen in the Selector beside it. |
-| Crossfade | With `Perfect loop` on: seconds the loop's end fades into its start, 0 to 10, default 0.5, 0 is off. Saved with the patch. See [Crossfade](#crossfade). |
+| Length | Seconds to render, up to 60 for a GIF and 600 for MP4 and WebM. With `Perfect loop` on: whole bars (1 to 64) or whole beats (1 to 256) at the current BPM, or seconds (0.5 to 600), chosen in the Selector beside it. Each keeps its own value. |
+| Crossfade | With `Perfect loop` on: how long the loop's end fades into its start. With a length in bars or beats, a Selector in beats: `Off`, `1/2 beat`, `1 beat` (default), `2 beats` or `1 bar`, with choices longer than half the loop grayed out. With a length in seconds, 0 to 10 seconds, default 0.5, 0 is off. Saved with the patch. See [Crossfade](#crossfade). |
 | FPS | `24`, `25`, `30` or `60`. A GIF offers `10`, `20`, `25` or `50`, the rates a GIF plays back exactly. |
 | Quality | `Low`, `Medium` or `High` (MP4 and WebM). |
 | Colors | `256`, `128` or `64` colors for the whole GIF. Fewer colors make a smaller file. |
@@ -30,9 +30,9 @@ suggests a smaller Size, fewer Colors or a shorter Length.
 
 ## Perfect loop
 
-With `Perfect loop` on, the file is exactly one loop. A length in bars is
-rounded to whole frames, and the export plays a hair faster or slower so
-the bars fill those frames exactly; the dialog names that tempo when it
+With `Perfect loop` on, the file is exactly one loop. A length in bars or
+beats (1 bar is 4 beats) is rounded to whole frames, and the export plays a
+hair faster or slower so the bars or beats fill those frames exactly; the dialog names that tempo when it
 moves by 0.05 BPM or more (`Renders at 127.7 BPM so the loop is exactly 47
 frames.`). A length in seconds is rounded to whole frames and keeps the
 tempo. A loop longer than the format allows disables `Export`.
@@ -103,7 +103,14 @@ LFO rates, OSC's `Rate R/G/B`, the Strange Attractor's Speed, Text scroll,
 Deflection Error's Roll Speed and Flicker Rate, Dither's Animate, SCOPE's
 generator frequencies, sprite-sheet FPS, pixel-art and clip speed, and the
 Amount of a TIME connection to a rotation, so it turns whole turns per loop.
-Orange and red lines never block `Export`.
+In a loop of whole bars every LFO synced to the tempo fits. In a loop of
+beats one may not: an LFO synced to 4 beats runs three quarters of a cycle
+in a 3-beat loop (`LFO 2: synced to 4 beats, 0.75 cycles per loop`), and
+`Snap` sets the longest sync that fits (`4 beats → 1 beat`). Orange and
+red lines never block `Export`.
+
+A Feedback Hold starts again at each loop start, so the hold that spans
+the loop point runs long, the same way every loop; the list notes it.
 
 When the list has warm-up notes, or `Crossfade` is above 0, the export
 first renders one loop it doesn't keep (`Warming up (one loop)...`), so the
