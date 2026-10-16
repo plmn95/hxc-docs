@@ -40,5 +40,9 @@ Reaction-Diffusion in the same chain, with the Pattern look.
 resolution, and its timing follows the clock. Speed 2 at Small is the most
 expensive setting.
 
+In a [Perfect loop](../../../windows/export-video/#perfect-loop) export it
+never repeats exactly; the [Crossfade](../../../windows/export-video/#crossfade)
+fades the loop's end into its start.
+
 Related: [Fluid](../fluid/), [Ripple](../ripple/),
 [Insert FX Chains](../../../../concepts/insert-fx-chains/).

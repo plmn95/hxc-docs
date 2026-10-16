@@ -75,4 +75,9 @@ modules in between. At 0 the chain runs as if FEEDBACK were off. Below 0.50
 effect above 0.50. This routing has a single recursion, so the repeat-once,
 held-afterimage and delay-line recipes need `Self`.
 
+In a [Perfect loop](../../windows/export-video/#perfect-loop) export, the
+loop warms up for one loop first. Feedback that never settles, for example
+with Edge Detect as a Pre Insert, is faded into the loop's start by the
+[Crossfade](../../windows/export-video/#crossfade).
+
 Related: [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

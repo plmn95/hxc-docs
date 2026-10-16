@@ -42,8 +42,9 @@ uniforms for the [Perfect loop](../../windows/export-video/#perfect-loop):
 | `LOOPPHASE` | Position in the loop, rising from 0 to 1, then starting again. Over 4 bars at the current BPM while `Perfect loop` is off. |
 | `LOOPLENGTH` | The loop's length in seconds (4 bars while it's off). |
 
-A shader that animates from `TIME` doesn't repeat with the loop; one that
-animates from `LOOPPHASE` does. Turn whole cycles per loop, for example
+A shader that animates from `TIME` or `FRAMEINDEX` doesn't repeat with the
+loop (the export's [Crossfade](../../windows/export-video/#crossfade) fades
+its end into its start); one that animates from `LOOPPHASE` does. Turn whole cycles per loop, for example
 `sin(LOOPPHASE * 6.2831853 * 3.0)` for three cycles. Hex Composer also
 defines `HEXCOMPOSER_LOOP`, so a shader can fall back to `TIME` in other
 ISF hosts:

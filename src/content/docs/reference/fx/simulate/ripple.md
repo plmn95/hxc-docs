@@ -25,4 +25,9 @@ picture the ripples read mainly through Shine.
 follows the clock, not the frame rate. Below 30 frames per second the waves
 slow down rather than skipping ahead.
 
+In a [Perfect loop](../../../windows/export-video/#perfect-loop) export,
+ripples from movement warm up for one loop; `Rain` never repeats exactly,
+and the [Crossfade](../../../windows/export-video/#crossfade) fades the
+loop's end into its start.
+
 Related: [Fluid](../fluid/), [Insert FX Chains](../../../../concepts/insert-fx-chains/).

@@ -35,5 +35,9 @@ follows the clock, not the frame rate. A busy patch that drops frames moves
 the fluid in larger steps rather than slowing it down, down to 20 frames per
 second. Below that the fluid slows.
 
+In a [Perfect loop](../../../windows/export-video/#perfect-loop) export it
+never repeats exactly; the [Crossfade](../../../windows/export-video/#crossfade)
+fades the loop's end into its start.
+
 Related: [Motion Key](../../key/motion-key/), [Persistence](../../crt/persistence/),
 [Insert FX Chains](../../../../concepts/insert-fx-chains/).

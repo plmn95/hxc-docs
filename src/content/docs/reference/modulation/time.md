@@ -14,6 +14,8 @@ A value that rises or falls at a constant rate without wrapping.
 TIME keeps rising through a [Perfect loop](../../windows/export-video/#perfect-loop),
 so a connection from it doesn't repeat. A connection to a rotation is the
 exception: `Snap` sets its Depth so the target turns whole turns per loop.
+Elsewhere, the export's [Crossfade](../../windows/export-video/#crossfade)
+fades the loop's end into its start.
 
 ## Loop Phase
 
