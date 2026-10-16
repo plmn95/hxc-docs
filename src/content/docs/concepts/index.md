@@ -22,5 +22,7 @@ description: "How the app's model works."
 - [Mixer Mode](mixer-mode/): the two-deck live-performance mode.
 - [Output and Recording](output-and-recording/): what leaves the app, and
   by which route.
+- [Export Video](export-video/): rendering the patch to a file frame by
+  frame, Perfect loops, and exports that follow an audio file.
 - [Docking and Layout](docking-and-layout/): the dockable window system and
   its named layout presets.

@@ -49,4 +49,8 @@ Display Fit controls how the output image sits inside whatever window or
 monitor shows it, when the two don't share an aspect ratio: `Fit Best`,
 `Fill`, or `Shrink`.
 
-Related: [Signal Chain](../signal-chain/).
+To render a patch to a file frame by frame instead of capturing it live,
+with an exact frame rate, a Perfect loop or an audio file driving it, see
+[Export Video](../export-video/).
+
+Related: [Signal Chain](../signal-chain/), [Export Video](../export-video/).
