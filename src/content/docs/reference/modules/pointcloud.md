@@ -36,5 +36,11 @@ bulges with the audio input, and stays flat with no audio.
 | Shading | Trough | 0-1. Voxels only: how differently each cube face is lit. 0 is flat colour. |
 | Edges | Trough | 0-1. Voxels only: thin lines between cubes. 0 gives a solid surface. |
 
+With [Perfect loop](../../windows/export-video/#perfect-loop) on, Flow, Galaxy Spiral and Noise Blob turn a
+whole number of times per loop. Their motion is slow, so in loops shorter
+than about a minute it holds still. `Snap` sets the Strange Attractor's
+Speed to whole turns per loop, or to 0 when one turn doesn't fit its range.
+Trail/Comet warms up for one loop before an export.
+
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

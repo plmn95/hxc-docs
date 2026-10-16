@@ -11,4 +11,15 @@ A value that rises or falls at a constant rate without wrapping.
 | Running | Rocker | Pausing freezes the accumulator in place, without resetting it. |
 | Reset | button | |
 
+TIME keeps rising through a [Perfect loop](../../windows/export-video/#perfect-loop),
+so a connection from it doesn't repeat. A connection to a rotation is the
+exception: `Snap` sets its Depth so the target turns whole turns per loop.
+
+## Loop Phase
+
+The first row of the source picker's `TIME` tab. It rises from 0 to 1 over
+the loop, then starts again, and runs over 4 bars at the current BPM while
+`Perfect loop` is off. It always repeats exactly with the loop, so any
+parameter can follow it. In Mixer Mode it runs over 4 bars.
+
 Related: [Modulation Matrix](../../../concepts/modulation-matrix/).

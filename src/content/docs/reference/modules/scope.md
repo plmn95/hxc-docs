@@ -29,4 +29,8 @@ Insert FX on SCOPE applies to the full composited result, backdrop and
 phosphor trace together, not the trace alone. The effects see it over black; areas they leave dark stay empty. See
 [Insert FX Chains](../../../concepts/insert-fx-chains/).
 
+With [Perfect loop](../../windows/export-video/#perfect-loop) on, the generators start again at each loop
+start, and `Snap` sets their Freq to whole cycles per loop. The phosphor
+glow warms up for one loop before an export.
+
 Related: [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

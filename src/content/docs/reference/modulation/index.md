@@ -11,6 +11,7 @@ Sources available from `Edit Modulation`. See
 | [LFO](lfo/) | A repeating or one-shot waveform generator, 12 waveforms including 6 noise types. |
 | [Envelope](envelope/) | An ADSR envelope, triggered by a MIDI note, an audio threshold, or another LFO's phase. |
 | [Time](time/) | A monotonic accumulator: rises or falls at a steady rate, unbounded. |
+| [Loop Phase](time/#loop-phase) | Rises from 0 to 1 over the Perfect loop (4 bars while it's off). |
 | [Macro](macro/) | A named, freely assignable value, bindable to a MIDI CC. |
 | [Audio-Reactive](audio-reactive/) | Live audio level: L/R, 8 named frequency bands, or 4 user-defined bands. |
 | [CV/Gate](cv-gate/) | Up to 12 channels of external control voltage / gate input. |

@@ -24,5 +24,10 @@ instances.
 **NOTE:** with nothing loaded, the module adds nothing and the chain passes
 through unchanged in every `Blend` mode.
 
+With [Perfect loop](../../windows/export-video/#perfect-loop) on, Sheet Animation and pixel art play on the
+loop's own clock and start again with each loop, and so does a clip in an
+export. `Snap` sets the sheet's fps, or Speed, so they run whole passes per
+loop. Speed is saved with the patch.
+
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

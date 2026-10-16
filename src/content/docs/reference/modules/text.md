@@ -43,6 +43,9 @@ to appear. The previous text remains visible during the update.
 **NOTE:** enable embedded assets in `Settings > Patches` to include custom
 font files in saved patches.
 
+With [Perfect loop](../../windows/export-video/#perfect-loop) on, scrolling starts again at each loop start;
+`Snap` sets Speed to whole passes per loop.
+
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/),
 [Modulation Matrix](../../../concepts/modulation-matrix/).

@@ -20,4 +20,8 @@ jitter, and flicker, layered independently.
 **NOTE:** setting Roll Speed to 0 stops the roll at its current position.
 Use `Reset Roll` to restore the image's position.
 
+With [Perfect loop](../../../windows/export-video/#perfect-loop) on, the roll and flicker start again at each
+loop start, and the hum, jitter and line bend repeat every loop. `Snap`
+sets Roll Speed and Flicker Rate to whole cycles per loop.
+
 Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).

@@ -43,6 +43,12 @@ An export saves to the folder and filename set in `Settings > Recording`,
 with the extension of its format. It carries no audio. Export is not
 available in Mixer Mode or while a recording is running.
 
+For a clip that repeats without a jump, turn on
+[Perfect loop](../../reference/windows/export-video/#perfect-loop): the
+file is then exactly one loop in bars or seconds, and its last frame flows
+into its first. While the loop is on, the toolbar shows a `LOOP` plate after
+`TAP`, and the live view snaps its built-in motion to the loop too.
+
 The settings are in [Export Video](../../reference/windows/export-video/).
 
 NDI, Spout (Windows), and Syphon (macOS) each send the same output live to

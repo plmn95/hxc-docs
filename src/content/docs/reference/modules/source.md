@@ -23,5 +23,10 @@ NDI In needs the free NDI Runtime, the same one NDI output uses. See
 [Output and Recording](../../../concepts/output-and-recording/) for where to
 get it.
 
+With [Perfect loop](../../windows/export-video/#perfect-loop) on, an exported clip plays on the loop's own
+clock and starts again with each loop; `Snap` sets Speed so the clip runs
+whole passes per loop. A camera or NDI, Spout or Syphon input shows a still
+picture in an export. Speed is saved with the patch.
+
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

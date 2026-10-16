@@ -39,4 +39,7 @@ The pattern is fixed to the output frame, not to the picture. Moving content sli
 
 To dither with a specific set of colors, set `Quantize To` to Spread Only and place a [Palette Map](../palette-map/) later in the same chain.
 
+With [Perfect loop](../../../windows/export-video/#perfect-loop) on, Animate runs on the loop's own clock;
+`Snap` sets it to a whole number of changes per loop.
+
 Related: [Posterize](../posterize/), [Insert FX Chains](../../../../concepts/insert-fx-chains/).

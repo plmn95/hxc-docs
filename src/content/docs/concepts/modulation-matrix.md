@@ -28,6 +28,9 @@ edits them from one place instead of hunting through each module's own
 parameters. Mixer Mode keeps its modulation in a separate Mod Matrix of its
 own.
 
+To make a parameter follow a [Perfect loop](../../reference/windows/export-video/#perfect-loop),
+connect it to `Loop Phase` on the source picker's `TIME` tab.
+
 Removing sources and using `Clear All Modulation` can be undone.
 
 The [Mod Matrix](../../reference/windows/mod-matrix/) window lists the
