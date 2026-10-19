@@ -39,11 +39,11 @@ tempo. A loop longer than the format allows disables `Export`.
 
 While the loop is on, in the live view as well as in the file:
 
-- Every LFO, the text scroll, Deflection Error's roll and flicker and
-  SCOPE's generators start again at each loop start. TIME keeps rising.
-- The built-in motion of OSC, Point Cloud's Flow, Galaxy and Noise Blob,
-  Wave Warp, VHS and Deflection Error turns a whole number of times per
-  loop. Motion too slow to turn once holds still; a longer loop lets it
+- Every LFO, OSC's `Rate R/G/B`, the text scroll, Deflection Error's roll
+  and flicker and SCOPE's generators start again at each loop start. TIME
+  keeps rising.
+- The built-in motion of Point Cloud's Flow, Galaxy and Noise Blob, Wave
+  Warp, VHS and Deflection Error turns a whole number of times per loop. Motion too slow to turn once holds still; a longer loop lets it
   move.
 - Noise waves on an LFO repeat once per loop.
 - Sprite sheets, pixel art and, in the file, video clips play on the loop's
@@ -97,7 +97,7 @@ Below the rows, a list says how the patch will loop:
 |---|---|
 | Green Lamp | How many things repeat cleanly. Hover for the list. |
 | Orange Lamp, rate | A rate that doesn't fit whole cycles into the loop, for example `LFO 2: Rate 0.37 Hz, 1.48 cycles per loop`. Hover for the value `Snap` sets. |
-| Orange Lamp, holds still | Built-in motion too slow to turn once in this loop, and the shortest loop it moves in, for example `OSC 1: its slow color drift holds still in a 16s loop. It moves in loops of 19s or longer.` |
+| Orange Lamp, holds still | Built-in motion too slow to turn once in this loop, and the shortest loop it moves in, for example `OSC 1 › VHS: its tape band holds still in a 4.0s loop. It moves in loops of 5s or longer.` |
 | No Lamp | A note: something that warms up for one loop first (Feedback, the Simulate effects, Persistence, Point Cloud trails, SCOPE's glow, ISF buffers, envelopes, S+H glide), a TIME connection that keeps rising, MIDI or OpenSoundControl held at its value when the export starts, an ISF shader that reads `TIME` or `FRAMEINDEX` (`ISF 1: reads FRAMEINDEX: it won't repeat unless it uses LOOPPHASE`), or Fluid and Reaction-Diffusion, which never repeat exactly. With `Crossfade` above 0, what it covers ends in `the crossfade blends it` or `if it still changes, the crossfade blends it`. The list can't see every drift; the crossfade covers those too. |
 | Red Lamp | Something the file can't show: audio and CV/Gate inputs are silent, and a camera or NDI, Spout or Syphon input shows a still picture. |
 

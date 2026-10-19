@@ -18,10 +18,10 @@ phased, amplitude-scaled, and time-scaled across R, G, and B.
 | Time R/G/B | Trough | Ganged; per-channel time multiplier. |
 | Custom Wave | shared waveform editor | Only used when Waveform is set to Custom. |
 
-With [Perfect loop](../../windows/export-video/#perfect-loop) on, OSC's slow built-in color drift turns a whole
-number of times per loop, or holds still when the loop is too short for one
-turn (the loop check list says so). `Snap` sets `Rate R/G/B` to whole turns
-per loop.
+With [Perfect loop](../../windows/export-video/#perfect-loop) on, `Rate R/G/B`
+run on the loop's clock and start again at each loop start. `Snap` sets them
+to whole turns per loop, so the OSC repeats exactly. With all three at 0 it
+holds still.
 
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).
