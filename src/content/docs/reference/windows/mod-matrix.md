@@ -22,6 +22,8 @@ it outright.
 
 `DEPTH` sets how far the assignment moves its target, in the target's own
 units, with the matching percentage of the target's range shown beside it.
+A target shown in Hz, such as OSC's Rate R/G/B, shows its Depth and Offset in
+Hz too. They stay a rate even when the target shows as time.
 A negative Depth
 inverts the modulation. Beside it sit an Offset control (`±`), which adds a
 constant offset on top of the swing, and a shaping control. The shaping

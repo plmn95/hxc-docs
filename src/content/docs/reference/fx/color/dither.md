@@ -13,7 +13,7 @@ Reduces each color to a few shades and arranges the rounding error into a patter
 | Strength | Trough | 0 to 1 | 0 gives plain banding with no pattern. 1 gives the full pattern. |
 | Cell Size | Trough | 1 to 32px | The picture is sampled once per cell, so larger cells give a chunkier, lower-resolution look. 1 works on every pixel. |
 | Angle | Wheel | -180 to 180 | Rotates the pattern. Halftone Dots always starts from the classic 45 degree screen angle, and Angle turns it from there. |
-| Animate | Trough | 0 to 30 Hz | How many times per second the pattern changes. 0 keeps it still. |
+| Animate | Trough | 0 to 30 Hz | How many times per second the pattern changes. 0 keeps it still. Right-click to show the time between changes. |
 | Bias | Trough | -0.5 to 0.5 | Pushes the picture lighter or darker before the shades are chosen. |
 
 ## Algorithms

@@ -19,7 +19,7 @@ Draws text with font, layout, styling, and scrolling controls.
 | Position | Pad | |
 | Scale | Pad, Rocker | Text width and height around the frame centre. `Link X/Y` (on by default) resizes without stretching; `Flip X` / `Flip Y` mirror the text. |
 | Rotation | Wheel | Degrees, clockwise. |
-| Speed | Pad | Scroll speed per axis in loops per second, the same loop time whatever the text length. Positive scrolls right or up, negative left or down. |
+| Speed | Pad | Scroll speed per axis in passes per second (Hz), the same pass time whatever the text length. Positive scrolls right or up, negative left or down; the centre is still. The pad gives slow speeds most of its area, and faint ticks on its edges mark 0.01, 0.1 and 1 Hz. Right-click an axis to show it as the time one pass takes. |
 | Offset | Pad | Position within the scroll loop per axis; wraps around. |
 | Gap | Trough | Space before the scrolled text repeats, in screens (0 to 2). |
 | Fill | Trough | Fill color and alpha. |

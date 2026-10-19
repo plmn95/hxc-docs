@@ -19,7 +19,8 @@ Each Mode adds its own controls: Crossfade / Blend picks how Deck B lands
 on Deck A from the shared [Blend modes](../../../concepts/signal-chain/#blend-modes),
 with Crossfade in place of Replace; Luma Key and Chroma Key each
 add a Threshold and Softness (Chroma Key also adds a key-color swatch);
-Strobe adds a rate, free-running in Hz or locked to a BPM division; Dirty
+Strobe adds a rate, free-running (Free) or locked to a BPM division
+(Beat-synced); right-click the free Rate to show the time per flash; Dirty
 Mix adds its own Sum (Add/Difference) and Overflow (Clip/Wrap) modes, a
 Center (Clean/Hot) mode, Invert A, Invert B and Hard-cut Rockers, and an
 Artifacts section (H-Tear, V-Roll, RGB Bleed, Dropout), each with its own

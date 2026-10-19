@@ -8,7 +8,7 @@ A repeating or one-shot waveform generator.
 | Parameter | Control | Notes |
 |---|---|---|
 | Wave | Selector | `Sine`, `Square`, `Saw`, `Triangle`, `S+H`, `Custom`, plus 6 noise waves: `Perlin1D`, `Simplex1D`, `Sparse Conv 1D`, `Hermite1D`, `Harm Sum 1D`, `Alligator1D`. |
-| Rate | Trough | 0 to 20Hz, used when not BPM-synced. At 0 the wave freezes and `Phase Off` scans through its shape by hand. |
+| Rate | Trough | 0 to 20Hz, used when not BPM-synced. At 0 the wave freezes and `Phase Off` scans through its shape by hand. The knob gives slow rates most of its turn. Right-click it to show the time one cycle takes instead, such as `4.00 s`; the synced rate beside BPM Sync reads the same way. See [Speeds](../../../concepts/reading-the-panel/#speeds). |
 | BPM Sync | Rocker, Selector | Locks Rate to a musical division (`1/16` to `4`) instead of a raw Hz value. |
 | Scale / Offset | Trough | Output amplitude multiplier, and a DC offset applied after Scale. |
 | Fold | Trough | Wavefolder drive; 0 is an exact bypass. Reflects the signal back into range rather than letting it clip. |

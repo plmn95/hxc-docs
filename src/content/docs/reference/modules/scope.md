@@ -30,7 +30,8 @@ phosphor trace together, not the trace alone. The effects see it over black; are
 [Insert FX Chains](../../../concepts/insert-fx-chains/).
 
 With [Perfect loop](../../windows/export-video/#perfect-loop) on, the generators start again at each loop
-start, and `Snap` sets their Freq to whole cycles per loop. The phosphor
+start, and `Snap` sets their Freq to whole cycles per loop. Right-click a
+Freq to show it as the time one cycle takes. The phosphor
 glow warms up for one loop before an export.
 
 Related: [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

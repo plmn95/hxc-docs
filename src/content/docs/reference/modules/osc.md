@@ -15,12 +15,13 @@ phased, amplitude-scaled, and time-scaled across R, G, and B.
 | Amp R/G/B | Trough | Ganged. |
 | DC R/G/B | Trough | Ganged; per-channel DC offset. |
 | Duty | Trough | 1-99%. Square wave only; ignored for every other waveform. |
-| Time R/G/B | Trough | Ganged; per-channel time multiplier. |
+| Rate R/G/B | Trough | Ganged, under Cycle Rate. How fast each channel's wave moves, in cycles per second (Hz); negative runs it backwards. Right-click a lane to show it as the time one cycle takes, or the Cycle Rate header to switch all three. See [Speeds](../../../concepts/reading-the-panel/#speeds). |
 | Custom Wave | shared waveform editor | Only used when Waveform is set to Custom. |
 
 With [Perfect loop](../../windows/export-video/#perfect-loop) on, `Rate R/G/B`
 run on the loop's clock and start again at each loop start. `Snap` sets them
-to whole turns per loop, so the OSC repeats exactly. With all three at 0 it
+to whole cycles per loop, so the OSC repeats exactly. Typing a time that
+divides the loop, such as `4s` in a 4-second loop, fits it exactly too. With all three at 0 it
 holds still.
 
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),

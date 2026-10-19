@@ -96,7 +96,7 @@ Below the rows, a list says how the patch will loop:
 | Line | Meaning |
 |---|---|
 | Green Lamp | How many things repeat cleanly. Hover for the list. |
-| Orange Lamp, rate | A rate that doesn't fit whole cycles into the loop, for example `LFO 2: Rate 0.37 Hz, 1.48 cycles per loop`. Hover for the value `Snap` sets. |
+| Orange Lamp, rate | A rate that doesn't fit whole cycles into the loop, for example `LFO 2: Rate 0.37 Hz, 1.48 cycles per loop`, or, for a speed shown as time, `LFO 2: Rate: one cycle every 2.70 s, 1.48 cycles per loop`. Hover for the value `Snap` sets (`2.70 → 4.00 s`). |
 | Orange Lamp, holds still | Built-in motion too slow to turn once in this loop, and the shortest loop it moves in, for example `OSC 1 › VHS: its tape band holds still in a 4.0s loop. It moves in loops of 5s or longer.` |
 | No Lamp | A note: something that warms up for one loop first (Feedback, the Simulate effects, Persistence, Point Cloud trails, SCOPE's glow, ISF buffers, envelopes, S+H glide), a TIME connection that keeps rising, MIDI or OpenSoundControl held at its value when the export starts, an ISF shader that reads `TIME` or `FRAMEINDEX` (`ISF 1: reads FRAMEINDEX: it won't repeat unless it uses LOOPPHASE`), or Fluid and Reaction-Diffusion, which never repeat exactly. With `Crossfade` above 0, what it covers ends in `the crossfade blends it` or `if it still changes, the crossfade blends it`. The list can't see every drift; the crossfade covers those too. |
 | Red Lamp | Something the file can't show: audio and CV/Gate inputs are silent, and a camera or NDI, Spout or Syphon input shows a still picture. |
@@ -107,7 +107,8 @@ LFO rates, OSC's `Rate R/G/B`, the Strange Attractor's Speed, Text scroll,
 Deflection Error's Roll Speed and Flicker Rate, Dither's Animate, SCOPE's
 generator frequencies, sprite-sheet FPS, pixel-art and clip speed, and the
 Amount of a TIME connection to a rotation, so it turns whole turns per loop,
-and Feedback's Hold.
+and Feedback's Hold. Typing a time that divides the loop into a speed, such
+as `2s` in a 4-second loop, fits it without `Snap`.
 In a loop of whole bars every LFO synced to the tempo fits. In a loop of
 beats one may not: an LFO synced to 4 beats runs three quarters of a cycle
 in a 3-beat loop (`LFO 2: synced to 4 beats, 0.75 cycles per loop`), and
