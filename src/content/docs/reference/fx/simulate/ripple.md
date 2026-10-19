@@ -26,8 +26,9 @@ follows the clock, not the frame rate. Below 30 frames per second the waves
 slow down rather than skipping ahead.
 
 In a [Perfect loop](../../../windows/export-video/#perfect-loop) export,
-ripples from movement warm up for one loop; `Rain` never repeats exactly,
-and the [Crossfade](../../../windows/export-video/#crossfade) fades the
-loop's end into its start.
+Ripple warms up for one loop. `Rain` follows the loop's clock, so the same
+drops fall at the same moments in every loop, and the
+[Crossfade](../../../windows/export-video/#crossfade) fades the loop's end
+into its start for whatever still changes.
 
 Related: [Fluid](../fluid/), [Insert FX Chains](../../../../concepts/insert-fx-chains/).

@@ -48,6 +48,10 @@ While the loop is on, in the live view as well as in the file:
 - Noise waves on an LFO repeat once per loop.
 - Sprite sheets, pixel art and, in the file, video clips play on the loop's
   own clock.
+- A Feedback Hold steps on the loop's clock: at the loop start and every
+  Hold after it, so its rhythm is the same in every loop.
+- Ripple's rain falls the same way every loop: the same drops at the same
+  moments.
 
 The loop length is not a modulation target: every rate snapped to the loop
 is rounded to it.
@@ -58,8 +62,8 @@ Lamp flashes at each loop start, and clicking it opens this dialog.
 ### Crossfade
 
 Some content doesn't meet itself at the loop point however the rates are
-set: a TIME connection that keeps rising, Fluid, Reaction-Diffusion,
-Ripple's rain, an ISF shader that reads `TIME`, or feedback that never
+set: a TIME connection that keeps rising, Fluid, Reaction-Diffusion, an
+ISF shader that reads `TIME` or `FRAMEINDEX`, or feedback that never
 settles, for example Feedback with Edge Detect inside its loop. With
 `Crossfade` above 0, the export fades the loop's last frames into its
 start, blending each one with the same moment one loop earlier. Anything
@@ -94,7 +98,7 @@ Below the rows, a list says how the patch will loop:
 | Green Lamp | How many things repeat cleanly. Hover for the list. |
 | Orange Lamp, rate | A rate that doesn't fit whole cycles into the loop, for example `LFO 2: Rate 0.37 Hz, 1.48 cycles per loop`. Hover for the value `Snap` sets. |
 | Orange Lamp, holds still | Built-in motion too slow to turn once in this loop, and the shortest loop it moves in, for example `OSC 1: its slow color drift holds still in a 16s loop. It moves in loops of 19s or longer.` |
-| No Lamp | A note: something that warms up for one loop first (Feedback, the Simulate effects, Persistence, Point Cloud trails, SCOPE's glow, ISF buffers, envelopes, S+H glide), a TIME connection that keeps rising, MIDI or OpenSoundControl held at its value when the export starts, an ISF shader that reads `TIME`, or Fluid, Reaction-Diffusion and Ripple's rain, which never repeat exactly. With `Crossfade` above 0, what it covers ends in `the crossfade blends it` or `if it still changes, the crossfade blends it`. The list can't see every drift; the crossfade covers those too. |
+| No Lamp | A note: something that warms up for one loop first (Feedback, the Simulate effects, Persistence, Point Cloud trails, SCOPE's glow, ISF buffers, envelopes, S+H glide), a TIME connection that keeps rising, MIDI or OpenSoundControl held at its value when the export starts, an ISF shader that reads `TIME` or `FRAMEINDEX` (`ISF 1: reads FRAMEINDEX: it won't repeat unless it uses LOOPPHASE`), or Fluid and Reaction-Diffusion, which never repeat exactly. With `Crossfade` above 0, what it covers ends in `the crossfade blends it` or `if it still changes, the crossfade blends it`. The list can't see every drift; the crossfade covers those too. |
 | Red Lamp | Something the file can't show: audio and CV/Gate inputs are silent, and a camera or NDI, Spout or Syphon input shows a still picture. |
 
 `Snap N rates` sets every listed rate to the nearest whole number of
@@ -102,15 +106,19 @@ cycles per loop (at least one) in one step that `Undo` reverts. It covers
 LFO rates, OSC's `Rate R/G/B`, the Strange Attractor's Speed, Text scroll,
 Deflection Error's Roll Speed and Flicker Rate, Dither's Animate, SCOPE's
 generator frequencies, sprite-sheet FPS, pixel-art and clip speed, and the
-Amount of a TIME connection to a rotation, so it turns whole turns per loop.
+Amount of a TIME connection to a rotation, so it turns whole turns per loop,
+and Feedback's Hold.
 In a loop of whole bars every LFO synced to the tempo fits. In a loop of
 beats one may not: an LFO synced to 4 beats runs three quarters of a cycle
 in a 3-beat loop (`LFO 2: synced to 4 beats, 0.75 cycles per loop`), and
 `Snap` sets the longest sync that fits (`4 beats → 1 beat`). Orange and
 red lines never block `Export`.
 
-A Feedback Hold starts again at each loop start, so the hold that spans
-the loop point runs long, the same way every loop; the list notes it.
+A Feedback Hold that doesn't divide the loop leaves a shorter last hold
+before the loop point, the same way every loop (`Feedback 1: Hold 300 ms,
+6.67 holds per loop`). `Snap` sets the nearest Hold that fits, at most
+1000 ms (`300.0 → 285.7 ms`), and a synced Hold the longest sync that fits.
+A modulated Hold, or a synced one in a loop of seconds, is only noted.
 
 When the list has warm-up notes, or `Crossfade` is above 0, the export
 first renders one loop it doesn't keep (`Warming up (one loop)...`), so the

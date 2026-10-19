@@ -58,6 +58,8 @@ ISF hosts:
 ```
 
 An input of the shader's own named `LOOPPHASE` or `LOOPLENGTH` keeps its
-own value. Persistent buffers warm up for one loop before an export.
+own value. Persistent buffers warm up for one loop before an export. The
+export's loop check names a shader that reads `TIME` or `FRAMEINDEX` and
+not `LOOPPHASE`.
 
 Related: [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

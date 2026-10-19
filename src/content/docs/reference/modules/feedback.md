@@ -27,7 +27,7 @@ much of the loop reaches the output in place of the incoming frame.
 | Parameter | Control | Notes |
 |---|---|---|
 | Delay | Trough, Rocker | 0-500ms, 0 bypasses the delay ring entirely; a Rocker switches it to a BPM division (`1/16` to `4`) instead of a raw ms value. |
-| Hold | Trough, Rocker | 0-1000ms inter-frame hold, same BPM-sync Rocker as Delay. 0 steps every frame. |
+| Hold | Trough, Rocker | 0-1000ms inter-frame hold, same BPM-sync Rocker as Delay. 0 steps every frame. With [Perfect loop](../../windows/export-video/#perfect-loop) on, it steps on the loop's clock, at the loop start and every Hold after it. |
 | Feed back to | Selector | `Self (default)`, or an earlier `INSERT`, `FEEDBACK`, or `ISF` to inject this loop's previous frame into. Generators ignore chain input and can't be targets. |
 | Source | Selector | `Chain composite (default)`, or `AUX 1` through `AUX 8`. |
 
