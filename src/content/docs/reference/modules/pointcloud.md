@@ -26,7 +26,7 @@ bulges with the audio input, and stays flat with no audio.
 | Depth Amount | Trough | 0-1. How strongly depth pushes points off their shape. In Voxels, how tall the cube columns can get. In the volume shapes, Noise Blob and Strange Attractor, brightness pushes points out from the centre or in toward it; in Galaxy Spiral, toward or away from the camera. |
 | Perspective | Trough | 0-2. 0 gives the strongest perspective; 2 is close to flat. |
 | Zoom | Trough | 0.1-4. |
-| Orbit / Tilt | Wheel | -180 to 180 degrees. |
+| Orbit / Tilt / Roll | Wheel | -180 to 180 degrees each, one bead per control under the Rotation heading: Orbit on the outer ring, Tilt in the middle, Roll inside. 0 is at the top and positive turns clockwise. Orbit turns the shape around its vertical axis, Tilt tips it toward or away from you, and Roll spins it in its own plane before Orbit and Tilt turn it. With Orbit and Tilt at 0, Roll turns the picture like Transform's Rotate. Corners can leave the frame; lower Zoom to keep them in. |
 | Point Size | Trough | 0.5-8 px. |
 | Style | Selector | Points, Horiz Scanlines, Vert Scanlines, Depth Circles, Wireframe, Radial Scan, Trail/Comet, Solid Mesh, or Voxels. Voxels draws the picture as a wall of gap-free cubes, with brighter areas standing taller. Shapes that scatter free-floating points (the volumes, Galaxy Spiral, Noise Blob, Strange Attractor and Spectrum) only offer Points, Depth Circles and Trail/Comet. |
 | Point | Selector | Auto, Square, Round, Soft, or Ring. Look of each point. Auto uses Square for Flat and Sphere, and Soft for Flow. Only applies to Points, Depth Circles and Trail/Comet. |
