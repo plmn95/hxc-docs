@@ -21,6 +21,7 @@ const imageAlt = 'Blue and violet ribbons generated in Hex Composer, with the He
 <link rel="icon" href={assetWithBase(base, '/favicon.ico')} type="image/x-icon" sizes="16x16 32x32 48x48" />
 <link rel="apple-touch-icon" href={assetWithBase(base, '/apple-touch-icon.png')} sizes="256x256" />
 {head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
+{!version && pathname === '/' && <meta name="google-site-verification" content="zYEAIuKFR8tJF-8zJWXcL_L6WI_q02JdjhhsQuiP42E" />}
 <meta property="og:image" content={image} />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />

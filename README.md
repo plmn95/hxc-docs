@@ -70,6 +70,11 @@ not perform that request.
 
 Every authored page has a content-specific description. Shared social preview,
 ICO/SVG favicons, an Apple touch icon, and crawler guidance ship with the manual.
+The current homepage includes a Google Search Console verification meta tag in
+`src/components/Head.astro`; keep it to preserve ownership of the URL-prefix
+property `https://docs.hexcomposer.com/`. Its sitemap is
+`https://docs.hexcomposer.com/sitemap-index.xml`. Frozen manuals do not include
+the verification tag.
 Vercel headers allow Starlight inline scripts/styles, Pagefind WebAssembly, and
 the existing suggestion service while preventing framing and object embedding.
 GitHub Pages does not support these custom response headers.
