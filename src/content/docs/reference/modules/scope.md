@@ -16,8 +16,7 @@ internal generators for curves, or manual values for a point.
 | `Persistence` | Trough | How long the phosphor glow lingers, without smoothing the signal itself. |
 | `Brightness` | Trough | Strength of the trace's glow, 0 to 4. |
 | `Width` | Trough | Thickness of lines, or point size with `Points Only`. |
-| `Points Only` | Rocker | Draws separate glowing points instead of connecting successive positions. |
-| `Detail` | Trough | Points used to draw each frame, 8 to 512. Higher values resolve faster signals at greater rendering cost. Hidden when both axes are `Manual`. |
+| `Points Only` | Rocker | Draws a dot at each sample instead of the beam's path between samples. Where dots overlap they don't add up. |
 | `Reset Generators` | Button | Realigns the generators, restarts the `S+H` sequence, and clears the trace. Available when a generator drives either axis. |
 
 `Generator A` and `Generator B` each have waveform, frequency, phase, and
@@ -28,6 +27,11 @@ amplitude controls. Waveforms include `Sine`, `Square`, `Sawtooth`, `Triangle`,
 
 `Seed` chooses the sequence for `S+H` and noise. Noise controls for detail
 layers and density appear only for the waveforms that use them.
+
+SCOPE draws every sample, and between samples the beam follows the
+waveform the way an analog scope fed by a sound card does, so fast audio
+keeps its curves and peaks instead of turning into straight lines. A
+generator's square and S+H edges stay sharp.
 
 With an Audio source, the trace runs about one frame behind the sound.
 An audio axis draws nothing while no audio arrives. Open an input in
