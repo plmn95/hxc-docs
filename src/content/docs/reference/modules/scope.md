@@ -23,7 +23,9 @@ internal generators for curves, or manual values for a point.
 amplitude controls. Waveforms include `Sine`, `Square`, `Sawtooth`, `Triangle`,
 `S+H`, and the noise waves listed under [LFO](../../modulation/lfo/).
 `Square` adds `Duty`, the portion of a cycle spent high (1 to 99%).
-`S+H` jumps to a new random level once per cycle, without glide.
+`S+H` picks a new random level once per cycle. `Glide` (0 to 100%, default 0)
+slides to it over that share of the cycle instead of jumping, and at 100% the
+level never holds still.
 
 `Seed` chooses the sequence for `S+H` and noise. Noise controls for detail
 layers and density appear only for the waveforms that use them.
@@ -31,7 +33,7 @@ layers and density appear only for the waveforms that use them.
 SCOPE draws every sample, and between samples the beam follows the
 waveform the way an analog scope fed by a sound card does, so fast audio
 keeps its curves and peaks instead of turning into straight lines. A
-generator's square and S+H edges stay sharp.
+generator's square edges, and `S+H`'s at `Glide` 0, stay sharp.
 
 With an Audio source, the trace runs about one frame behind the sound.
 An audio axis draws nothing while no audio arrives. Open an input in
