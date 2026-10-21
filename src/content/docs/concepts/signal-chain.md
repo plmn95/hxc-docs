@@ -78,7 +78,9 @@ ISF filters. They behave exactly as on a black background, and wherever they
 draw nothing the area stays empty. An effect that lights an empty area, such
 as a `Glow` halo or `Invert` turning black to white, makes that area visible. A
 generator's own Insert FX run on that module's picture before it enters the
-chain, so they see its see-through areas.
+chain, so they see its see-through areas. [Transform](../../reference/fx/distort/transform/)'s
+`Edges` set to Empty makes the area around a moved or shrunk picture empty
+too.
 
 Related: [Insert FX Chains](../insert-fx-chains/),
 [AUX Sends and Buses](../aux-sends-and-buses/).

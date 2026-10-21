@@ -63,6 +63,7 @@ stays transparent. See
 | Clean delay line | `Loop Blend` `Replace`, `Amount` 1, `Decay` 0, `Dry/Wet` 1. Set `Delay` to the desired repeat time. Two in series add their delays. |
 | Painted trail that never fades | `Loop Blend` `Replace`, `Amount` 1, `Decay` 1, `Dry/Wet` 1, after SCOPE, SHAPE, or TEXT |
 | Changing edges | `Loop Blend` `XOR` or `Difference`, `Decay` around 0.9 |
+| Tunnel with a clean surround | `Pre` [Transform](../../fx/distort/transform/) with `Scale` -0.05 and `Edges` Empty |
 
 SCOPE, SHAPE, TEXT, and SPRITE can leave transparent areas where older echoes
 show through `Loop Blend` `Replace`. OSC, NOISE, and opaque video cover
