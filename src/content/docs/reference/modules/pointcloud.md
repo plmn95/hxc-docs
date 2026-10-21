@@ -11,6 +11,10 @@ each point keeps the color sampled before rotation. Turning the shape
 turns the picture and its depth with it; the back shows the picture mirrored.
 `Spectrum` wraps the image into a ring that expands with the audio input.
 
+On any output shape, Sphere, the volume shapes, Galaxy Spiral, Noise Blob,
+Strange Attractor and Spectrum stay round and fit the shorter side of the
+frame, while Flat and Flow fill it. Zoom makes them bigger.
+
 | Parameter | Control | Notes |
 |---|---|---|
 | `Color Source` | Selector | `Chain composite (default)` or `AUX 1` to `AUX 8`. |
