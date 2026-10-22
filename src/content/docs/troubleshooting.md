@@ -14,6 +14,17 @@ description: "Check recording failures, skipped frames, MIDI input, and differen
 See [Output and Recording](../concepts/output-and-recording/) for codec,
 frame-rate, and save-completion behavior.
 
+## Audio response
+
+| Symptom | Check |
+|---|---|
+| A song does not drive the picture | Press `Space` or Play on the song strip, then check `Settings > Audio > Source` is `File`. Check the target's modulation Depth, or `Height` for POINTCLOUD's Spectrum shape. |
+| The picture reacts but the song is inaudible | In `Settings > Audio`, check the file source's `Output` device. |
+| A device or application supplies no input | Select it in `Settings > Audio` and click `Open`. Read the status beneath the source list; application capture can require permission or platform support. |
+
+See [Make an Audio Spectrum](../guides/audio-spectrum/) or
+[Audio-Reactive](../reference/modulation/audio-reactive/).
+
 ## Controller input
 
 | Symptom | Check |
@@ -47,5 +58,6 @@ Include:
   embedded media before sharing the file.
 
 Use [the Hex Composer Discord](https://discord.gg/Mfx6Jkffkj) to report an
-app problem. In the app, `Help > Join the Discord...` opens it. Use `Describe a problem` on the relevant documentation page
-to report unclear or incorrect instructions.
+app problem. In the app, `Help > Join the Discord...` opens it.
+For unclear or incorrect instructions, use `Describe a problem` on the
+relevant documentation page.

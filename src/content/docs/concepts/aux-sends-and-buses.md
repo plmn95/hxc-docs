@@ -3,6 +3,24 @@ title: "AUX Sends and Buses"
 description: "Route, duplicate, and combine module outputs with AUX buses, sends, and returns in Hex Composer."
 ---
 
-Module outputs can be redirected, duplicated, and combined via the `AUX` buses. Every module has a `SENDS` section from which the module's output can be sent to one or more of the `AUX` buses, and an `AUX` bus can be returned at the `INSERT` and `FEEDBACK` modules via their `SOURCE` parameter. A single module can be sent to any number of `AUX` buses, and any number of modules can be sent to a single `AUX` bus. Use the `AUX` buses to split a module's output and send it to multiple other modules, or to merge the output of multiple modules at a single module.
+Use an `AUX` bus to branch the image at one point in the chain, or combine
+images from several points before processing them together.
 
-Related: [Insert FX Chains](../insert-fx-chains/), [Signal Chain](../signal-chain/).
+A module's `SENDS` section copies the chain image after that module,
+including any earlier images still visible there. Each send has an
+`Amount` and `Blend`, so several points in the chain can contribute to the
+same bus at different strengths. Sending does not remove the image from
+the chain.
+
+Choose the bus in an `INSERT` module's `Source` Selector, or in
+`FEEDBACK`'s `Input source`, to read its image. The same bus can supply more
+than one reader. Keep senders to the left of their readers in `Chain`: a
+reader sees only the contributions made before it runs.
+
+Open `View > AUX Buses` to inspect the bus images and see which modules send
+to or read from each bus. Its send controls also let you balance the
+contributors without opening each module.
+
+Related: [AUX Buses Monitor](../../reference/windows/aux-buses-monitor/),
+[INSERT](../../reference/modules/insert/),
+[Signal Chain](../signal-chain/).

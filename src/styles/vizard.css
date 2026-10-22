@@ -292,6 +292,7 @@ h1 {
 }
 
 .sl-markdown-content {
+	container-type: inline-size;
 	color: var(--vizard-reading);
 	font-size: 0.98rem;
 	line-height: 1.78;
@@ -301,6 +302,93 @@ h1 {
 	color: var(--vizard-reading);
 	font-size: inherit;
 	line-height: inherit;
+}
+
+.sl-markdown-content .doc-annotated-image {
+	margin-inline: 0;
+}
+
+.doc-image-frame {
+	box-sizing: border-box;
+	inline-size: fit-content;
+	max-inline-size: 100%;
+	margin-block: 0.75rem;
+	padding: var(--image-gutter-top, 0) var(--image-gutter-right, 0) var(--image-gutter-bottom, 0) var(--image-gutter-left, 0);
+}
+
+.doc-image-gutter-left { --image-gutter-left: 1.75rem; }
+.doc-image-gutter-right { --image-gutter-right: 1.75rem; }
+.doc-image-gutter-top { --image-gutter-top: 1.75rem; }
+.doc-image-gutter-bottom { --image-gutter-bottom: 1.75rem; }
+
+.doc-image-canvas {
+	position: relative;
+	line-height: 0;
+}
+
+.doc-image-original {
+	display: block;
+}
+
+.sl-markdown-content .doc-image-targets {
+	position: absolute;
+	inset: 0;
+	inline-size: 100%;
+	block-size: 100%;
+	fill: none;
+	stroke: var(--vizard-orange);
+	stroke-width: 1.5px;
+	filter: drop-shadow(0 1px 1px #000);
+	pointer-events: none;
+}
+
+.doc-image-marker,
+.doc-image-legend-number {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	inline-size: 1.3rem;
+	block-size: 1.3rem;
+	border: 1px solid var(--vizard-orange);
+	border-radius: 50%;
+	background: var(--vizard-well);
+	color: var(--vizard-orange);
+	font: 600 0.75rem/1 var(--sl-font-mono);
+}
+
+.doc-image-marker {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+.sl-markdown-content :is(.doc-image-targets, .doc-image-marker) {
+	margin: 0;
+}
+
+.doc-image-marker-left { left: -0.875rem; top: var(--marker-position); }
+.doc-image-marker-right { left: calc(100% + 0.875rem); top: var(--marker-position); }
+.doc-image-marker-top { top: -0.875rem; left: var(--marker-position); }
+.doc-image-marker-bottom { top: calc(100% + 0.875rem); left: var(--marker-position); }
+
+.sl-markdown-content .doc-image-legend {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem 1.1rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	color: var(--vizard-reading);
+	font-size: 0.82rem;
+	line-height: 1.5;
+}
+
+.sl-markdown-content .doc-image-legend li {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	margin: 0;
 }
 
 .sl-markdown-content h2 {
@@ -516,6 +604,28 @@ mobile-starlight-toc:has(li:only-child > a[href='#_top']) {
 	.sl-markdown-content {
 		font-size: 0.91rem;
 		line-height: 1.72;
+	}
+}
+
+/* The sidebar can leave a narrow article even in a wider browser window. */
+@container (max-width: 40rem) {
+	.sl-markdown-content table:not(:has(th:nth-child(3))) :is(th, td),
+	.sl-markdown-content table:has(th:nth-child(4)) :is(th, td) {
+		min-inline-size: 8rem;
+	}
+
+	.sl-markdown-content table:not(:has(th:nth-child(3))) :is(th, td):last-child {
+		min-inline-size: clamp(16rem, calc(100cqi - 2rem), 18rem);
+	}
+
+	.sl-markdown-content table:has(th:nth-child(4)) :is(th, td):last-child {
+		min-inline-size: clamp(16rem, calc(100cqi - 2rem), 20rem);
+	}
+}
+
+@media (max-width: 28rem) {
+	.header .vizard-brand img {
+		max-inline-size: 100%;
 	}
 }
 

@@ -3,21 +3,23 @@ title: "Channel Curves"
 description: "Shape red, green, blue, and luma tone curves with movable control points and Bezier handles."
 ---
 
-Edits Red, Green, Blue, and Luma tone curves using control points and
-Bezier handles.
+Reshapes red, green, blue, and brightness with editable curves. The
+horizontal axis is input level; the vertical axis is output level. A
+straight diagonal preserves the original levels.
 
-| Parameter | Control | Range | Notes |
-|---|---|---|---|
-| Edit channel | Selector | Red, Green, Blue, Luma | Other active curves remain visible but dimmed. |
-| Solo | Rocker | | Hides the other channels' curves. |
-| Active | Rocker | |  |
-| Curve well | interactive curve graph | X and Y each 0 to 1 | Click the curve to add a point; select a point to adjust its Bezier handles. `Delete`, `Backspace`, or `Remove point` removes the selected point. The first and last points cannot be deleted. Double-click, `Alt+click` (Windows/Linux), or `Option+click` (macOS) a point to flatten its handles. |
+| Control | Use |
+|---|---|
+| `Edit channel` | Choose `Red`, `Green`, `Blue`, or `Luma` to focus its curve. Other active curves remain dimmed and can still be dragged unless hidden with `S`. |
+| Eye control beside a channel | Apply or stop applying that curve. Its points are preserved while inactive. |
+| `S` beside a channel | Keeps that curve and the focused curve visible in the graph. Other active curves still affect the image. |
+| Curve graph | Click the curve to add a point. Drag points or their Bezier handles to reshape the curve. Input and output levels each run from 0 to 1. |
+| `Remove point` | Removes the selected point. `Delete` or `Backspace` also works while the graph's window has focus. The first and last points cannot be removed. |
 
-Channels compose in a fixed order: Red, Green and Blue curves are applied
-independently first; the Luma curve is applied last, to the result of the
-RGB curves, rescaling RGB proportionally to preserve hue/chroma rather than
-flattening it.
+Double-click a point, or use `Alt+click` (`Option+click` on macOS), to
+flatten its handles. Hold `Shift` while dragging for finer adjustment.
 
+The red, green, and blue curves run independently first. The `Luma` curve
+then adjusts their combined brightness while preserving their proportions.
 Curve points and handles cannot be modulated.
 
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/), [Channel Attenuverter](../channel-attenuverter/).
+Related: [Channel Attenuverter](../channel-attenuverter/).

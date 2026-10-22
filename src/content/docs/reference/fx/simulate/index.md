@@ -1,17 +1,31 @@
 ---
 title: "SIMULATE"
-description: "SIMULATE: Simulations that keep their own state from frame to frame and move the picture over time, driven by what happens in it."
+description: "Effects that carry motion or patterns from one frame into the next."
 ---
 
-Simulations that keep their own state from frame to frame and move the
-picture over time, driven by what happens in it. Each simulation runs at a
-reduced resolution of its own and restarts when the output resolution
-changes, when a patch is loaded, or when its slot is moved or removed.
+Simulations carry motion or patterns from one frame into the next.
 
-- [Fluid](fluid/)
-- [Ripple](ripple/)
-- [Reaction-Diffusion](reaction-diffusion/)
+- [Fluid](fluid/) smears or bends the image with a flow.
+- [Ripple](ripple/) bends the image through moving water.
+- [Reaction-Diffusion](reaction-diffusion/) grows patterns steered by the image.
 
-**NOTE:** each running simulation holds GPU memory. Past a fixed limit, a
-further simulation passes its input through and its panel says so. Each
-Mixer deck has its own limit.
+Loading a patch or changing output resolution restarts simulations.
+Moving or removing any Insert FX slot restarts simulations in that module.
+Simulations run below the output resolution and share a GPU memory limit
+within each deck. If a simulation cannot start, its panel
+reports the problem and its input passes through unchanged. For a memory
+limit warning, reduce output resolution or remove another simulation.
+
+## Reset with modulation
+
+Each simulation has a `Reset` button and Lamp. The Lamp flashes for both
+manual and modulated resets.
+
+To reset with modulation, let the assigned value fall below 0.25, then rise
+to 0.5 or higher. It must fall below 0.25 again before another reset can
+fire. A synced square LFO resets once per cycle; an Envelope triggered by a
+MIDI note or audio threshold resets on each hit.
+
+MIDI Velocity holds its last value between notes. Repeated notes with the
+same velocity do not cross the threshold again; use an Envelope with a
+MIDI Note trigger instead.

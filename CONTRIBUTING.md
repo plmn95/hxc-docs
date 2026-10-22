@@ -40,6 +40,12 @@ page in the current documentation, where corrections can be suggested.
 Use Node.js 22.12 or newer. Keep each pull request focused on one correction or
 closely related group of pages.
 
+For a new guide, screenshot, comparison, or downloadable patch, follow
+[AUTHORING.md](AUTHORING.md). It covers capture provenance, complete task
+checks, the contribution editor, and offline assets. Existing image blocks
+must survive a prose correction; the account-free editor is not an asset
+upload service. Propose new image files through a repository change.
+
 ## Writing and product accuracy
 
 Read [STYLE_GUIDE.md](STYLE_GUIDE.md) before changing the documentation voice,
@@ -47,6 +53,12 @@ terminology, or structure. Describe the current released application rather
 than planned or historical behavior. If a fact cannot be confirmed in the
 current app, say which version you tested and flag the claim for maintainer
 verification in the pull request.
+
+The repository-owned [hex-docs skill](.agents/skills/hex-docs/SKILL.md) routes
+Codex through these same maintained instructions. For example: "Use
+`$hex-docs` to illustrate the feedback guide and verify its local assets."
+The skill does not grant permission to publish or require a packaged app
+for an ordinary text correction.
 
 Do not include private source paths, implementation symbols, personal data, or
 assets you do not have permission to publish.

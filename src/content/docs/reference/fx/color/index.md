@@ -1,9 +1,9 @@
 ---
 title: "COLOR"
-description: "Effects that recolor the image without moving or blurring any pixel."
+description: "Effects for hue rotation, color quantization, and palette mapping."
 ---
 
-Effects that recolor the image without moving or blurring any pixel.
+Effects for hue rotation, color quantization, and palette mapping.
 
 - [Hue Rotate](hue-rotate/)
 - [Posterize](posterize/)

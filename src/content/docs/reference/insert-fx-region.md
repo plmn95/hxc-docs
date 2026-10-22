@@ -1,27 +1,29 @@
 ---
 title: "Region"
-description: "An optional soft-edged circular boundary any Insert FX slot can turn on, independent of which effect the slot runs."
+description: "Limits effects to soft-edged circles that can merge across slots."
 ---
 
-An optional soft-edged circular boundary any Insert FX slot can turn on,
-independent of which effect the slot runs. Two or more slots with Region on
-fuse together at their edges when their circles come close.
+Limits an Insert FX slot to a soft-edged circle. Outside the circle, the
+image continues through the chain without that effect. Nearby circles from
+different slots can merge.
+
+Expand `Region` within a slot to find these controls. A slot set to `NONE`
+has no Region controls.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Enable Region | Rocker | | Off by default. Outside this slot's boundary the chain's normal image continues untouched; the effect only shows inside the circle. |
-| Center X / Center Y | Pad | -0.5 to 0.5 | |
-| Radius | Trough | 0 to 1.5 | |
-| Feather | Trough | 0 to 0.5 | Softness of the circle's edge. |
-| Fusion | Trough | 0.001 to 0.5 | How eagerly this slot's circle merges into a nearby Region'd slot's circle. Low values hold a hard seam even at close range; high values bulge and merge from farther away. |
+| `Enable Region` | Rocker | | Off by default. |
+| `Region Center X` / `Region Center Y` | Pad | -0.5 to 0.5 | |
+| `Region Radius` | Trough | 0 to 1.5 | |
+| `Region Feather` | Trough | 0 to 0.5 | Softness of the circle's edge. |
+| `Region Fusion` | Trough | 0.001 to 0.5 | Higher values merge nearby circles from farther apart. |
 
-**NOTE:** with two or more Region'd slots active in one chain, they always
-merge as a single group at the stacking position of the lowest-numbered
-slot among them. A slot without Region can't sit between two merging
-Region'd slots in the chain's stacking order.
+All active slots with Region enabled form one group at the position of the
+first of those slots. Each effect in the group reads the same incoming
+image. Effects without Region run before or after the group, even if their
+slots sit between its members in the list. In FEEDBACK, `PRE` and `POST`
+form separate groups.
 
-**NOTE:** an empty slot (effect type `NONE`) has no Region controls to show.
-
-Related: [Mask](../fx/filter/mask/), which uses the same circular
-edge-and-feather boundary for a single slot's own coverage. [Insert FX
-Chains](../../concepts/insert-fx-chains/).
+[Mask](../fx/filter/mask/) instead cuts the image to one circle, making
+areas outside it transparent. See [Insert FX Chains](../../concepts/insert-fx-chains/)
+for slot order and controls.

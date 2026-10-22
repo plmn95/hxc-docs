@@ -1,0 +1,76 @@
+{
+  "vizard_version": 1,
+  "name": "Feedback Ring Start",
+  "modules": [
+    {
+      "type": "SHAPE",
+      "instance_id": 0,
+      "name": ""
+    }
+  ],
+  "chain_order": [
+    0
+  ],
+  "chain_groups": [],
+  "oscillators": [],
+  "shapes": [
+    {
+      "enabled": 1.0,
+      "muted": 0.0,
+      "primitive": 0,
+      "mix_mode": 0,
+      "mix": 1.0,
+      "depth": 1,
+      "size": 0.35,
+      "edge_smooth": 0.002,
+      "outline_mode": 1,
+      "outline_width": 0.008,
+      "outline_color_r": 0.2,
+      "outline_color_g": 0.85,
+      "outline_color_b": 1.0,
+      "outline_opacity": 1.0,
+      "outline_style": 0,
+      "insert_fx": [],
+      "sends": []
+    }
+  ],
+  "noise": [],
+  "fx": [],
+  "isf": [],
+  "scope": {},
+  "sources": [],
+  "sprites": [],
+  "texts": [],
+  "pointclouds": [],
+  "returns": [],
+  "aux_sends": [],
+  "feedbacks": [],
+  "lfo": [
+    {
+      "wave": 0,
+      "rate": 0.12,
+      "level": 1.0,
+      "phase_offset": 0.0,
+      "bpm_sync": false,
+      "fold_amount": 0.0,
+      "glide": 0.0,
+      "name": ""
+    }
+  ],
+  "env": [],
+  "time": [],
+  "macros": [],
+  "mod_assignments": [
+    {
+      "id": 1,
+      "source_type": "LFO",
+      "source_index": 0,
+      "target_type": "SHAPE",
+      "target_index": 0,
+      "param_name": "size",
+      "amount": 0.18,
+      "center_shift": 0.0,
+      "enabled": true
+    }
+  ]
+}

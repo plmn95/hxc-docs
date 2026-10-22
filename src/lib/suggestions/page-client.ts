@@ -1,6 +1,7 @@
-import { changedBlocks, equivalent, preserveSource, validateBody } from './document.mjs';
+import { changedBlocks, equivalent, preserveSource, sourceRoute, validateBody } from './document.mjs';
 
 const data = JSON.parse(document.querySelector('#page-source')!.textContent!);
+const route = sourceRoute(data.path);
 const q = <T extends HTMLElement = HTMLElement>(selector: string) => document.querySelector<T>(selector)!;
 const message = q('[data-message]'), status = q('[data-draft-status]');
 const review = q<HTMLButtonElement>('[data-review]'), send = q<HTMLButtonElement>('[data-send]');
@@ -62,6 +63,13 @@ function markedText(text: string, previous?: string): Node {
 }
 function renderNode(node: any, previous?: any): Node {
   if (node.type === 'text') return markedText(node.value.replace(/\r?\n/g, ' '), previous?.value?.replace(/\r?\n/g, ' '));
+  if (node.type === 'image') {
+    const image = document.createElement('img');
+    image.src = new URL(node.url, new URL(data.returnUrl, location.origin)).href;
+    image.alt = node.alt;
+    if (node.title) image.title = node.title;
+    return image;
+  }
   const tags: Record<string, string> = { paragraph: 'p', strong: 'strong', emphasis: 'em', delete: 's', inlineCode: 'code',
     code: 'pre', blockquote: 'blockquote', listItem: 'li', table: 'table', tableRow: 'tr', tableCell: 'td', link: 'a', break: 'br', thematicBreak: 'hr' };
   const tag = node.type === 'heading' ? `h${node.depth}` : node.type === 'list' ? (node.ordered ? 'ol' : 'ul') : tags[node.type] || 'div';
@@ -100,7 +108,7 @@ review.addEventListener('click', () => {
     if (!dirty()) throw new Error(kind === 'page' ? 'Make a change before reviewing your suggestion.' : 'Describe the problem before reviewing.');
     const diff = q('[data-diff]'); diff.replaceChildren();
     if (kind === 'page') {
-      const proposed = preserveSource(original, markdown);
+      const proposed = preserveSource(original, markdown, route);
       const changes = changedBlocks(original, proposed);
       const removed = changes.filter(change => change.kind === 'removed'), added = changes.filter(change => change.kind === 'added');
       let removedIndex = 0, addedIndex = 0;
@@ -131,7 +139,7 @@ send.addEventListener('click', async () => {
   sending = true; send.disabled = true; q<HTMLButtonElement>('[data-back]').disabled = true; explanation.disabled = true;
   q('[data-cancel]').setAttribute('aria-disabled', 'true'); save(); message.textContent = 'Sending your suggestion…';
   try {
-    const payload = { id, kind, path: data.path, revision, replacement: kind === 'page' ? preserveSource(original, markdown) : '',
+    const payload = { id, kind, path: data.path, revision, replacement: kind === 'page' ? preserveSource(original, markdown, route) : '',
       explanation: kind === 'problem' ? problem.value : explanation.value, version, token };
     const response = await fetch(`${data.api}/suggestions`, {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(payload), signal: AbortSignal.timeout(20000)});
     const result = await response.json();
@@ -151,9 +159,11 @@ async function start() {
     q('[data-problem-link]').hidden = true; review.disabled = false;
   } else {
     try {
-      validateBody(original);
+      validateBody(original, route);
       const { createDocumentEditor } = await import('./editor');
-      editor = await createDocumentEditor(q('[data-editor]'), markdown, value => { markdown = value; changed(); });
+      editor = await createDocumentEditor(q('[data-editor]'), markdown, value => { markdown = value; changed(); }, {
+        documentUrl: new URL(data.returnUrl, location.origin).href, documentPath: data.path,
+      });
       review.disabled = false;
     } catch (error) { message.textContent = (error as Error).message; status.textContent = 'Editor unavailable'; return; }
   }

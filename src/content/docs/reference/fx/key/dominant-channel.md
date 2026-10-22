@@ -1,8 +1,9 @@
 ---
 title: "Dominant Channel"
-description: "Isolates whichever of R, G, or B is strongest at each pixel."
+description: "Keeps the strongest color channel at each pixel."
 ---
 
-Isolates whichever of R, G, or B is strongest at each pixel. No parameters.
+Keeps the strongest of red, green, and blue at each pixel, setting weaker
+channels to zero. Tied channels are kept, so white and gray stay unchanged.
 
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+No effect-specific parameters.

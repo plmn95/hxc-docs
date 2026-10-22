@@ -3,6 +3,6 @@ title: "Black & White"
 description: "Desaturates the image."
 ---
 
-Desaturates the image. No parameters.
+Desaturates the image. Transparency is unchanged.
 
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+No effect-specific parameters.

@@ -1,132 +1,102 @@
 ---
 title: "Export Video"
-description: "Render the patch frame by frame to an MP4, WebM or GIF file."
+description: "Export formats, song input, loop length, crossfades, and progress controls."
 ---
 
-`File > Export Video` opens this dialog. `Export` starts rendering, the
-dialog shows a preview of the latest frame with the progress, and `Cancel`
-(or `Esc`) stops the export and deletes the unfinished file. When the file
-is written, the dialog shows its name and size, and `Show in Folder` opens
-the folder.
+Open `File > Export Video...` to render a patch frame by frame. For how
+exports differ from live recordings and how loops work, see
+[Export Video](../../../concepts/export-video/).
 
-| Control | Covers |
+## File settings
+
+| Control | Behavior |
 |---|---|
-| For | A preset that fills the rows below: `Instagram & TikTok` (MP4, 1080, 30 fps, High), `X & YouTube` (MP4, 1920, 30 fps, High), `Discord GIF` (GIF, 480, 25 fps, 128 colors) or `Web (WebM)` (WebM, Output size, 30 fps, Medium). Changing any row switches it to `Custom`. |
-| Format | `MP4` (H.264), `WebM` (VP9) or `GIF`. A format this computer's build can't write is unavailable. |
-| Size | The long edge in pixels: `Output size`, `1920`, `1080`, `720` or `480`. Each entry shows the resulting width and height. The shape always follows the Output; change it in `Settings > Output`. The dialog notes when the preset's platform expects another shape, for example 9:16 for Instagram and TikTok. |
-| Perfect loop | Rocker. Renders one loop whose last frame flows into the first, so the file repeats without a jump. Saved with the patch. See [Perfect loop](#perfect-loop). |
-| Length | Seconds to render, up to 60 for a GIF and 600 for MP4 and WebM. With `Perfect loop` on: whole bars (1 to 64) or whole beats (1 to 256) at the current BPM, or seconds (0.5 to 600), chosen in the Selector beside it. Each keeps its own value. |
-| Crossfade | With `Perfect loop` on: how long the loop's end fades into its start. With a length in bars or beats, a Selector in beats: `Off`, `1/2 beat`, `1 beat` (default), `2 beats` or `1 bar`, with choices longer than half the loop grayed out. With a length in seconds, 0 to 10 seconds, default 0.5, 0 is off. Saved with the patch. See [Crossfade](#crossfade). |
-| FPS | `24`, `25`, `30` or `60`. A GIF offers `10`, `20`, `25` or `50`, the rates a GIF plays back exactly. |
-| Quality | `Low`, `Medium` or `High` (MP4 and WebM). |
-| Colors | `256`, `128` or `64` colors for the whole GIF. Fewer colors make a smaller file. |
-| Smooth gradients | GIF only. Blends neighboring colors in a fixed fine pattern so gradients don't band. |
-| Transparent background | WebM only. Keeps the picture's transparency, as NDI, Spout and Syphon send it. Off, empty parts of the picture are black. |
+| `For` | Presets for `Instagram & TikTok`, `X & YouTube`, `Discord GIF`, or `Web (WebM)`. Changing a preset's file settings selects `Custom`. |
+| `Format` | `MP4` (H.264), `WebM` (VP9), or `GIF`. Unavailable formats are dimmed. |
+| `Size` | The long edge: `Output size`, `1920`, `1080`, `720`, or `480`. The resulting dimensions follow the Output's aspect ratio. Change its shape in `Settings > Output`. |
+| `FPS` | `24`, `25`, `30`, or `60` for video. GIF offers `10`, `20`, `25`, or `50`, which have exact GIF frame delays. |
+| `Quality` | `Low`, `Medium`, or `High` for MP4 and WebM. |
+| `Colors` | GIF palette size: `256`, `128`, or `64`. Fewer colors reduce file size. |
+| `Smooth gradients` | GIF only. Uses a fine dither pattern to reduce banding. |
+| `Transparent background` | WebM only. Preserves transparent parts of the picture; otherwise they become black. |
 
-A GIF renders twice: once to choose its colors, then again to write the
-file, so it takes about twice as long as a video of the same length. After
-a `Discord GIF` export larger than Discord's 10 MB upload limit, the dialog
-suggests a smaller Size, fewer Colors or a shorter Length.
+Presets set format, size, frame rate, and quality; they do not change the
+Output's shape. The dialog reports a mismatch with a preset's expected
+aspect ratio.
 
-## Perfect loop
+A GIF renders once to choose a shared palette and again to write the file.
+If the result exceeds the `Discord GIF` preset's size target, the dialog
+suggests reducing size, colors, or length.
 
-With `Perfect loop` on, the file is exactly one loop. A length in bars or
-beats (1 bar is 4 beats) is rounded to whole frames, and the export plays a
-hair faster or slower so the bars or beats fill those frames exactly; the dialog names that tempo when it
-moves by 0.05 BPM or more (`Renders at 127.7 BPM so the loop is exactly 47
-frames.`). A length in seconds is rounded to whole frames and keeps the
-tempo. A loop longer than the format allows disables `Export`.
+## Song
 
-While the loop is on, in the live view as well as in the file:
+The soundtrack is the patch's song, also used by the live song strip.
+Supported files include WAV, MP3, FLAC, Ogg, Opus, M4A, AAC, and AIFF.
 
-- Every LFO, OSC's `Rate R/G/B`, the text scroll, Deflection Error's roll
-  and flicker and SCOPE's generators start again at each loop start. TIME
-  keeps rising.
-- The built-in motion of Point Cloud's Flow, Galaxy and Noise Blob, Wave
-  Warp, VHS and Deflection Error turns a whole number of times per loop. Motion too slow to turn once holds still; a longer loop lets it
-  move.
-- Noise waves on an LFO repeat once per loop.
-- Sprite sheets, pixel art and, in the file, video clips play on the loop's
-  own clock.
-- A Feedback Hold steps on the loop's clock: at the loop start and every
-  Hold after it, so its rhythm is the same in every loop.
-- Ripple's rain falls the same way every loop: the same drops at the same
-  moments.
-
-The loop length is not a modulation target: every rate snapped to the loop
-is rounded to it.
-
-The toolbar shows a `LOOP` plate after `TAP` while the loop is on; its
-Lamp flashes at each loop start, and clicking it opens this dialog.
-
-### Crossfade
-
-Some content doesn't meet itself at the loop point however the rates are
-set: a TIME connection that keeps rising, Fluid, Reaction-Diffusion, an
-ISF shader that reads `TIME` or `FRAMEINDEX`, or feedback that never
-settles, for example Feedback with Edge Detect inside its loop. With
-`Crossfade` above 0, the export fades the loop's last frames into its
-start, blending each one with the same moment one loop earlier. Anything
-that already repeats is identical there and passes through unchanged, so
-the crossfade is on for every Perfect loop export, whether or not the
-check list names something.
-
-The line under the row gives the length in frames. The crossfade is at
-most half the loop, and at large sizes it is shortened to what fits in
-memory; the line says so. The file keeps its length and still starts at
-the loop's start. Only the exported file is crossfaded: the live view
-still jumps at the loop point. `Crossfade` is not a modulation target.
-
-The crossfade can't hide a jump that happens the same way at every loop
-start, such as a rate that doesn't fit whole cycles, an LFO starting
-again or a clip starting over. `Snap` fixes the rates it can.
-
-With `Crossfade` above 0, every Perfect loop export first renders one loop
-it doesn't keep (`Warming up (one loop)...`), even if nothing in the patch
-needs warming up, so the frames to blend from exist. While it blends, the
-progress line adds `crossfading`. When the file is written, the dialog
-says whether the loop point matched: `The loop point matched exactly.`,
-`The loop point matched.` (within one color level), or `The loop point
-didn't match, so the crossfade blended the last 15 frames (0.5s).`
-
-### Loop check list
-
-Below the rows, a list says how the patch will loop:
-
-| Line | Meaning |
+| Control | Behavior |
 |---|---|
-| Green Lamp | How many things repeat cleanly. Hover for the list. |
-| Orange Lamp, rate | A rate that doesn't fit whole cycles into the loop, for example `LFO 2: Rate 0.37 Hz, 1.48 cycles per loop`, or, for a speed shown as time, `LFO 2: Rate: one cycle every 2.70 s, 1.48 cycles per loop`. Hover for the value `Snap` sets (`2.70 → 4.00 s`). |
-| Orange Lamp, holds still | Built-in motion too slow to turn once in this loop, and the shortest loop it moves in, for example `OSC 1 › VHS: its tape band holds still in a 4.0s loop. It moves in loops of 5s or longer.` |
-| No Lamp | A note: something that warms up for one loop first (Feedback, the Simulate effects, Persistence, Point Cloud trails, SCOPE's glow, ISF buffers, envelopes, S+H glide), a TIME connection that keeps rising, MIDI or OpenSoundControl held at its value when the export starts, an ISF shader that reads `TIME` or `FRAMEINDEX` (`ISF 1: reads FRAMEINDEX: it won't repeat unless it uses LOOPPHASE`), or Fluid and Reaction-Diffusion, which never repeat exactly. With `Crossfade` above 0, what it covers ends in `the crossfade blends it` or `if it still changes, the crossfade blends it`. The list can't see every drift; the crossfade covers those too. |
-| Red Lamp | Something the file can't show: audio and CV/Gate inputs are silent, and a camera or NDI, Spout or Syphon input shows a still picture. |
+| `Song` | `Choose Song...` or `Change...` selects an audio file. `Clear` removes the patch's song. |
+| `Use song` | Lets the patch react to the song during export. With it off, the export is silent and audio-driven parameters receive no audio input. |
+| `Start` | Where playback begins in the song, shared with the song strip's loop start. |
+| `Include audio track` | Adds the soundtrack to MP4 (AAC) or WebM (Opus). GIF has no audio track, but its picture can still react to the song. |
+| `Use audio length` | Sets `Length` from the audio remaining after `Start`. |
 
-`Snap N rates` sets every listed rate to the nearest whole number of
-cycles per loop (at least one) in one step that `Undo` reverts. It covers
-LFO rates, OSC's `Rate R/G/B`, the Strange Attractor's Speed, Text scroll,
-Deflection Error's Roll Speed and Flicker Rate, Dither's Animate, SCOPE's
-generator frequencies, sprite-sheet FPS, pixel-art and clip speed, and the
-Amount of a TIME connection to a rotation, so it turns whole turns per loop,
-and Feedback's Hold. Typing a time that divides the loop into a speed, such
-as `2s` in a 4-second loop, fits it without `Snap`.
-In a loop of whole bars every LFO synced to the tempo fits. In a loop of
-beats one may not: an LFO synced to 4 beats runs three quarters of a cycle
-in a 3-beat loop (`LFO 2: synced to 4 beats, 0.75 cycles per loop`), and
-`Snap` sets the longest sync that fits (`4 beats → 1 beat`). Orange and
-red lines never block `Export`.
+The song and its start belong to the patch. Enable
+`Settings > Patches > Embed assets in save files` to include the audio
+when sharing it. The export's `Use song` and `Include audio track` choices
+are app settings.
 
-A Feedback Hold that doesn't divide the loop leaves a shorter last hold
-before the loop point, the same way every loop (`Feedback 1: Hold 300 ms,
-6.67 holds per loop`). `Snap` sets the nearest Hold that fits, at most
-1000 ms (`300.0 → 285.7 ms`), and a synced Hold the longest sync that fits.
-A modulated Hold, or a synced one in a loop of seconds, is only noted.
+## Length and loops
 
-When the list has warm-up notes, or `Crossfade` is above 0, the export
-first renders one loop it doesn't keep (`Warming up (one loop)...`), so the
-file starts in the state it loops back to. A GIF then chooses its colors
-from the next loop and writes the one after.
+| Control | Behavior |
+|---|---|
+| `Length` | Bars, beats, or seconds, whether `Perfect loop` is on or off. One bar is four beats. Each unit retains its own value. |
+| `Perfect loop` | Makes the exported file one repeating loop and synchronizes supported motion to that loop in the live patch. |
+| `Video crossfade` | With the loop on, blends its final picture into its start. Affects the exported picture only. |
+| `Audio crossfade` | With a song and the loop on, blends the end of its sound into the music before `Start`. Affects both live song playback and export. |
 
-**NOTE:** the demo edition adds a small Hex Composer mark to exported files,
-as it does to recordings and stills.
+Length accepts 1–64 bars, 1–256 beats, or 0.5–600 seconds. GIF is limited
+to 60 seconds; MP4 and WebM to 600. With `File` selected as the audio
+source, Length is limited to the song remaining after `Start`.
 
-Related: [Output and Recording](../../../concepts/output-and-recording/).
+In bars or beats, the export may adjust its tempo slightly to fit a whole
+number of frames. The dialog reports the adjusted BPM. Seconds are rounded
+to whole frames without changing the tempo.
+
+### Crossfades
+
+Crossfades use beats for a length in bars or beats, or seconds otherwise.
+The beat choices are `Off`, `1/2 beat`, `1 beat`, `2 beats`, and `1 bar`.
+Seconds range from 0 to 10. Neither fade exceeds half the loop. At large
+output sizes, the video fade can also be shortened to fit memory; the
+dialog reports the effective length.
+
+### Loop checks
+
+| Indicator | Meaning |
+|---|---|
+| Green Lamp | Motion that repeats cleanly. Hover for details. |
+| Orange Lamp | A rate that does not fit whole cycles, or motion too slow to complete a cycle in this loop. |
+| No Lamp | A note about warm-up, external values held still, or content that can keep changing between loops. |
+| Red Lamp | An input the export cannot reproduce live: CV/Gate is silent; cameras and network video inputs hold one frame. |
+
+`Snap N rates` fits supported rates to whole cycles per loop as one
+undoable edit. Hover a rate warning to see the value it will use.
+Warnings do not block export. Crossfades handle continuing drift; they do
+not replace fitting an unsuitable rate to the loop.
+
+Feedback, simulations, and other effects with memory can require one
+warm-up loop before the exported loop. A video crossfade also requires
+warm-up. Progress shows `Warming up (one loop)...` before writing the file.
+
+## Progress and completion
+
+`Export` starts rendering and displays progress with the latest frame.
+`Cancel` or `Esc` stops the export and removes its unfinished file.
+On completion, the dialog shows the filename and size; `Show in Folder`
+locates it. Files use the folder and filename pattern in
+`Settings > Recording`.
+
+For a Perfect loop, the completion message reports whether the loop point
+matched or was blended by the crossfade. The demo edition adds its mark to
+exports, recordings, and stills.

@@ -6,12 +6,15 @@ import { cursor } from '@milkdown/crepe/feature/cursor';
 import { topBar } from '@milkdown/crepe/feature/top-bar';
 import { editorViewCtx } from '@milkdown/kit/core';
 import { undoCommand, redoCommand } from '@milkdown/kit/plugin/history';
-import { callCommand } from '@milkdown/kit/utils';
-import { cleanEditorMarkdown, equivalent, validateBody } from './document.mjs';
+import { $view, callCommand } from '@milkdown/kit/utils';
+import { imageSchema } from '@milkdown/kit/preset/commonmark';
+import { cleanEditorMarkdown, equivalent, isLocalImageUrl, sourceRoute, validateBody } from './document.mjs';
 import { installToolbarTooltip } from './toolbar-tooltip';
 
-export async function createDocumentEditor(root: HTMLElement, markdown: string, onChange = (_text: string) => {}) {
-  validateBody(markdown);
+export async function createDocumentEditor(root: HTMLElement, markdown: string, onChange = (_text: string) => {}, options: { documentUrl?: string; documentPath?: string } = {}) {
+  const documentUrl = options.documentUrl ?? location.href;
+  const route = options.documentPath === undefined ? undefined : sourceRoute(options.documentPath);
+  validateBody(markdown, route);
   const editor = new CrepeBuilder({ root, defaultValue: markdown })
     .addFeature(table).addFeature(listItem).addFeature(linkTooltip).addFeature(cursor)
     .addFeature(topBar, {
@@ -30,6 +33,26 @@ export async function createDocumentEditor(root: HTMLElement, markdown: string, 
         }
       },
     });
+  // Markdown's optional image title is null when omitted. Milkdown's default
+  // string-only attribute rejects these otherwise ordinary image nodes.
+  editor.editor.config(ctx => ctx.update(imageSchema.key, previous => schemaCtx => {
+    const schema = previous(schemaCtx);
+    return { ...schema, attrs: { ...schema.attrs, title: { default: null, validate: 'string|null' } } };
+  }));
+  // Resolve images against the published page, not its nested /edit/ route.
+  // A node view changes only the rendered src; Markdown retains its original
+  // URL, alt text and title. Do not enable Crepe's image/upload feature.
+  editor.editor.use($view(imageSchema.node, () => node => {
+    const dom = document.createElement('img');
+    function updateImage(next: typeof node) {
+      dom.alt = next.attrs.alt || '';
+      if (next.attrs.title) dom.title = next.attrs.title; else dom.removeAttribute('title');
+      if (isLocalImageUrl(next.attrs.src, route)) dom.src = new URL(next.attrs.src, documentUrl).href;
+      else dom.removeAttribute('src');
+    }
+    updateImage(node);
+    return { dom, update(next) { if (next.type !== node.type) return false; updateImage(next); return true; } };
+  }));
   await editor.create();
   const readMarkdown = editor.getMarkdown;
   editor.getMarkdown = () => cleanEditorMarkdown(readMarkdown());

@@ -1,32 +1,34 @@
 ---
 title: "Mixer Mode"
-description: "Mix two patches and control Mixer Mode modulation and recording."
+description: "Mix two patches during a live performance, with shared controls and modulation."
 ---
 
-`F3` toggles Mixer Mode, where two decks each hold a patch.
+Use Mixer Mode to perform with two patches and mix their images. `F3`
+(`Fn+F3` on some macOS keyboards) opens the decks. Each deck holds its own
+patch; [Mixer Controls](../../reference/windows/mixer-controls/) describes
+how they combine.
 
-Mix modes are described in [Mixer Controls](../../reference/windows/mixer-controls/).
+## Modulation in the mixer
 
-Mixer Mode carries its own modulation, separate from the editing view's:
-one LFO bank, one Envelope bank, and one Time bank, all shared across both
-decks, plus a single Mixer-wide undo/redo stack. Macros are the one
-deck-scoped source, four per deck, named `A1` to `A4` and `B1` to `B4`.
-Each deck also loads a patch, which brings that patch's own modulators with
-it. Right-clicking any mixer control offers the same `Edit Modulation` window
-as a patch parameter, using the Mixer's own sources, and `MIDI Learn`. A dot
-marks each control that is being modulated. The Mixer's LFO, Envelope and
-Time settings are themselves modulation targets, the same as in the editing
-view. Mixer modulation also has its own
-[Mod Matrix](../../reference/windows/mod-matrix/), a tab beside the Mixer
-panel that `X` shows or hides while in Mixer Mode.
+The mixer has its own LFO, Envelope, and Time sources, separate from the
+sources inside each deck's patch. Those mixer sources can move mixer
+controls and their own settings. Macros belong to each deck: `A1` to `A4`
+and `B1` to `B4`.
+
+Right-click a mixer parameter to edit its modulation or use `MIDI Learn`.
+A dot marks a parameter with modulation. `X` opens the mixer's
+[Mod Matrix](../../reference/windows/mod-matrix/) beside the mixer panel;
+it lists mixer assignments, not assignments inside the deck patches.
+Mixer edits have a separate undo/redo history from patch edits.
+
+## Perform and record
 
 `H` hides or shows the controls. `Escape` first restores hidden controls;
 if they are already visible, it exits Mixer Mode.
 
-A slim strip along the top keeps the `REC` and camera pill, the recording
-timer and the recording settings within reach, and `Ctrl+Alt+R`
-(`Cmd+Option+R` on macOS) starts or
-stops a recording from the keyboard. While `H` hides the controls, a small
-red lamp in the corner shows that a recording is running.
+The top strip keeps the `REC` pill, snapshot control, recording timer, and
+recording settings available. `Ctrl+Alt+R` (`Cmd+Option+R` on macOS) starts
+or stops recording the mixed output. When the controls are hidden, a red
+Lamp in the corner indicates an active recording.
 
-Related: [Signal Chain](../signal-chain/).
+Related: [Output and Recording](../output-and-recording/).

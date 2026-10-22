@@ -1,13 +1,13 @@
 ---
-title: "AUX Buses Monitor"
-description: "Every AUX bus, in one table: BUS, SENDERS, READERS, and a live PREVIEW thumbnail."
+title: "AUX Buses"
+description: "Inspect each AUX bus, its senders and readers, and its current image."
 ---
 
-Every AUX bus, in one table: `BUS`, `SENDERS`, `READERS`, and a live
-`PREVIEW` thumbnail.
+Open `View > AUX Buses` to check which modules send to or read from a bus.
+The table lists `BUS`, `SENDERS`, and `READERS`, with a live `PREVIEW` image.
 
-Senders lists every enabled Send currently targeting that bus, across every
-module in the chain. Readers lists every `INSERT` or `FEEDBACK` instance
-currently reading from it.
+`SENDERS` lists every enabled Send currently targeting that bus, across every
+module in the chain. `READERS` lists `INSERT` and `FEEDBACK` inputs, plus `POINTCLOUD` color
+and depth inputs reading the bus.
 
 Related: [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

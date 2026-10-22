@@ -3,44 +3,53 @@ title: "POINTCLOUD"
 description: "Renders the chain, or an AUX bus, as a 3D field of points or lines, displaced by brightness."
 ---
 
-Renders the chain, or an AUX bus, as a 3D field of points or lines, displaced
-by brightness.
+POINTCLOUD turns the chain or an AUX bus into a 3D field of points, lines,
+or cubes. Brightness controls depth; `Shape` determines their arrangement.
 
-In the volume shapes, Galaxy Spiral, Noise Blob and Strange Attractor, each
-point takes its colour from the picture where it sits before the shape is
-turned, and the brightness at that same spot pushes it in or out. From the
-front the picture is recognisable; turning the shape turns the picture and its
-bumps with it, and the back shows it mirrored. Spectrum wraps the picture into a ring that
-bulges with the audio input, and stays flat with no audio.
+In the volume shapes, `Galaxy Spiral`, `Noise Blob`, and `Strange Attractor`,
+each point keeps the color sampled before rotation. Turning the shape
+turns the picture and its depth with it; the back shows the picture mirrored.
+`Spectrum` wraps the image into a ring that expands with the audio input.
 
 | Parameter | Control | Notes |
 |---|---|---|
-| Color Source | Selector | `Chain composite (default)` or `AUX 1` to `AUX 8`. |
-| Depth Source | Selector | `Generated (default)` derives depth from Color Source's brightness; `AUX 1` to `AUX 8` read depth from a bus. |
-| Mix | Trough | 0-1. |
-| Blend | Selector | How the point cloud lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
-| Shape | Selector | Grouped list. Surfaces: Flat, Sphere. Volumes: Sphere Volume, Box Volume, Torus. Organic: Flow, Galaxy Spiral, Noise Blob. Math: Strange Attractor. Audio: Spectrum. Greyed out and fixed to Flat while the style is Voxels. |
-| Thickness / Shell / Fill / Arms / Twist / Turbulence / Tube Size / Detail / Speed / Height / Smoothing | Trough | 0-1. Sphere Volume: Thickness (0 is a hollow shell, 1 a solid ball). Box Volume: Shell (0 is a solid block, 1 only the outside faces). Torus: Fill (0 is a thin skin, 1 a filled tube) and Tube Size. Galaxy Spiral: Arms (2 to 6) and Twist. Noise Blob: Turbulence and Thickness. Strange Attractor: Detail (higher costs more on slow graphics cards) and Speed, which can show as the time one change of shape takes (right-click it). Spectrum: Height and Smoothing. |
-| Curve | Selector | Strange Attractor only: Lorenz, Aizawa, or Thomas. |
-| Density | Trough | 0-1. Point and line grid resolution. In Voxels, how many cubes fit across the longest side, from 8 to 256. |
-| Depth Amount | Trough | 0-1. How strongly depth pushes points off their shape. In Voxels, how tall the cube columns can get. In the volume shapes, Noise Blob and Strange Attractor, brightness pushes points out from the centre or in toward it; in Galaxy Spiral, toward or away from the camera. |
-| Perspective | Trough | 0-2. 0 gives the strongest perspective; 2 is close to flat. |
-| Zoom | Trough | 0.1-4. |
-| Orbit / Tilt / Roll | Wheel | -180 to 180 degrees each, one bead per control under the Rotation heading: Orbit on the outer ring, Tilt in the middle, Roll inside. 0 is at the top and positive turns clockwise. Orbit turns the shape around its vertical axis, Tilt tips it toward or away from you, and Roll spins it in its own plane before Orbit and Tilt turn it. With Orbit and Tilt at 0, Roll turns the picture like Transform's Rotate. Corners can leave the frame; lower Zoom to keep them in. |
-| Point Size | Trough | 0.5-8 px. |
-| Style | Selector | Points, Horiz Scanlines, Vert Scanlines, Depth Circles, Wireframe, Radial Scan, Trail/Comet, Solid Mesh, or Voxels. Voxels draws the picture as a wall of gap-free cubes, with brighter areas standing taller. Shapes that scatter free-floating points (the volumes, Galaxy Spiral, Noise Blob, Strange Attractor and Spectrum) only offer Points, Depth Circles and Trail/Comet. |
-| Point | Selector | Auto, Square, Round, Soft, or Ring. Look of each point. Auto uses Square for Flat and Sphere, and Soft for Flow. Only applies to Points, Depth Circles and Trail/Comet. |
-| Backdrop | Rocker | Replace only. Removes the chain behind the point cloud; the gaps between points and lines stay empty, black on the output. |
-| Trail | Trough | 0-1. Trail/Comet only: how much of the previous frame's points persist. |
-| Cutoff | Trough | 0-1. Voxels only: hides dark or distant areas so only the subject stays. |
-| Shading | Trough | 0-1. Voxels only: how differently each cube face is lit. 0 is flat colour. |
-| Edges | Trough | 0-1. Voxels only: thin lines between cubes. 0 gives a solid surface. |
+| `Color Source` | Selector | `Chain composite (default)` or `AUX 1` to `AUX 8`. |
+| `Depth Source` | Selector | `Generated (default)` uses `Color Source` brightness. `AUX 1` to `AUX 8` use a separate depth map. |
+| `Mix` / `Blend` | Trough, Selector | Strength and [blend mode](../../../concepts/signal-chain/#blend-modes) of the point cloud against the chain. |
+| `Shape` | Selector | Surfaces: `Flat`, `Sphere`. Volumes: `Sphere Volume`, `Box Volume`, `Torus`. Organic: `Flow`, `Galaxy Spiral`, `Noise Blob`. Math: `Strange Attractor`. Audio: `Spectrum`. Fixed to `Flat` while `Style` is `Voxels`. |
+| `Density` | Trough | Point and line resolution, 0 to 1. In `Voxels`, maps to 8 to 256 cubes across the longest side. |
+| `Depth Amount` | Trough | Brightness displacement, 0 to 1. Controls cube column height in `Voxels`; pushes points radially in volumes, `Noise Blob`, and `Strange Attractor`; pushes toward or away from the camera in `Flat` and `Galaxy Spiral`. |
+| `Perspective` | Trough | 0 gives the strongest perspective; 2 is close to flat. |
+| `Zoom` | Trough | Magnification of the whole field, 0.1 to 4. Lower it if rotation pushes corners outside the frame. |
+| `Orbit` / `Tilt` / `Roll` | Wheel | -180 to 180 degrees. `Orbit` turns around the vertical axis; `Tilt` tips forward or back. `Roll` spins in the shape's plane before the other rotations. The outer, middle, and inner beads control `Orbit`, `Tilt`, and `Roll`, respectively. |
+| `Point Size` | Trough | 0.5 to 8 px. Unavailable for `Solid Mesh` and `Voxels`. |
+| `Style` | Selector | `Points`, `Horiz Scanlines`, `Vert Scanlines`, `Depth Circles`, `Wireframe`, `Radial Scan`, `Trail/Comet`, `Solid Mesh`, `Voxels`. Free-point shapes offer only `Points`, `Depth Circles`, and `Trail/Comet`. |
+| `Point` | Selector | `Auto`, `Square`, `Round`, `Soft`, or `Ring`. Applies to `Points`, `Depth Circles`, and `Trail/Comet`. `Auto` uses `Square` for `Flat` and `Sphere`, and `Soft` for `Flow`. |
+| `Backdrop` | Rocker | With `Blend` set to `Replace`, removes the chain behind the points. Gaps stay transparent, appearing black in Output. |
+| `Trail` | Trough | Previous-frame persistence, 0 to 1. `Trail/Comet` only. |
+| `Cutoff` | Trough | Hides dark or distant cubes, 0 to 1. `Voxels` only. |
+| `Shading` | Trough | Contrast between cube faces, 0 to 1. At 0, faces have flat color. `Voxels` only. |
+| `Edges` | Trough | Lines between cubes, 0 to 1. At 0, cubes form a solid surface. `Voxels` only. |
 
-With [Perfect loop](../../windows/export-video/#perfect-loop) on, Flow, Galaxy Spiral and Noise Blob turn a
+## Shape-specific controls
+
+These Troughs run from 0 to 1. Controls for other shapes are hidden.
+
+| Shape | Controls |
+|---|---|
+| `Sphere Volume` | `Thickness`: 0 gives a hollow shell; 1 fills the ball. |
+| `Box Volume` | `Shell`: 0 fills the block; 1 keeps only its outside faces. |
+| `Torus` | `Fill`: 0 gives a thin skin; 1 fills the tube. `Tube Size` sets the tube's thickness. |
+| `Galaxy Spiral` | `Arms` maps to 2 to 6 spiral arms. `Twist` tightens their winding. |
+| `Noise Blob` | `Turbulence` distorts the ball. `Thickness` fills it. |
+| `Strange Attractor` | `Detail` resolves the curve, with greater rendering cost at high values. `Speed` controls how quickly it changes shape; 0 holds still. Right-click `Speed` and choose `Show as Time` for the cycle duration. The `Curve` Selector offers `Lorenz`, `Aizawa`, or `Thomas`. |
+| `Spectrum` | `Height` sets the audio-driven expansion. `Smoothing` slows the fall after a beat; 0 falls immediately. |
+
+With [Perfect loop](../../windows/export-video/#length-and-loops) on, `Flow`, `Galaxy Spiral`, and `Noise Blob` turn a
 whole number of times per loop. Their motion is slow, so in loops shorter
-than about a minute it holds still. `Snap` sets the Strange Attractor's
-Speed to whole turns per loop, or to 0 when one turn doesn't fit its range.
-Trail/Comet warms up for one loop before an export.
+than about a minute they hold still. `Snap` sets `Strange Attractor`'s
+`Speed` to whole turns per loop, or to 0 when one turn doesn't fit its range.
+`Trail/Comet` warms up for one loop before an export.
 
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

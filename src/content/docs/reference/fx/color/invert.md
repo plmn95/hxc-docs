@@ -1,8 +1,8 @@
 ---
 title: "Invert"
-description: "Inverts every color channel."
+description: "Inverts red, green, and blue."
 ---
 
-Inverts every color channel. No parameters.
+Inverts red, green, and blue. Transparency is unchanged.
 
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+No effect-specific parameters.

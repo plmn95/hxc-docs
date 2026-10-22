@@ -3,17 +3,15 @@ title: "MIDI Note"
 description: "Use MIDI note and channel-voice messages as modulation sources, with source and channel selection."
 ---
 
-The channel-voice MIDI messages, on their own tab separate from
-[MIDI](../midi/)'s CC input. A `Source` Selector picks one of four, and a
-`Ch (0=any)` field scopes it to a channel.
+Open a MIDI input in `Settings > MIDI`, then choose a `Source` in the
+source picker's `MIDI Note` tab. `Ch (0=any)` selects a channel; 0 accepts
+all channels. For continuous-controller input, use [MIDI](../midi/).
 
 | Source | Notes |
 |---|---|
-| Velocity | Gate-scoped: updates once per note-on and holds its value until the next note, rather than varying continuously like a CC. |
-| Aftertouch | Continuous pressure; updates while a note is held and holds its last value once released. |
-| Pitch Bend | Bipolar, -1 to 1 across the pitch wheel's full travel. |
-| NRPN | Tracks the most recent value sent for a chosen 14-bit parameter number (0-16383) on that channel. A `Param #` field appears for it. |
-
-The tab reports `Open a MIDI port in Settings > MIDI.` until a port is open.
+| `Velocity` | Updates on note-on and holds the value after release until the next note. |
+| `Aftertouch` | Channel or polyphonic key pressure. Holds the last received value after release. |
+| `Pitch Bend` | -1 to 1 across the pitch wheel's travel, with 0 at the center. |
+| `NRPN` | Set `Param # (0-16383)` to a 14-bit parameter number. Reads its most recent value while it is the last NRPN updated on that channel. Updating a different NRPN makes this source return 0. |
 
 Related: [Modulation Matrix](../../../concepts/modulation-matrix/).

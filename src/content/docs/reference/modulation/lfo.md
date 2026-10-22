@@ -1,30 +1,33 @@
 ---
 title: "LFO"
-description: "A repeating or one-shot waveform generator."
+description: "Repeating waveforms and random values for parameter modulation."
 ---
 
-A repeating or one-shot waveform generator.
+An LFO moves parameters repeatedly or supplies changing random values.
+Configure it in `Modulation > LFO`, then assign it to a parameter.
 
 | Parameter | Control | Notes |
 |---|---|---|
-| Wave | Selector | `Sine`, `Square`, `Saw`, `Triangle`, `S+H`, `Custom`, plus 6 noise waves: `Perlin1D`, `Simplex1D`, `Sparse Conv 1D`, `Hermite1D`, `Harm Sum 1D`, `Alligator1D`. |
-| Rate | Trough | 0 to 20Hz, used when not BPM-synced. At 0 the wave freezes and `Phase Off` scans through its shape by hand. The knob gives slow rates most of its turn. Right-click it to show the time one cycle takes instead, such as `4.00 s`; the synced rate beside BPM Sync reads the same way. See [Speeds](../../../concepts/reading-the-panel/#speeds). |
-| BPM Sync | Rocker, Selector | Locks Rate to a musical division (`1/16` to `4`) instead of a raw Hz value. |
-| Scale / Offset | Trough | Output amplitude multiplier, and a DC offset applied after Scale. |
-| Fold | Trough | Wavefolder drive; 0 is an exact bypass. Reflects the signal back into range rather than letting it clip. |
-| Phase Off | Wheel | Phase offset, in cycles. |
-| Duty | Trough | 1-99%. Square wave only. |
-| Custom Wave | shared waveform editor | Only used when Wave is set to `Custom`. |
-| Seed | value field, button | 0 to 999, typed directly or rolled with `Randomize`. All 6 noise waves and `S+H`: the same seed always plays the same values. |
-| Harmonics (`Count`), Harmonic Spread, Harmonic Gain | Selector, Trough | Octave count (1 to 8), lacunarity, and persistence. The 4 fbm-capable noise waves: `Perlin1D`, `Simplex1D`, `Harm Sum 1D`, `Alligator1D`. |
-| Density | Trough | `Sparse Conv 1D` only. |
-| Glide / Glide Mode | Trough, Selector | Smooths value changes; the Trough's meaning follows Glide Mode: an RC time under `Exponential`, a slew time under `Linear`, and a `Ramp` percentage of the cycle under `Cycle`. |
+| `Wave` | Selector | `Sine`, `Square`, `Saw`, `Triangle`, `S+H`, `Custom`, `Perlin1D`, `Simplex1D`, `Sparse Conv 1D`, `Hermite1D`, `Harm Sum 1D`, `Alligator1D`. |
+| `RATE` | Knob | 0 to 20 Hz, unavailable while `BPM SYNC` is engaged. At 0, `Phase Off` scans a frozen waveform. Right-click and choose `Show as Time` to display the cycle duration. See [Speeds](../../../concepts/reading-the-panel/#speeds). |
+| `LEVEL` | Knob | Shared output gain, -1 to 1, applied after `Fold`. Negative inverts the wave. Affects every parameter using this LFO; set each parameter's travel with its assignment's `Depth`. |
+| `BPM SYNC` | Rocker, Selector | Uses a musical division, from `1/16` to `4` beats, instead of `RATE`. |
+| `Fold` | Trough | Reflects peaks back into range rather than clipping them. At 0, the waveform is unchanged. |
+| `Phase Off` | Wheel | Starting position within the waveform, 0 to 1 cycle. |
+| `Duty` | Trough | Portion of a cycle spent high, 1 to 99%. `Square` only. |
+| `Seed` | Value field | 0 to 999, or choose another with `Randomize`. Used by noise waves and `S+H`. |
+| `Count` | Selector | Detail layers, 1 to 8, under `Harmonics`. Available for `Perlin1D`, `Simplex1D`, `Harm Sum 1D`, and `Alligator1D`. |
+| `Harmonic Spread` / `Harmonic Gain` | Trough | Frequency multiplier and strength of successive detail layers. |
+| `Density` | Trough | Impulses per unit area for `Sparse Conv 1D`. |
+| `Glide Mode` / `Glide` | Selector, Trough | `S+H` smoothing. `Exponential` uses a response time; `Linear` uses a slew time; `Cycle` uses a `Ramp` percentage of the cycle. |
 
-`S+H` plays the same sequence every time the patch runs, so an export
-matches the live view and every export of the patch matches the last. Two
-`S+H` LFOs with the same Seed still play different values.
+Choose `Custom`, then `Edit Wavetable...` to draw a waveform.
+`Restart All` realigns the phases of all LFOs in the bank.
 
-With [Perfect loop](../../windows/export-video/#perfect-loop) on, every
+`S+H` produces a repeatable random sequence. Two `S+H` LFOs with the same
+`Seed` still produce different values.
+
+With [Perfect loop](../../windows/export-video/#length-and-loops) on, every
 LFO starts again at each loop start, `S+H` repeats its values every loop
 (`Cycle` glide runs from the loop's last value into its first), and noise
 waves repeat once per loop. A rate that doesn't fit whole cycles into the

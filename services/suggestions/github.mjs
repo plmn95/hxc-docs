@@ -1,5 +1,5 @@
 import { passages, prepareEdit } from '../../src/lib/suggestions/source.mjs';
-import { preparePage } from '../../src/lib/suggestions/document.mjs';
+import { preparePage, sourceRoute } from '../../src/lib/suggestions/document.mjs';
 
 const encoder = new TextEncoder();
 const base64 = (bytes) => {
@@ -68,7 +68,7 @@ export async function deliver(row, env, api) {
   const source = decodeContent(base);
   let patch = { reason: 'Reader reported a documentation problem.' };
   if (item.kind === 'page') {
-    try { patch = preparePage(source, item.replacement); }
+    try { patch = preparePage(source, item.replacement, sourceRoute(item.path)); }
     catch (error) { throw new InvalidSuggestion(error.message); }
   }
   if (item.kind === 'edit') {

@@ -21,4 +21,8 @@ label{display:block;margin:24px 0 10px;font-size:13px;}textarea{display:block;wi
 .milkdown .ProseMirror td,.milkdown .ProseMirror th{min-width:130px;border-color:var(--border);vertical-align:top;padding:10px 12px;}
 .change table{min-width:680px;}.change td{min-width:130px;vertical-align:top;}
 .change mark{color:inherit;border-radius:2px;}.change.added mark{background:#86c96b36;}.change.removed mark{background:#c06f6536;text-decoration:line-through;}.change small{font-size:.85em;}
+.milkdown .ProseMirror img,.change img{max-width:100%;height:auto;}
 @media(max-width:640px){.milkdown .milkdown-top-bar{padding-inline:5px;}.milkdown .milkdown-top-bar .top-bar-item{margin:3px;width:28px;height:28px;}.milkdown .milkdown-top-bar .top-bar-divider{margin:4px;}}
+/* Give the brand and review actions separate rows on narrow screens. Keep the
+   sticky formatting toolbar below the complete two-row header. */
+@media(max-width:640px){.edit-header{min-height:100px;flex-direction:column;align-items:stretch;justify-content:space-between;}.edit-header .vizard-brand{align-self:flex-start;}.edit-header .actions{justify-content:flex-end;}.edit-header button{white-space:nowrap;}.milkdown .milkdown-top-bar{top:100px;}}

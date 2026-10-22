@@ -1,15 +1,13 @@
 ---
 title: "Despill"
-description: "Removes leftover key-color spill from a subject after a chroma key, without touching the matte itself."
+description: "Reduces green or blue spill on a subject without changing transparency."
 ---
 
-Removes leftover key-color spill from a subject after a chroma key,
-without touching the matte itself.
+Reduces green or blue spill on a subject without changing transparency.
+Place it after [Chroma Key](../chroma-key/).
 
 | Parameter | Control | Options / Range | Notes |
 |---|---|---|---|
-| Spill Channel | Selector | Green Screen, Blue Screen | Cannot be modulated. |
-| Follow Chroma Key | Selector | Manual, Follow | When set to Follow, automatically uses whichever [Chroma Key](../chroma-key/) sits in the nearest earlier slot on the same chain, instead of the manually chosen Spill Channel. |
-| Strength | Trough | 0 to 1 | |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Spill Channel` | Selector | `Green Screen`, `Blue Screen` | Cannot be modulated. |
+| `Follow Chroma Key` | Selector | `Manual`, `Follow` | `Follow` uses the nearest earlier Chroma Key in the same chain. If none is found, it uses `Spill Channel`. Cannot be modulated. |
+| `Strength` | Trough | 0 to 1 | 0 preserves the original color; 1 applies full spill reduction. |

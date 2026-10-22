@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "captureDate": "2026-10-21",
+  "baseline": {
+    "app": "Hex Composer",
+    "version": "0.21.1",
+    "distribution": "Published macOS release",
+    "releaseUrl": "https://github.com/3rd-Party-Guy/retrovid/releases/download/v0.21.1/hexcomposer-macos.zip",
+    "zipSha256": "1cb5826119cc14b121ff02f2bef535577b663ffcce13c2ba51a32b5c0e7bf210",
+    "executableSha256": "2aa295b93286e8a722e707db8567ffdbe3545d2fee6688e155ea0b2afd340191",
+    "platform": "macOS",
+    "osVersion": "26.7.1",
+    "osBuild": "25G241"
+  },
+  "processing": {
+    "script": "scripts/prepare-doc-images.mjs",
+    "operations": "Crop actual screenshots; optionally resize with Lanczos3; encode PNG with compression level 9 and adaptive filtering off. No annotations or generated UI.",
+    "sharpVersion": "0.35.4",
+    "libvipsVersion": "8.18.6",
+    "annotationRegistry": "authoring/image-annotations.json (rendered as a separate site layer; PNG hashes describe unannotated pixels)"
+  },
+  "images": [
+    {
+      "id": "getting-started-workspace",
+      "task": "Find Output, Module, Modulation, Chain, and Patches in the default layout.",
+      "page": "src/content/docs/getting-started/01-first-launch.md",
+      "patch": "Default patch with one OSC module",
+      "source": "authoring/captures/2026-10-21/originals/01-default-workspace.png",
+      "published": "public/images/getting-started/workspace.png",
+      "crop": {
+        "left": 0,
+        "top": 56,
+        "width": 2880,
+        "height": 1716
+      },
+      "resize": {
+        "width": 1800
+      },
+      "verifiedChecks": [
+        "Restored View > Layouts > Restore Default Layout in the published macOS app.",
+        "Observed Output on the left, Module and Modulation sharing the right dock, and Chain and Patches sharing the bottom dock."
+      ],
+      "sourceDimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 1800,
+        "height": 1073
+      },
+      "sourceSha256": "148b10ecf4c724d0ae58f10fa4e1742cba083b9664690b6121f23ecb3758984d",
+      "publishedSha256": "57dd0650a876e4924fb152f5c61922a2279c9015f2f1214385112fc80661dce5",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-factory-menu",
+      "task": "Open File > Factory Patches and choose Big Brother.",
+      "page": "src/content/docs/getting-started/02-load-a-factory-patch.md",
+      "patch": "Default patch while browsing the factory menu; Big Brother loaded and saved separately during the session",
+      "source": "authoring/captures/2026-10-21/originals/02-factory-menu.png",
+      "published": "public/images/getting-started/factory-menu.png",
+      "crop": {
+        "left": 14,
+        "top": 56,
+        "width": 1070,
+        "height": 610
+      },
+      "resize": null,
+      "verifiedChecks": [
+        "Opened File > Factory Patches and confirmed Big Brother in the submenu.",
+        "Loaded Big Brother and saved a patch copy in the published macOS app.",
+        "Explicitly reopened First factory patch, selected SPRITE, and verified its saved Opacity value of 0.90 in the native UI."
+      ],
+      "sourceDimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 1070,
+        "height": 610
+      },
+      "sourceSha256": "23613cc7d88ecf3c6156bbe68045e7faa8bd6e59a7956dc1ac9f80e495d1a4fb",
+      "publishedSha256": "bd173a3f3c002703da83995930e56e17b84e614b4c1c5e1b27b5bae507e06845",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-frequency",
+      "task": "Set the OSC frequency pair to 3 and 2.",
+      "page": "src/content/docs/getting-started/03-build-a-custom-chain.md",
+      "patch": "Custom chain with one sine OSC, Freq X 3 and Freq Y 2",
+      "source": "authoring/captures/2026-10-21/originals/03-frequency.png",
+      "published": "public/images/getting-started/frequency.png",
+      "crop": {
+        "left": 2392,
+        "top": 560,
+        "width": 620,
+        "height": 352
+      },
+      "resize": null,
+      "verifiedChecks": [
+        "Entered Freq X 3 and Freq Y 2 in the published macOS app; values are visible in the capture."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 620,
+        "height": 352
+      },
+      "sourceSha256": "1235c40cb95a520ebf03104a7b4f3b6bee230315609d7fef8eb54c5085df0c06",
+      "publishedSha256": "9e205c9c8cb03e302f2e7997d6175f7ea82acc89c0e1085d13a2c021e8458d95",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-kaleidoscope-controls",
+      "task": "Set Kaleidoscope Segments to 6 and Rotation to 0.",
+      "page": "src/content/docs/getting-started/03-build-a-custom-chain.md",
+      "patch": "Custom chain with Kaleidoscope in OSC Insert FX",
+      "source": "authoring/captures/2026-10-21/originals/04-kaleidoscope.png",
+      "published": "public/images/getting-started/kaleidoscope-controls.png",
+      "crop": {
+        "left": 2392,
+        "top": 832,
+        "width": 620,
+        "height": 636
+      },
+      "resize": null,
+      "verifiedChecks": [
+        "Added Kaleidoscope to the OSC Insert FX chain, entered Segments 6, and left Rotation at 0 in the published macOS app."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 620,
+        "height": 636
+      },
+      "sourceSha256": "5c5c17c546ad8615b2857f7ef1526dc38cb9710c245849f8324ba398b3df91a5",
+      "publishedSha256": "a0c5da8912e4fe5fafc2a40a8e01ac61bb57fc3ba1c714f867df1604e0eff36c",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-lfo",
+      "task": "Set a sine LFO to 0.10 Hz with Level 1 and BPM Sync off.",
+      "page": "src/content/docs/getting-started/05-animate-your-pattern.md",
+      "patch": "Custom kaleidoscope chain with LFO 1",
+      "source": "authoring/captures/2026-10-21/originals/05-lfo.png",
+      "published": "public/images/getting-started/lfo.png",
+      "crop": {
+        "left": 2392,
+        "top": 400,
+        "width": 620,
+        "height": 795
+      },
+      "resize": null,
+      "verifiedChecks": [
+        "Set LFO 1 RATE to 0.10 Hz and LEVEL to 1; selected the sine waveform and kept BPM Sync off in the published macOS app."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 620,
+        "height": 795
+      },
+      "sourceSha256": "843c25d3fd41e108a1f8a5371efc4327e582a3b129aad51591aa05d0cc129292",
+      "publishedSha256": "3d83ac7e7581e7dd5f37abdfb018cef53515aa8249ba3af5b5d80ffe17871311",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-modulation-picker",
+      "task": "Connect LFO 1 to Kaleidoscope Rotation with Depth 45 and Offset 0.",
+      "page": "src/content/docs/getting-started/05-animate-your-pattern.md",
+      "patch": "Custom kaleidoscope chain with one LFO-to-Rotation assignment",
+      "source": "authoring/captures/2026-10-21/originals/06-modulation-picker.png",
+      "published": "public/images/getting-started/modulation-picker.png",
+      "crop": {
+        "left": 2014,
+        "top": 1222,
+        "width": 1010,
+        "height": 550
+      },
+      "resize": {
+        "width": 900
+      },
+      "verifiedChecks": [
+        "Observed LFO 1, Depth 45.00 deg, Offset 0.00 deg, and Done in the released modulation editor.",
+        "Saved the animation and reopened its patch through the native Open dialog; the app reported Opened First kaleidoscope and the animation persisted."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 900,
+        "height": 490
+      },
+      "sourceSha256": "8aee1fcaf7211ee463b667a4829c33a6b3a505c60588af0579a8a570f78eeebc",
+      "publishedSha256": "d17657509edd69798090a20c423e7762e9cfe4808da009272e1f47077df2d5fa",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-kaleidoscope-result",
+      "task": "Preview the finished animated kaleidoscope.",
+      "page": "src/content/docs/getting-started/index.md",
+      "patch": "public/examples/first-kaleidoscope.hxc",
+      "source": "authoring/captures/2026-10-21/originals/07-kaleidoscope-result.png",
+      "published": "public/images/getting-started/kaleidoscope-result.png",
+      "crop": {
+        "left": 0,
+        "top": 250,
+        "width": 2380,
+        "height": 1338
+      },
+      "resize": {
+        "width": 1600
+      },
+      "verifiedChecks": [
+        "Observed the animated kaleidoscope in the published macOS app.",
+        "Saved and explicitly reopened First kaleidoscope.hxc; the animation persisted after reopening."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 1600,
+        "height": 899
+      },
+      "sourceSha256": "e600aa440e90a11da8214993b59954fb5d6c8ec62113f40a1d85585548d20b78",
+      "publishedSha256": "c996a29dd723b73730b4d595526759dc8c0cdcda64c7164527174f8f95300398",
+      "sourceKind": "App Output view screenshot"
+    },
+    {
+      "id": "getting-started-recording-settings",
+      "task": "Choose H.264, 30 FPS, and a recording output folder.",
+      "page": "src/content/docs/getting-started/04-record-and-output.md",
+      "patch": "public/examples/first-kaleidoscope.hxc",
+      "source": "authoring/captures/2026-10-21/originals/08-recording-settings.png",
+      "published": "public/images/getting-started/recording-settings.png",
+      "crop": {
+        "left": 120,
+        "top": 216,
+        "width": 2560,
+        "height": 544
+      },
+      "resize": {
+        "width": 1400
+      },
+      "verifiedChecks": [
+        "Opened Settings > Recording in the published macOS app; H.264 and 30 FPS are visible.",
+        "Used a temporary output folder for the live recording check. The image shows that session-specific folder, not an app default."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 1400,
+        "height": 298
+      },
+      "sourceSha256": "462432a277898c3f31239d6546ef85eef8a9dfe4af8bb241607cd83000f0252a",
+      "publishedSha256": "dea6bf27f6d2a908129de1473e81df0ef814dbcddcae6db75dc0d46dcccee5cb",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "getting-started-recording-controls",
+      "task": "Locate the camera and REC controls in the main toolbar.",
+      "page": "src/content/docs/getting-started/04-record-and-output.md",
+      "patch": "public/examples/first-kaleidoscope.hxc",
+      "source": "authoring/captures/2026-10-21/originals/09-recording-controls.png",
+      "published": "public/images/getting-started/recording-controls.png",
+      "crop": {
+        "left": 2798,
+        "top": 118,
+        "width": 170,
+        "height": 60
+      },
+      "resize": null,
+      "verifiedChecks": [
+        "Located the camera and REC controls in the published macOS app.",
+        "Started and stopped a live recording; observed its saved-success message."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 170,
+        "height": 60
+      },
+      "sourceSha256": "5452ef2d44c16df17a3e2ca59d7926a88d1e70a7086199cf62291d67a26b35c1",
+      "publishedSha256": "5d340aa1f485ef831885bdcdcd3f27e4a7e76e9e2c8a5956fc2dc2c35a2be640",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "feedback-trails-source",
+      "task": "Open the animated-ring starting patch.",
+      "page": "src/content/docs/guides/feedback-trails.md",
+      "patch": "public/examples/feedback-ring-start.hxc",
+      "source": "authoring/captures/2026-10-21/originals/10-feedback-source.png",
+      "published": "public/images/guides/feedback-trails/source-ring.png",
+      "crop": {
+        "left": 650,
+        "top": 380,
+        "width": 1080,
+        "height": 1080
+      },
+      "resize": {
+        "width": 800
+      },
+      "verifiedChecks": [
+        "Opened the starting patch successfully in the published macOS app and observed the ring animation."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 800,
+        "height": 800
+      },
+      "sourceSha256": "e4679e63d7e213a83dcc677e3bde6a0608289422b90e6383af9a323ee8457809",
+      "publishedSha256": "496f905b84102dfd74edd7d4c707c2ab190b16ff303064abc623ab96241450b4",
+      "sourceKind": "App Output view screenshot"
+    },
+    {
+      "id": "feedback-trails-controls",
+      "task": "Add FEEDBACK after SHAPE and set the trail controls.",
+      "page": "src/content/docs/guides/feedback-trails.md",
+      "patch": "Starting ring plus FEEDBACK added through Chain + in the published macOS app",
+      "source": "authoring/captures/2026-10-21/originals/11-feedback-controls.png",
+      "published": "public/images/guides/feedback-trails/feedback-controls.png",
+      "crop": {
+        "left": 2392,
+        "top": 240,
+        "width": 620,
+        "height": 548
+      },
+      "resize": null,
+      "captureTiming": "10 seconds after setting Loop Blend to Replace",
+      "verifiedChecks": [
+        "Added FEEDBACK through Chain +, after SHAPE.",
+        "Set Dry/Wet 1, Amount 1, Decay 0.975, and Loop Blend Replace.",
+        "Set Dry/Wet to 0 and observed one live ring, then restored it to 1.",
+        "Set Decay to 0.90 and observed a shorter trail, then restored it to 0.975."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 620,
+        "height": 548
+      },
+      "sourceSha256": "70e419b451e5f2746510005dc44bbfe8fd9e66317579a5cb86f8ca94a45981a6",
+      "publishedSha256": "b6ed41078aa07ee996fea2a17fb37b4f7b20aa791aabd155f858d97768fd8579",
+      "sourceKind": "App UI screenshot"
+    },
+    {
+      "id": "feedback-trails-result",
+      "task": "Preview the feedback result after saving and reopening its patch.",
+      "page": "src/content/docs/guides/feedback-trails.md",
+      "patch": "public/examples/feedback-trails.hxc",
+      "source": "authoring/captures/2026-10-21/originals/13-feedback-reopened.png",
+      "published": "public/images/guides/feedback-trails/result.png",
+      "crop": {
+        "left": 650,
+        "top": 380,
+        "width": 1080,
+        "height": 1080
+      },
+      "resize": {
+        "width": 800
+      },
+      "captureTiming": "2 seconds after explicitly reopening the saved finished patch",
+      "verifiedChecks": [
+        "Saved the finished patch through the published macOS app.",
+        "Explicitly reopened the saved finished patch; the app reported Opened Feedback trails and the animation with feedback resumed."
+      ],
+      "sourceDimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 800,
+        "height": 800
+      },
+      "sourceSha256": "f7e017dd309f16e0687cb1d2b59e1e50e19b03483800c546359a675e093085c3",
+      "publishedSha256": "7b9135dea366e3e448bdd479272937676022863c206510aaf95be1bbb03229c7",
+      "sourceKind": "App Output view screenshot"
+    }
+  ],
+  "examples": [
+    {
+      "path": "public/examples/first-kaleidoscope.hxc",
+      "sha256": "2d45d8cc2d87cc46a49507e74fe4fb9b34407111e3afe15af94faa31e7a2abf1",
+      "appVersion": "0.21.1",
+      "verifiedChecks": [
+        "Saved the tutorial patch and explicitly reopened it through the native Open dialog in the published macOS app. The app reported Opened First kaleidoscope and animation persisted.",
+        "Inspected the saved JSON: OSC Freq X 3, Freq Y 2; Kaleidoscope Segments 6, base Rotation 0; sine LFO rate 0.10 Hz; Rotation assignment 45 with center shift 0.",
+        "Audited every JSON string: no nonempty external file or font references, absolute user paths, or temporary paths."
+      ],
+      "externalReferenceAudit": "All JSON strings inspected: no nonempty file or font references, absolute user paths, or temporary paths."
+    },
+    {
+      "path": "public/examples/feedback-ring-start.hxc",
+      "appVersion": "0.21.1",
+      "sha256": "4c9e811468934e15982d6d52ff444210cff95c7f91b8b0562c73e9c2de44426e",
+      "externalReferenceAudit": "All JSON strings inspected: no nonempty file or font references, absolute user paths, or temporary paths.",
+      "verifiedChecks": [
+        "Opened successfully in the published macOS app and observed the animated ring.",
+        "Inspected JSON: one SHAPE module and one sine LFO-to-Size assignment; no FEEDBACK module."
+      ]
+    },
+    {
+      "path": "public/examples/feedback-trails.hxc",
+      "appVersion": "0.21.1",
+      "sha256": "39430a66653f43d51ca4dc119cfd242aea486fe6095ae4835426edd026917be8",
+      "externalReferenceAudit": "All JSON strings inspected: no nonempty file or font references, absolute user paths, or temporary paths.",
+      "verifiedChecks": [
+        "Built FEEDBACK onto the starting ring through Chain + and verified Dry/Wet and Decay comparisons live.",
+        "Saved the completed patch in the published macOS app, explicitly reopened it, and observed animation with feedback resume.",
+        "Inspected JSON: SHAPE before FEEDBACK; Dry/Wet 1, Amount 1, Decay 0.975, Loop Blend Replace."
+      ]
+    }
+  ],
+  "recordingValidation": {
+    "appVersion": "0.21.1",
+    "patch": "public/examples/first-kaleidoscope.hxc",
+    "liveChecks": [
+      "Started and stopped recording in the published macOS app.",
+      "Observed the saved-success message after finalization."
+    ],
+    "mediaInspection": {
+      "tool": "ffprobe",
+      "codec": "h264",
+      "width": 1920,
+      "height": 1080,
+      "frameRate": 30,
+      "frames": 323,
+      "reportedDurationSeconds": 10.9,
+      "fileBytes": 8263055
+    },
+    "decodeCheck": {
+      "tool": "ffmpeg",
+      "scope": "Full recorded MP4",
+      "result": "passed"
+    }
+  },
+  "unusedOriginals": [
+    {
+      "source": "authoring/captures/2026-10-21/originals/12-feedback-result.png",
+      "sha256": "1ee110e69899a821492dcb0763c2c871eb2da9241e568eeb01443f1589e24f5a",
+      "dimensions": {
+        "width": 3024,
+        "height": 1772
+      },
+      "captureTiming": "10 seconds after setting Loop Blend to Replace",
+      "reason": "Retained as capture evidence; the published result uses the explicitly reopened patch capture."
+    }
+  ]
+}

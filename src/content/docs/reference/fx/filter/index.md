@@ -1,10 +1,9 @@
 ---
 title: "FILTER"
-description: "Stylization tools: effects that resample the image onto a coarser grid, cut it to a shape, or react to local contrast."
+description: "Effects for pixelation, masking, and edge detail."
 ---
 
-Stylization tools: effects that resample the image onto a coarser grid, cut
-it to a shape, or react to local contrast.
+Effects for pixelation, masking, and edge detail.
 
 - [Pixelate](pixelate/)
 - [Mask](mask/)

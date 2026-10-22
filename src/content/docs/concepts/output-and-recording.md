@@ -6,16 +6,21 @@ description: "Record or export video and send output through NDI, Spout, Syphon,
 `Output` shows the last module's result, or the mix of both decks in Mixer
 Mode. Recordings, NDI, Spout, Syphon, and `Dual Monitor Output` use this image.
 
-Recording writes an MP4 straight to disk with no save dialog, at whatever
-quality, frame rate, codec, and audio-inclusion setting
-`Settings > Recording` holds at the time. The codec is H.264 or H.265. It captures the aspect-locked
-output image itself, not the window or its docked panels. Start and stop it
-from the `REC` pill in the toolbar, which Mixer Mode also shows, or with
-`Ctrl+Alt+R` (`Cmd+Option+R` on macOS).
+## Record a live session
+
+Recording captures the output as it plays, including changes you make
+during the take. `Settings > Recording` sets its output folder, filename,
+quality, frame rate, codec, and whether to include audio. Files are MP4,
+using H.264 or H.265. The recording contains the output image without the
+app's panels or window borders.
+
+Start and stop it from the toolbar's `REC` pill, also available in Mixer
+Mode, or with `Ctrl+Alt+R` (`Cmd+Option+R` on macOS).
 
 If encoding falls behind, frames are skipped without changing the
 recording's duration or audio sync. The save message reports skipped frames.
-Choosing H.264 or a lower frame rate can reduce the load. If the selected codec is unavailable, recording cannot start.
+Choosing H.264 or a lower frame rate can reduce the load. If the selected
+codec is unavailable, recording cannot start.
 
 Stopping a recording doesn't hold up the app. The file finishes writing in
 the background, and a message then names the saved file. When finishing
@@ -23,45 +28,22 @@ takes more than a moment, the timer shows `Saving...` and `REC` is dimmed
 until the file is complete. Quitting while a file is still being written
 waits for it to finish.
 
-## Export Video
+For a fixed-length clip with exact frame timing, use
+[Export Video](../export-video/). It renders frame by frame even when the
+patch is too heavy to play smoothly, and can make a repeating loop or
+follow an audio file. Export is unavailable in Mixer Mode or while a
+recording is running.
 
-Recording captures the session as it plays, including its timing. When a
-clip has to be exact, for a social post, a loop or a GIF,
-`File > Export Video` renders the patch frame by frame instead, so every
-frame lands at its exact time even when the patch is too heavy to play
-smoothly. The export always starts the patch from its beginning, so the
-same patch gives the same file every time.
-
-The export runs on a copy of the patch. The live view pauses while it runs
-and continues from the same point afterwards. MIDI, OpenSoundControl and
-macro values are held at what they were when the export started, and audio
-input is silent. Video clips play from their first frame at their own
-speed. Cameras and NDI, Spout or Syphon sources show the picture they had
-when the export started, without moving.
-
-An export saves to the folder and filename set in `Settings > Recording`,
-with the extension of its format. It carries no audio. Export is not
-available in Mixer Mode or while a recording is running.
-
-For a clip that repeats without a jump, turn on
-[Perfect loop](../../reference/windows/export-video/#perfect-loop): the
-file is then exactly one loop in bars, beats or seconds, and its last frame flows
-into its first. While the loop is on, the toolbar shows a `LOOP` plate after
-`TAP`, and the live view snaps its built-in motion to the loop too.
-
-The settings are in [Export Video](../../reference/windows/export-video/).
+## Send to another app or display
 
 NDI, Spout (Windows), and Syphon (macOS) each send the same output live to
 another program instead of, or alongside, a file. Each is enabled
 separately in `Settings > Output`, under its own sender name.
 
-NDI needs the free NDI Runtime from NDI itself. On Windows and macOS,
-install it from [ndi.video](https://ndi.video). On Linux, NDI publishes no
-separate runtime installer: install `libndi` from the NDI SDK for Linux
-into `/usr/local/lib`, or use your distribution's NDI package. Until the
-runtime is found, the NDI controls stay grey with a note saying so. They
-turn on by themselves within a couple of seconds of installing it, with no
-restart, including when Hex Composer was started from Steam.
+NDI needs its separately installed runtime. Until it is found, the NDI
+controls stay grey, with platform-specific installation instructions
+beneath them. Hex Composer checks again automatically, so installing the
+runtime does not require restarting the app.
 
 Parts of the picture that no module has drawn on are empty. The `Output`
 window, `Dual Monitor Output`, recordings and snapshots show them as black.
@@ -73,12 +55,15 @@ FEEDBACK echoes that are fading out.
 carrying nothing but the output image, sized independently of the main
 window.
 
-Display Fit controls how the output image sits inside whatever window or
+`Display Fit` controls how the output image sits inside whatever window or
 monitor shows it, when the two don't share an aspect ratio: `Fit Best`,
 `Fill`, or `Shrink`.
 
-To render a patch to a file frame by frame instead of capturing it live,
-with an exact frame rate, a Perfect loop or an audio file driving it, see
-[Export Video](../export-video/).
+Related: [Settings](../../reference/windows/settings/),
+[Signal Chain](../signal-chain/).
 
-Related: [Signal Chain](../signal-chain/), [Export Video](../export-video/).
+## PNG snapshots
+
+Click the camera control beside `REC` to save the output as a PNG in the
+recording folder. The shortcut is `PrintScreen` or `Ctrl+Alt+S` on
+Windows/Linux, or `Cmd+Option+S` on macOS.

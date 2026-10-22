@@ -8,6 +8,4 @@ tube's glass.
 
 | Parameter | Control | Range |
 | --- | --- | --- |
-| Amount | Trough | 0 to 0.6 |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Amount` | Trough | 0 to 0.6 |

@@ -3,31 +3,30 @@ title: "SPRITE"
 description: "Load images, sprite sheets, video, or GIFs, or draw pixel artwork and arrange repeated sprite instances."
 ---
 
-Places an image in the chain: a loaded file (still image, sprite sheet, or
-video/GIF) or artwork drawn directly in the built-in pixel editor, then
-repeated as a single sprite, a tiled grid, a fractal, or a scatter of
-instances.
+SPRITE places an image, sprite sheet, video, GIF, or pixel artwork in the
+chain. Display it once or repeat it as a tile grid, fractal, or scatter.
 
 | Parameter | Control | Notes |
 |---|---|---|
-| Source | Selector | File (loaded via the file picker) or Pixel Art (drawn in the built-in pixel editor). |
-| Display Mode | Selector | Sprite, Tile, Fractal, or Scatter. |
-| Blend | Selector | How the sprite lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
-| Position / Size / Rotation | Pad, Knob, Wheel | |
-| Alpha Mode | Selector | Per-Pixel, Threshold, or Blend. |
-| Tint | Trough | Color and amount, applied on top of the source image. |
-| Repeat Count | Trough | Tile Mode's grid size, or Scatter Mode's instance count. |
-| Depth / Scale Factor | Trough | Fractal Mode's recursion depth and per-level scale falloff. |
-| Sheet Animation | Selector, Trough | Off, Forward, Ping-Pong, or Random playback through a sprite sheet's grid (columns, rows, frame count, and fps), independent of Display Mode. |
-| Loop / Speed | Rocker, Trough | File input only. Speed runs 0 to 4.0x, forward only. |
+| `Source` | Selector | `File` or `Pixel Art`, drawn in the built-in editor. |
+| `Display Mode` | Selector | `Sprite`, `Tile`, `Fractal`, or `Scatter`. |
+| `Opacity` / `Blend` | Trough, Selector | Strength and [blend mode](../../../concepts/signal-chain/#blend-modes) of the sprite against the chain. |
+| `Size` | Trough | Size of each tile or instance. Separate from `Scale X` / `Scale Y`, which resize the entire rendered pattern. |
+| `Scale X` / `Scale Y` | Pad | Overall horizontal and vertical scale. |
+| `Mode` under `Alpha` | Selector | `Per-Pixel` uses the file's alpha. `Threshold` and `Blend` use `Alpha Amount` to cut or scale visibility. |
+| `Tint R` / `Tint G` / `Tint B` / `Tint Amount` | Trough | At amount 0 the source keeps its color; at 1 it uses the tint color. |
+| `Grid N` / `Count` | Trough | Grid size in `Tile`, or number of instances in `Scatter`. |
+| `Depth` / `Scale Falloff` | Trough | Repetition depth and scale reduction in `Fractal`. |
+| `Sheet Animation` | Selector | `Off`, `Forward`, `Ping-Pong`, or `Random`. Plays cells from a sprite sheet independently of `Display Mode`. |
+| `Cols` / `Rows` / `Frames` / `FPS` | Trough | Sheet layout and animation speed. `Frames` 0 uses all cells. |
+| `Loop` / `Speed` | Rocker, Trough | Video or GIF file playback. `Speed` runs 0 to 4.0x, forward only. |
 
-**NOTE:** with nothing loaded, the module adds nothing and the chain passes
-through unchanged in every `Blend` mode.
+With nothing loaded, SPRITE leaves the chain unchanged in every `Blend` mode.
 
-With [Perfect loop](../../windows/export-video/#perfect-loop) on, Sheet Animation and pixel art play on the
+With [Perfect loop](../../windows/export-video/#length-and-loops) on, sheet animation and pixel art play on the
 loop's own clock and start again with each loop, and so does a clip in an
 export. Right-click the sheet's FPS to show how long each frame lasts
-instead. `Snap` sets the sheet's fps, or Speed, so they run whole passes per
+instead. `Snap` sets the sheet's `FPS`, or file `Speed`, so they run whole passes per
 loop. Speed is saved with the patch.
 
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),

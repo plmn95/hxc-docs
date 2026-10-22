@@ -4,6 +4,8 @@ description: "Keyboard shortcuts and mouse gestures in Hex Composer."
 ---
 
 The in-app shortcut list is available from `Help > Keyboard Shortcuts`.
+Single-letter shortcuts do not run while typing. `Space` also leaves an
+open popup or keyboard-focused control to handle the key.
 
 ## Global
 
@@ -11,11 +13,12 @@ The in-app shortcut list is available from `Help > Keyboard Shortcuts`.
 |---|---|---|
 | `F3` | `F3` / `Fn+F3` | Toggle Mixer Mode |
 | `Escape` | `Escape` | Close overlay, cancel drag, exit Mixer Mode |
-| Double-click | Double-click | Enlarge the Output view to fullscreen |
+| Double-click `Output` | Double-click `Output` | Enlarge the Output view to fullscreen |
 | `M` | `M` | Toggle MIDI Learn mode |
 | `O` | `O` | Toggle OpenSoundControl Learn mode |
 | `X` | `X` | Toggle the current mode's Mod Matrix window (Editor and Mixer Mode each have their own) |
 | `T` | `T` | Tap tempo |
+| `Space` | `Space` | Play or pause the patch's song |
 | `Ctrl+S` | `Cmd+S` | Save patch |
 | `Ctrl+Shift+S` | `Cmd+Shift+S` | Save patch as (force dialog) |
 | `Ctrl+O` | `Cmd+O` | Open patch |
@@ -40,7 +43,7 @@ module.
 | Windows / Linux | macOS | Action |
 |---|---|---|
 | `F2` | `F2` / `Fn+F2` | Rename selected module |
-| `Delete` | `Delete` / `Backspace` | Remove selected module |
+| `Delete` | `Fn+Delete` (or forward Delete) | Remove selected module |
 | `Ctrl+D` | `Cmd+D` | Duplicate selected module |
 | `Ctrl+C` | `Cmd+C` | Copy selected module |
 | `Ctrl+V` | `Cmd+V` | Paste onto selected module. Adds a new module of the copied type after it if the types differ. |
@@ -53,7 +56,7 @@ patch slot.
 | Windows / Linux | macOS | Action |
 |---|---|---|
 | `F2` | `F2` / `Fn+F2` | Rename active patch |
-| `Delete` | `Delete` / `Backspace` | Delete active patch |
+| `Delete` | `Fn+Delete` (or forward Delete) | Delete active patch |
 | `Ctrl+D` | `Cmd+D` | Duplicate active patch |
 
 **NOTE:** these shortcuts act on the window under the mouse, regardless of
@@ -71,7 +74,7 @@ Live while the mouse is over an Insert FX slot row.
 ## Section Header (while hovered)
 
 Live while the mouse is over a parameter section header, for example OSC's
-`Frequency` or SHAPE's `Symmetry`.
+`Frequency` or SHAPE's `PRIMITIVE`.
 
 | Windows / Linux | macOS | Action |
 |---|---|---|

@@ -3,11 +3,15 @@ title: "OpenSoundControl"
 description: "Use incoming OpenSoundControl messages as modulation sources by selecting their address."
 ---
 
-OpenSoundControl input as a modulation source: any incoming message, read by
-its address (for example `/1/fader1`) rather than by a fixed slot number the
-way MIDI CC is.
+OpenSoundControl receives network control values by address, such as
+`/1/fader1`. It is separate from the [OSC oscillator module](../../modules/osc/).
 
-The listen port is set in `Settings > OpenSoundControl`'s `UDP Port` field.
+Set `UDP Port` in `Settings > OpenSoundControl` and choose `Listen`.
+The sender must use that port and the receiving computer's address.
+
+Hex Composer reads the first argument of each message when it is a float
+or integer and clamps it to 0 to 1. Other argument types and bundles are
+not supported. Each address holds its last received value.
 
 `OpenSoundControl Learn` arms a parameter and completes the assignment from
 the next incoming message at whatever address sent it, instead of typing an

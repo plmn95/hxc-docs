@@ -1,13 +1,13 @@
 ---
 title: "Patches Bar"
-description: "A row of pills, one per open patch slot, plus a [+] at the end to add another."
+description: "Open patch slots and their rename, duplicate, save, and factory-patch actions."
 ---
 
-A row of pills, one per open patch slot, plus a `[+]` at the end to add
-another.
+`Patches` holds the open patch slots. Its `+` control adds a slot; the
+right-click menu provides the actions below.
 
 A slot's right-click menu contains `Rename` (`F2`, or `Fn+F2` on macOS), `Duplicate` (`Ctrl+D`, or `Cmd+D` on macOS), `Add Before`, `Add After`,
-`Save here`, `Set as Startup Default`, `Load Factory Patch`,
+`Set as Startup Default`, `Load Factory Patch`,
 `Reset to Default`, and `Delete`.
 
 Related: [Patches, Slots, and Banks](../../../concepts/patches-slots-and-banks/).

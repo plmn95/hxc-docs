@@ -1,18 +1,16 @@
 ---
 title: "Chroma Key"
-description: "Pulls an alpha matte from a chosen color: a green- or blue-screen key."
+description: "Makes a chosen color transparent, such as a green or blue background."
 ---
 
-Pulls an alpha matte from a chosen color: a green- or blue-screen key.
+Makes a chosen color transparent, for example a green or blue background.
+Other colors remain unchanged.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Key Color | color swatch | | Cannot be modulated. |
-| Tolerance | Trough | 0 to 1 | |
-| Softness | Trough | 0 to 0.5 | Feathers the matte's edge. |
+| `Key` | Color picker | | The color to remove. Cannot be modulated. |
+| `Tolerance` | Trough | 0 to 1 | Raise it to remove a wider range of colors around `Key`. |
+| `Softness` | Trough | 0 to 0.5 | Softens the transition from transparent to opaque. |
 
-Outputs an alpha-only matte. See
-[Despill](../despill/) for cleaning up color spill left on the subject after
-keying.
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+Place [Despill](../despill/) after Chroma Key to reduce green or blue color
+spill on the remaining subject.

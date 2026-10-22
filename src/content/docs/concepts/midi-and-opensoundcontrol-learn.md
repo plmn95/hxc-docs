@@ -3,13 +3,14 @@ title: "MIDI and OpenSoundControl Learn"
 description: "Assign incoming MIDI and OpenSoundControl messages to parameters with Learn mode."
 ---
 
-Learn assigns an incoming MIDI CC or OpenSoundControl address to a
-parameter. It can be armed from:
+Use Learn to connect a hardware control or an incoming OpenSoundControl
+message without entering its MIDI CC number or address by hand. Arm it
+from:
 
 - A parameter's right-click menu: `MIDI Learn` or `OpenSoundControl Learn`.
 - `M` for MIDI or `O` for OpenSoundControl, followed by a click on the target
-  parameter.
-- `Learn` in the source picker's `MIDI` or `OpenSoundControl` tab, which fills
+  parameter. Press the same key again to cancel.
+- `LEARN` in the source picker's `MIDI` or `OpenSoundControl` tab, which fills
   the CC number and channel, or address, from the next message.
 
 Clicking another parameter while Learn is armed changes the target. The

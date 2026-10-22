@@ -8,6 +8,4 @@ updating instantly frame to frame.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Amount | Trough | 0 to 1 | 0 fully bypasses the effect. |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Amount` | Trough | 0 to 1 | 0 leaves the image unchanged. |

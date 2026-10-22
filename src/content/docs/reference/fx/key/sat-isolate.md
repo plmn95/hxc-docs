@@ -1,17 +1,13 @@
 ---
 title: "Sat Isolate"
-description: "Pulls an alpha matte from color saturation: everything between Min Sat and Max Sat keys in."
+description: "Keeps a saturation band and makes the rest transparent."
 ---
 
-Pulls an alpha matte from color saturation: everything between Min Sat and
-Max Sat keys in.
+Keeps areas with saturation between `Min Sat` and `Max Sat` and makes the
+rest transparent. The original colors remain unchanged.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Min Sat | Trough | 0 to 1 | |
-| Max Sat | Trough | 0 to 1 | |
-| Softness | Trough | 0 to 0.5 | Feathers both edges of the band. |
-
-Outputs an alpha-only matte.
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Min Sat` | Trough | 0 to 1 | Lower saturation boundary. 0 includes gray. |
+| `Max Sat` | Trough | 0 to 1 | Upper saturation boundary. 1 includes fully saturated colors. |
+| `Softness` | Trough | 0 to 0.5 | Softens both boundaries. |

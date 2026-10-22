@@ -3,35 +3,44 @@ title: "SCOPE"
 description: "Draw XY traces from audio, internal generators, or manual values, with persistence."
 ---
 
-Draws an XY trace from audio, internal generators, or manual values, with
-adjustable persistence.
+SCOPE draws an XY trace: one signal controls the horizontal beam position
+and another controls the vertical position. Use audio for a waveform trace,
+internal generators for curves, or manual values for a point.
 
 | Parameter | Control | Notes |
 |---|---|---|
-| X Source / Y Source | Selector | Manual, Audio L, Audio R, Generator A, or Generator B, independently per axis. |
-| X / Y | Trough | Manual axis value; only live when its Source is Manual. |
-| X Scale / Y Scale | Trough | Axis gain, 0 to 2, default 1. Shown for Audio and Generator sources. Can correct trace proportions on a non-square canvas. |
-| Blend / Mix | Selector, Trough | The same [Blend modes](../../../concepts/signal-chain/#blend-modes) every other module uses, plus a 0-1 Mix amount, applied to the composited trace+backdrop result. |
-| Persistence | Trough | Per-second exponential decay of the phosphor trace. |
-| Brightness / Width | Trough | Line width in line mode; also sizes points when Points Only is on. |
-| Points Only | Rocker | Renders each frame's beam position as a discrete point-glow instead of a connected line between positions. |
-| Detail | Trough | Beam segments drawn per frame; hidden (and has no effect) when both axes are Manual. |
-| Generator A / Generator B | Selector, Trough | Wave (Sine, Square, Sawtooth, Triangle, S+H, and the same 6 noise waves LFO offers), Freq, Phase, Amp. Square adds Duty, the share of each cycle spent high (1-99%, default 50). S+H jumps to a new random level once per cycle, with no glide. Seed picks the random sequence for S+H and the noise waves; the noise waves also add Harmonics/Spread/Gain/Density. |
-| Reset Generators | Button | Synchronizes Generator A/B phases, restarts S+H's sequence, and clears the trace. Shown when a generator drives either axis. |
+| `X Source` / `Y Source` | Selector | `Manual`, `Audio L`, `Audio R`, `Generator A`, or `Generator B`, independently per axis. |
+| `X` / `Y` | Trough | Position, -1 to 1, for an axis set to `Manual`. |
+| `X Scale` / `Y Scale` | Trough | Axis gain, 0 to 2. Available for audio and generator sources. Corrects trace proportions on a non-square canvas. |
+| `Mix` / `Blend` | Trough, Selector | Strength and [blend mode](../../../concepts/signal-chain/#blend-modes) of the trace and backdrop together. |
+| `Persistence` | Trough | How long the phosphor glow lingers, without smoothing the signal itself. |
+| `Brightness` | Trough | Strength of the trace's glow, 0 to 4. |
+| `Width` | Trough | Thickness of lines, or point size with `Points Only`. |
+| `Points Only` | Rocker | Draws separate glowing points instead of connecting successive positions. |
+| `Detail` | Trough | Points used to draw each frame, 8 to 512. Higher values resolve faster signals at greater rendering cost. Hidden when both axes are `Manual`. |
+| `Reset Generators` | Button | Realigns the generators, restarts the `S+H` sequence, and clears the trace. Available when a generator drives either axis. |
+
+`Generator A` and `Generator B` each have waveform, frequency, phase, and
+amplitude controls. Waveforms include `Sine`, `Square`, `Sawtooth`, `Triangle`,
+`S+H`, and the noise waves listed under [LFO](../../modulation/lfo/).
+`Square` adds `Duty`, the portion of a cycle spent high (1 to 99%).
+`S+H` jumps to a new random level once per cycle, without glide.
+
+`Seed` chooses the sequence for `S+H` and noise. Noise controls for detail
+layers and density appear only for the waveforms that use them.
 
 With an Audio source, the trace runs about one frame behind the sound.
-SCOPE holds back a few milliseconds of audio so that every frame draws an
-even share of it, which keeps the trace as steady as the generators. An
-axis set to Audio draws nothing while no audio arrives, for example before
-an input is opened.
+An audio axis draws nothing while no audio arrives. Open an input in
+`Settings > Audio` before choosing `Audio L` or `Audio R`.
 
-Insert FX on SCOPE applies to the full composited result, backdrop and
-phosphor trace together, not the trace alone. The effects see it over black; areas they leave dark stay empty. See
+Insert FX process the backdrop and phosphor trace together. The effects
+receive the image over black; dark areas remain transparent unless the
+input already had picture there. See
 [Insert FX Chains](../../../concepts/insert-fx-chains/).
 
-With [Perfect loop](../../windows/export-video/#perfect-loop) on, the generators start again at each loop
-start, and `Snap` sets their Freq to whole cycles per loop. Right-click a
-Freq to show it as the time one cycle takes. The phosphor
+With [Perfect loop](../../windows/export-video/#length-and-loops) on, the generators start again at each loop
+start, and `Snap` sets their frequency to whole cycles per loop. Right-click a
+frequency control and choose `Show as Time` to display the cycle duration. The phosphor
 glow warms up for one loop before an export.
 
 Related: [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

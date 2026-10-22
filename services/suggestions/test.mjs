@@ -31,10 +31,60 @@ test('full-page edits preserve unrelated sections, tables, relative links, and d
   const deletion = edited.replace('Same text.\n\n', '');
   assert.ok(equivalent(preserveSource(input, deletion), deletion));
 });
-test('full-page validation rejects executable HTML, dangerous URLs, images, metadata and oversize documents', () => {
+test('full-page validation rejects executable HTML, dangerous URLs, unsafe images, metadata and oversize documents', () => {
   for (const body of ['<script>alert(1)</script>', '[x](javascript:alert)', '[x](data:text/html,hello)', '![](https://example.com/x)', '---\ntitle: changed\n---', '# New title', 'x'.repeat(100001)])
     assert.throws(() => validateBody(body), body.slice(0, 50));
   assert.doesNotThrow(() => validateBody('Useful `code` and [link](../next/).'));
+});
+test('local images preserve source bytes, alt text, titles and URLs through validation and unrelated edits', () => {
+  const image = '![A source feeding a kaleidoscope.](../../images/signal-chain.png "Patch routing")';
+  const input = `\nWrapped introductory\ntext.\n\n${image}\n\nContinue here.\n`;
+  const tree = validateBody(input);
+  assert.deepEqual(tree.children[1].children[0].url, '../../images/signal-chain.png');
+  assert.equal(tree.children[1].children[0].alt, 'A source feeding a kaleidoscope.');
+  assert.equal(tree.children[1].children[0].title, 'Patch routing');
+  assert.equal(preserveSource(input, input.replace(/\n\n/g, '\n\n\n')), input);
+  const edited = input.replace('Continue here.', 'Continue with the next step.');
+  assert.equal(preserveSource(input, edited), edited);
+  assert.equal(equivalent(input, input.replace('Patch routing', 'Different title')), false);
+  assert.equal(equivalent(input, input.replace('A source feeding', 'A shape feeding')), false);
+  assert.equal(equivalent(input, input.replace('signal-chain.png', 'other.png')), false);
+  assert.equal(passages(input).length, 2, 'image paragraphs are not treated as editable plain-text passages');
+  assert.doesNotThrow(() => validateSubmission(submission({ kind: 'page', passage: '', original: '', replacement: edited })));
+});
+test('image validation rejects remote, executable, root-relative, malformed and unlabelled images without weakening size limits', () => {
+  for (const url of ['https://example.test/image.png', '//example.test/image.png', '/images/panel.png',
+    'data:image/png;base64,AAAA', 'javascript:alert(1)', '..\\images\\panel.png', '%2f%2fexample.test/image.png',
+    '../../images/panel%0a.png', '../../images/panel%ZZ.png', '../../examples/patch.hxc']) {
+    assert.throws(() => validateBody(`![Panel](<${url}>)`), url);
+  }
+  assert.throws(() => validateBody('![](../../images/panel.png)'), /alt text/);
+  assert.throws(() => validateBody('![   ](../../images/panel.png)'), /alt text/);
+  assert.throws(() => validateBody('é'.repeat(50001)), /100,000 bytes/);
+  assert.doesNotThrow(() => validateBody('![Panel](../../images/panel%20detail.png)'));
+});
+test('image submissions and queued delivery reject paths above the documentation base', async () => {
+  for (const url of ['../../../private.png', '../../%2e%2e/private.png', 'foo.png%23/../../../../private.png']) {
+    const item = submission({kind: 'page', passage: '', original: '', replacement: `![Panel](${url})`});
+    assert.throws(() => validateSubmission(item), /within the documentation/);
+    const mock = github();
+    await assert.rejects(deliver(row(item), environment(), mock.api), InvalidSuggestion);
+    assert.equal(mock.writes.length, 0, 'invalid queued images must not reach GitHub writes');
+  }
+  assert.doesNotThrow(() => validateSubmission(submission({path: 'src/content/docs/index.md', kind: 'page', passage: '', original: '', replacement: '![Panel](images/panel.png)'})));
+  assert.throws(() => validateSubmission(submission({path: 'src/content/docs/index.md', kind: 'page', passage: '', original: '', replacement: '![Panel](../images/panel.png)'})), /within the documentation/);
+});
+test('full-page image submissions reach GitHub as Markdown with their original image attributes', async () => {
+  const image = '![A source selected in the chain.](../../images/source.png "Source controls")';
+  const replacement = `${splitDocument(source).body}\n${image}\n`;
+  const item = validateSubmission(submission({kind: 'page', passage: '', original: '', replacement}));
+  const mock = github();
+  assert.equal((await deliver(row(item), environment(), mock.api)).kind, 'pull');
+  const write = mock.writes.find(w => w.method === 'PUT');
+  const delivered = Buffer.from(write.body.content, 'base64').toString();
+  assert.equal(splitDocument(delivered).metadata, splitDocument(source).metadata);
+  assert.ok(delivered.includes(image));
+  assert.ok(equivalent(splitDocument(delivered).body, replacement));
 });
 test('full-page delivery creates one PR, preserves metadata, and recovers a lost GitHub response', async () => {
   const body = splitDocument(source).body.replace('useful', 'clearer');

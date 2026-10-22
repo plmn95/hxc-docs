@@ -3,38 +3,34 @@ title: "Modulation Matrix"
 description: "Assign modulation sources, adjust their amount, and inspect active parameter assignments in the Modulation Matrix."
 ---
 
-Right-click a parameter and choose `Edit Modulation Connections...` to manage
-its sources, or `Add Modulation Source` to open the source picker.
+Modulation moves a parameter around its base value. An LFO can turn a
+pattern back and forth; an audio level can change its size. Several sources
+can contribute to the same parameter.
 
-**Unverified in the released app:** these menu labels need a live desktop
-check. They were checked against the local development build's source.
-
-`+ Add Source` opens the source picker. Sources can also be dragged onto a
+Right-click the parameter and choose `Edit Modulation...`, then `+ Add
+Source` to open `Pick a source`. Sources can also be dragged onto a
 parameter from `Modulation`, or assigned through `MIDI Learn` and
-`OpenSoundControl Learn`. Multiple sources can modulate the same parameter.
+`OpenSoundControl Learn`.
 
-In the source picker, choose a `Source type`, select a source, and click
-`Add Connection`. `Esc` or clicking outside closes the picker without adding
-a connection. Edit an existing assignment in the connection editor.
+Choose the source's tab in the picker. For an LFO, select `LFO` and click
+its waveform card.
 
 Each assignment has a signed `Depth` in the parameter's units. Negative
 Depth inverts the modulation. `Offset` adds a constant shift.
+Set these values in the connection editor, then click `Done`.
 
 A source can modulate another assignment's Depth.
 
-Every active assignment also shows up in the
-[Mod Matrix](../../reference/windows/mod-matrix/) window, which lists and
-edits them from one place instead of hunting through each module's own
-parameters. Mixer Mode keeps its modulation in a separate Mod Matrix of its
-own.
+The [Mod Matrix](../../reference/windows/mod-matrix/) window lists the
+patch's assignments together, so you can inspect or edit them without
+opening each parameter. Mixer Mode keeps its assignments in a separate
+matrix.
 
-To make a parameter follow a [Perfect loop](../../reference/windows/export-video/#perfect-loop),
+To make a parameter follow a [Perfect loop](../../reference/windows/export-video/#length-and-loops),
 connect it to `Loop Phase` on the source picker's `TIME` tab.
 
-Removing sources and using `Clear All Modulation` can be undone.
-
-The [Mod Matrix](../../reference/windows/mod-matrix/) window lists the
-patch's assignments together.
+`Clear All` in a parameter's connection list removes its assignments.
+Removing a source or clearing the list can be undone.
 
 Related: [Modulation Sources](../../reference/modulation/),
 [MIDI and OpenSoundControl Learn](../midi-and-opensoundcontrol-learn/).

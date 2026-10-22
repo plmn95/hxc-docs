@@ -1,14 +1,16 @@
-# Hex Composer Wiki: Style Guide
+# Hex Composer Documentation: Style Guide
 
-This guide covers the walkthrough, concepts, and reference pages.
+This guide covers Getting Started, task guides, concepts, and reference pages.
+See [AUTHORING.md](AUTHORING.md) for capture, verification, and review procedures.
 
 ## Editing standard
 
 Explain what the reader needs beyond what a control or action already says.
 A factual sentence is not automatically a useful sentence.
 
-- Cut expected outcomes: loading a patch runs it, choosing a value applies
-  it, clicking a slot selects it. Document exceptions to those expectations.
+- Cut outcomes that repeat the action: loading a patch runs it, choosing a
+  value applies it, clicking a slot selects it. Keep checkpoints that help
+  readers catch a mistake, such as a visible pattern or a moving meter.
 - Keep concrete actions, unfamiliar terms, operating limits, and behavior
   that could surprise the reader, such as a first save requiring a path or
   closing a picker preserving an assignment.
@@ -20,10 +22,35 @@ A factual sentence is not automatically a useful sentence.
 - Keep limits that affect use. Avoid incidental totals such as the number
   of module types or catalog entries in explanatory prose.
 - Delete redundant wording rather than replacing it with shorter filler.
+- Start with an action that advances the task. Include routine preparation
+  only when it prevents a specific problem, such as losing edits before
+  resetting a patch.
+- Use exact values to reproduce the example. Once it works, name a useful
+  control and the change to explore; do not turn experimentation into a
+  sequence of values to enter and undo.
 
 Apply this standard to descriptions, tables, callouts, and shared site text
 as well as paragraphs. The section guidance below does not require padding
 or a fixed template where there is nothing useful to add.
+
+## Write from the task
+
+Name the action, the control, and any condition that changes the result.
+Use ordinary sentences with enough context to follow them. Vary sentence
+length when the material calls for it; do not turn every explanation into
+fragments or force every paragraph into the same pattern.
+
+Avoid stock openings, praise, invented personal experience, and summaries
+that repeat the page. Read an awkward passage aloud, then check whether it
+says something the reader needs. Removing a particular word or punctuation
+mark does not establish that the writing is useful or accurate.
+
+| Instead of | Write |
+|---|---|
+| "Simply adjust the settings to create stunning visuals." | Name the control and the change it makes. For example: "Increase `Segments` to repeat the wedge more times around the center." |
+| "Click `Save` to save your patch." | Document a useful distinction: "The first save asks for a path." |
+| "You should now see the result." | State a checkable result when it helps: "The pattern turns back and forth." |
+| "In this guide, we'll explore the powerful feedback system." | Begin with the task or the first action. |
 
 ---
 
@@ -31,7 +58,7 @@ or a fixed template where there is nothing useful to add.
 
 The section determines what a reader is there to do.
 
-### `reference/**`: TD-style (modules, fx, modulation, windows)
+### `reference/**`: lookup (modules, effects, modulation, windows)
 
 Write concise descriptions and parameter tables for lookup. Include
 instructions when a gesture or interaction needs explaining, and callouts
@@ -46,47 +73,65 @@ table, or related link solely to fill a template.
 
 Explain the feature's purpose and behavior. Include a short instruction
 when it helps the reader find or use the feature; put extended walkthroughs
-in Getting Started.
+in Getting Started or a task guide.
 
-Open with the situation the feature exists to solve, not with its cardinality
-or internal accounting: how many module types can use it, how many slots or
-buses exist, how many blend modes it offers. A count is an implementation
-detail restated in prose. Lead with why a reader would reach for this piece of
-the model, then state how it works. The test: if the opening sentence would
-read the same whether the app had 3 buses or 30, it's counting, not
-explaining, and belongs after the purpose, not before it.
+Start with a situation where the feature is useful, then explain how it
+works. Keep numeric limits when they affect the reader's choices. Counts
+of module types, buses, or blend modes rarely explain why to use a feature.
 
 > **Example (Concepts page: Signal Chain):**
-> A patch is the chain you build: modules run top to bottom, each reading the
-> output of the one above it, until the last module in chain order is what the
+> A patch is the chain you build: modules run left to right, each reading the
+> output of the one before it, until the last module in chain order is what the
 > Output window shows.
 
 ### `getting-started/**`: sustained second-person imperative
 
 Give concrete actions in the order a first-time user performs them.
-Explain an outcome only when it is unexpected or needed for the next step.
+Choose one reliable path through the exercise. Include a visible checkpoint
+when the reader needs to confirm progress before continuing. Keep optional
+variations after the working result.
 
 > **Example (Getting Started page: load a factory patch):**
 > Open `File > Factory Patches` and choose a patch.
+
+### `guides/**`: a specific result
+
+Aim for one recognizable visual result and introduce only the new concepts
+needed to make it. For example, an audio guide can be titled "Make
+an audio spectrum". State the starting patch, required inputs, and result.
+Supply a checked starting patch when building the prerequisites would turn
+a short task into a tour of features.
+
+Use numbered steps for an ordered procedure, combining short actions in
+the same part of the UI when that is easier to follow. Keep the sequence
+as short as the task allows; there is no required step count.
+
+Include a preview or comparison when appearance is part of the goal. Give
+values for a reproducible starting point, then explain a useful variation
+or tradeoff where needed. Link to parameter reference and concepts instead
+of copying them into the guide. Add recovery advice for a likely failure
+in the procedure; do not append a generic troubleshooting checklist.
 
 ---
 
 ## 2. Hard Bans
 
-These apply in all three sections, no exceptions.
+These apply to all published reader pages. Punctuation and wording rules
+are house style choices, not tests of whether a person or a model wrote a
+passage.
 
 | Banned | Why |
 |---|---|
-| Em-dashes (—) | Reads as AI-generated prose. Use a period, comma, colon, or parentheses instead. This document was rewritten to remove its own em-dashes once this rule existed; there should be none left below. |
-| Echo-fragment and comma-stacked triplet sentences: a fragment (no subject and verb of its own) that repeats a number or word for rhythm ("Three sections, three jobs."), or strings three short parallel phrases together for cadence instead of writing a real sentence ("Evergreen, readable in any order, referenced anytime.") | Reads as tagline copy, not documentation. Write a full sentence that states the fact plainly, or cut the line. Three parallel fragments in a row is the tell regardless of what the fragments say. |
+| Em-dashes | Use a period, comma, colon, or parentheses for this manual's punctuation style. |
+| Echo-fragment and comma-stacked triplet sentences: a fragment (no subject and verb of its own) that repeats a number or word for rhythm ("Three sections, three jobs."), or strings three short parallel phrases together for cadence instead of writing a real sentence ("Evergreen, readable in any order, referenced anytime.") | Reads as tagline copy, not documentation. Write a full sentence that states the fact plainly, or cut the line. Use complete sentences when parallel fragments add rhythm without information. |
 | Decorative glyphs as structure: arrows (→), emoji, or other symbols used to dress up a link or heading instead of plain markdown | Adds visual flourish with no information. A plain `[link text](path)` or heading says the same thing without the costume. |
 | Retro-kitsch / nostalgia language ("groovy," "old-school vibes," "throwback") | The CRT vocabulary exists because the engine is a real phosphor/scanline simulator, not because old things look cool. Costume language contradicts the product's own claim about itself. |
 | Marketing adjectives (powerful, seamless, intuitive, simply, just, easily) | These assert a value judgment in place of a fact, and go stale the moment a reader hits the rough edge the adjective quietly denied existed. |
-| Hedging (might, should probably, generally) | Hedging is what a claim looks like when it hasn't been checked. State the fact, or mark the sentence explicitly as unverified. Don't blur the two into one soft word. |
+| Vague hedging that hides a missing condition or check | Name the condition that changes the behavior. Mark an unverified claim explicitly and preserve real uncertainty rather than turning it into a confident guess. |
 | Generic UI vocabulary standing in for a Hex Composer control-vocabulary term | Hex Composer assigns each control word in the table below one exact meaning. Calling a Trough a "slider" or a Rocker a "toggle" reintroduces ambiguity. |
 | Paraphrased module/state names | Write `LIVE`, `BYP`, `MUTE`, not "on," "bypassed," "disabled" standing in for them. A paraphrase describes a different, generic concept and breaks the reader's ability to match the page to what's on screen. |
-| Screenshots / embedded images | The interface changes quickly, and a screenshot goes stale faster than the prose describing it. Hex Composer's control vocabulary is precise enough that prose can do the job alone. |
-| Code internals: function/class/struct names, file paths, source citations (`OscModule::adsr`, `CrtRenderer::osc[]`, `Patch::addModule()`, `src/app.cpp`) | A user reading this wiki never sees the source code and doesn't recognize these names. State the on-screen behavior or limitation directly ("has no effect," "not available for this control") instead of pointing at the implementation that causes it. Maintainers verify implementation details during review. |
+| Fabricated screenshots or altered app behavior | Capture the real app. Cropping and explanatory annotations are allowed; replacing labels, controls, states, or output with invented content is not. |
+| Code internals: function/class/struct names, source-file paths and citations (`OscModule::adsr`, `CrtRenderer::osc[]`, `Patch::addModule()`, `src/app.cpp`) | State the on-screen behavior or limitation directly instead of pointing at its implementation. User-accessible file locations and configuration names are allowed when needed to complete a task or diagnose a problem. Maintainers keep source evidence in review records. |
 | App-history framing: explaining what used to exist, was retired, or changed over time | A wiki documents the app as it is. History belongs in release notes or a changelog, not here, and a reader who never knew the old behavior existed has no use for why it is gone. |
 | A line break landing right after a hyphen or slash (`single-` / `module`, `ACTIVE`/ / `BYPASSED`) | Markdown joins wrapped lines with a single space, so the break renders as a stray space glued to the punctuation: "single- module," "ACTIVE/ BYPASSED." Reword or move the wrap point so no line ends in `-` or `/`. |
 
@@ -135,8 +180,9 @@ This is the pattern for any future naming collision the app turns up: find
 how the app itself resolved it in its own UI text, and match that resolution
 in the wiki rather than inventing a separate one.
 
-**Backtick literal UI text; reserve plain quotes for citing an example
-value.** A menu item, button label, section header, key, or window name is
+**Backtick literal UI text in Markdown prose and tables; reserve plain quotes
+for citing an example value.** Figure legends use the shared annotation label
+style. A menu item, button label, section header, key, or window name is
 a fixed string the reader can find on screen: write it in backticks
 (`` `Reset to Default` ``, `` `+ Add` ``, `` `INSERT FX` ``), matching how
 the control-vocabulary terms above are treated. Plain quotes are for
@@ -146,7 +192,50 @@ citing an example of something that varies, like a factory patch's name
 
 ---
 
-## 4. Self-Check Before Calling a Page Done
+## 4. Images and comparisons
+
+Use an image to locate an unfamiliar control, show a relevant state, or
+explain an appearance that prose cannot convey efficiently. A screenshot
+does not replace the written steps or exact UI labels. Do not add an image
+merely to fill space.
+
+- Show the full workspace when orientation is the lesson. Otherwise crop
+  around the relevant controls and keep enough context to find them.
+- Capture a consistent layout and UI scale for a sequence. Keep labels
+  readable at the rendered size and check the page on a narrow screen.
+- Highlight the target when a screenshot helps the reader find where to
+  click or adjust a control. Keep result previews and visual comparisons
+  clean unless a specific detail needs explaining.
+- Use the shared annotation style: thin sodium-orange outlines, numbered
+  markers, graphite backgrounds, and the docs' mono type. Orange identifies
+  the target; green retains its meaning for links and affirmative actions.
+  Avoid decorative arrows, glow, and large colored overlays.
+- Keep annotations sparse, with one or two targets per image. Put markers beside
+  controls, leaving labels, values, and pointer targets visible. Identify
+  each numbered control beneath the image; do not rely on color alone.
+  Add a caption explanation only when it contributes beyond the steps.
+  Keep the written procedure complete without the image.
+- Preserve the screenshot pixels and add annotations as a separate layer.
+  Include access to the clean full-size screenshot. Check placement and
+  readable marker sizes on narrow screens.
+- Write alt text for the information the image contributes. Put a complex
+  comparison's conclusion in nearby prose as well. Avoid repeating the same
+  description in the alt text, caption, and paragraph.
+- Keep source, framing, and settings consistent in before/after comparisons.
+  Identify what changed. For time-dependent effects, record the capture time
+  and reset or warm-up procedure in the capture manifest.
+- Use repository-local assets that work in the versioned offline manual.
+  Preserve the original capture and record its provenance using
+  [AUTHORING.md](AUTHORING.md). Review affected images when the depicted
+  controls or behavior change.
+
+Use still images for the initial illustrated guides. Add motion examples
+only when motion explains something the still cannot, and after validating
+editor preservation, playback, a still fallback, and offline delivery.
+
+---
+
+## 5. Self-Check Before Calling a Page Done
 
 Run this checklist against the page. It's written to be usable by a writer
 with no memory of why each rule exists. Apply it literally.
@@ -160,8 +249,9 @@ with no memory of why each rule exists. Apply it literally.
 - [ ] **No decorative glyphs (arrows, emoji) standing in for plain markdown**
       on links or headings.
 - [ ] **No code internals.** No function/class/struct names, no file paths,
-      no `Namespace::identifier()` citations, anywhere in the page text.
-      State what happens on screen, not what implements it.
+      no `Namespace::identifier()` citations. User-accessible file locations
+      and configuration names are allowed when needed to complete a task
+      or diagnose a problem. State behavior rather than implementation.
 - [ ] **No app-history framing.** Nothing about what used to exist, was
       retired, or changed over a past session. Document current behavior
       only.
@@ -176,28 +266,32 @@ with no memory of why each rule exists. Apply it literally.
 - [ ] **Every module/parameter/state name matches the app's on-screen text
       exactly**, including case: `LIVE`/`BYP`/`MUTE`, not a prose paraphrase
       presented as if it were the label.
-- [ ] **Zero hits for the banned-word list**: powerful, seamless, intuitive,
-      simply, just, easily, might, should probably, generally, groovy,
-      old-school, vibes, retro.
+- [ ] **No promotional or stock wording.** Remove words such as powerful,
+      seamless, intuitive, simply, easily, and vibes when they replace a fact.
+      A literal UI label or a necessary technical term is not a violation.
 - [ ] **Every menu item, button, section header, and window name is in
       backticks, not plain quotes.** Plain quotes are only for an example
       value (a patch name, a title template), never a clickable control.
 - [ ] **"OSC" never appears alone meaning the protocol.** "OpenSoundControl"
       is spelled out every time. If both meanings appear on the page, the
       first use of each is disambiguated inline.
-- [ ] **No screenshots or embedded images.**
+- [ ] **Every image has a purpose, useful alt text, and capture provenance.**
+      Written steps remain complete. Relevant labels are readable on desktop
+      and narrow screens, and local image/download links work offline.
+- [ ] **Control-locating figures guide the eye.** Shared target markers leave
+      app labels and values visible, match the explanations beneath the
+      image, and remain readable on narrow screens. Output previews stay
+      clean when annotations add no information.
 - [ ] **No template padding.** Tables, summaries, and callouts contain
       useful information rather than repeating control labels or paragraphs.
-- [ ] **Concepts pages only:** opens with the situation the feature solves,
-      not a count of types/slots/buses/options. If the first sentence would
-      read identically at a different count, move it after the purpose
-      sentence, not before.
-- [ ] **Getting Started pages only:** every instruction names a concrete,
+- [ ] **Concepts pages only:** opens with a situation where the feature is
+      useful. Counts and limits are included when they help the reader
+      choose or operate it.
+- [ ] **Getting Started and task guides:** every instruction names a concrete,
       checkable action: a specific menu path, key, or control, not a vague
       suggestion ("adjust the settings as needed" is not an instruction).
-- [ ] **Every cross-link resolves to a real page in the approved wiki file
-      tree.** No linking to a page name that sounds right but wasn't in the
-      sign-off.
+- [ ] **Every cross-link and asset reference resolves.** Check the existing
+      documentation tree rather than guessing a page or filename.
 - [ ] **Every factual claim about current app behavior is checked in the
       current Hex Composer release.** Include the tested version in the pull request.
       A claim that cannot be verified is marked inline as unverified and

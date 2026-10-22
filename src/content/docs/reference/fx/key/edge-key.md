@@ -1,16 +1,13 @@
 ---
 title: "Edge Key"
-description: "Pulls an alpha matte from detected edges: only outlines key in, flat regions key out."
+description: "Keeps the original image along detected edges and makes flat areas transparent."
 ---
 
-Pulls an alpha matte from detected edges: only outlines key in, flat regions
-key out.
+Keeps the original image along detected edges and makes flat areas
+transparent. For white outlines on black instead, use
+[Edge Detect](../../filter/edge-detect/).
 
-| Parameter | Control | Range |
-| --- | --- | --- |
-| Sensitivity | Trough | 0 to 5 |
-| Threshold | Trough | 0 to 1 |
-
-Outputs an alpha-only matte.
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| Parameter | Control | Range | Notes |
+|---|---|---|---|
+| `Sensitivity` | Trough | 0 to 5 | Amplifies edge contrast before the threshold is applied. |
+| `Threshold` | Trough | 0 to 1 | Raise it to reject weaker edges. |

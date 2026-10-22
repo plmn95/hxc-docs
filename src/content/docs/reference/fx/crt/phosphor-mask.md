@@ -8,7 +8,5 @@ CRT tube.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Intensity | Trough | 0 to 1 | |
-| Mask Type | Selector | P22 Slot, Aperture Grille, Shadow Mask, Fine Slot | Cannot be modulated. |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Intensity` | Trough | 0 to 1 | |
+| `Mask Type` | Selector | `P22 Slot`, `Aperture Grille`, `Shadow Mask`, `Fine Slot` | Cannot be modulated. |

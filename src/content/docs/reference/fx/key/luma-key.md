@@ -1,16 +1,12 @@
 ---
 title: "Luma Key"
-description: "Pulls an alpha matte from brightness: everything above the threshold keys out."
+description: "Keeps bright areas and makes darker areas transparent."
 ---
 
-Pulls an alpha matte from brightness: everything above the threshold keys
-out.
+Keeps bright areas and makes areas below `Threshold` transparent. The
+original colors remain visible where the image is kept.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Threshold | Trough | 0 to 1 | |
-| Softness | Trough | 0 to 0.5 | Feathers the matte's edge. |
-
-Outputs an alpha-only matte.
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Threshold` | Trough | 0 to 1 | Raise it to keep only brighter areas. |
+| `Softness` | Trough | 0 to 0.5 | Softens the transition around the threshold. |

@@ -1,16 +1,13 @@
 ---
 title: "KEY"
-description: "Effects that pull a matte from the image, isolating part of it by color, luminance, saturation, motion, or edges, or that clean up around a matte another effect already pulled."
+description: "Effects that isolate parts of an image or clean up color after keying."
 ---
 
-Effects that pull a matte from the image, isolating part of it by color,
-luminance, saturation, motion, or edges, or that clean up around a matte
-another effect already pulled.
-
-Six of the nine, Luma Key, Chroma Key, Motion Key, Luma Range, Edge Key, and
-Sat Isolate, output an alpha-only matte rather than a recolored image.
-Channel Select, Despill, and Dominant Channel work on channels directly
-instead of producing a new matte.
+Keying effects make part of an image transparent so content beneath can
+show through. Luma Key, Chroma Key, Motion Key, Luma Range, Edge Key, and
+Sat Isolate change transparency while preserving the original colors.
+Channel Select can replace transparency with a color channel; Despill and
+Dominant Channel change colors.
 
 - [Luma Key](luma-key/)
 - [Chroma Key](chroma-key/)

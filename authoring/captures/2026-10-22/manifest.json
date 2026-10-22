@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "captureDate": "2026-10-22",
+  "baseline": {
+    "app": "Hex Composer",
+    "version": "0.21.1",
+    "distribution": "Published macOS release",
+    "releaseUrl": "https://github.com/3rd-Party-Guy/retrovid/releases/download/v0.21.1/hexcomposer-macos.zip",
+    "zipSha256": "1cb5826119cc14b121ff02f2bef535577b663ffcce13c2ba51a32b5c0e7bf210",
+    "executableSha256": "2aa295b93286e8a722e707db8567ffdbe3545d2fee6688e155ea0b2afd340191",
+    "platform": "macOS",
+    "osVersion": "26.7.1",
+    "osBuild": "25G241"
+  },
+  "releaseComparison": {
+    "capturedSourceCommit": "c2427521416e4800277a59c2b869c41de2d193bc",
+    "currentRelease": "0.21.2",
+    "currentReleaseCommit": "32ad0fd6d582e5f204058d1bc802f60cf6623adb",
+    "sourceCheck": "Compared release source identities. v0.21.2 changes Windows stability, edit commands, and tests; the depicted macOS controls and shaders are unchanged. Captures and live checks use v0.21.1, not v0.21.2."
+  },
+  "processing": {
+    "script": "scripts/prepare-doc-images.mjs",
+    "operations": "Crop actual screenshots; optionally resize with Lanczos3; encode PNG with compression level 9 and adaptive filtering off. No annotations, redactions, or generated UI. Tooltips and unrelated controls are outside the published crop.",
+    "sharpVersion": "0.35.4",
+    "libvipsVersion": "8.18.6",
+    "annotationRegistry": "authoring/image-annotations.json (rendered as a separate site layer; PNG hashes describe unannotated pixels)"
+  },
+  "captureInput": {
+    "fileName": "Spectrum demo.wav",
+    "origin": "Temporary test audio authored for this capture session from five sine voices. No copyrighted music was used.",
+    "durationSeconds": 16,
+    "published": false,
+    "usage": "Loaded with File > Open Song... and played as the patch audio input. Readers supply their own audio file.",
+    "generator": "authoring/captures/2026-10-22/generate-spectrum-audio.py",
+    "sha256": "aa85d556bcb999dc0302ef9eec9fb8f08b865cadaa0c2bd4dd6a4ee35fa23b66"
+  },
+  "patchSettings": {
+    "chain": [
+      "OSC 1",
+      "POINTCLOUD 1"
+    ],
+    "pointcloud": {
+      "Shape": "Spectrum",
+      "Height": 0.5,
+      "Smoothing": 0.5,
+      "Density": 0.4,
+      "Depth Amount": 0,
+      "Perspective": 1,
+      "Zoom": 1,
+      "Orbit": 0,
+      "Tilt": 0,
+      "Roll": 0,
+      "Point Size": 2.5,
+      "Style": "Points",
+      "Point": "Soft",
+      "Blend": "Replace",
+      "Mix": 1,
+      "Backdrop": true
+    },
+    "verification": "POINTCLOUD values inspected in 02-spectrum-controls.png; patch opened and audio playback observed live by the capture operator."
+  },
+  "images": [
+    {
+      "id": "audio-spectrum-result",
+      "task": "Preview the audio-driven spectrum ring while the song is playing.",
+      "page": "src/content/docs/guides/audio-spectrum.md",
+      "patch": "Audio spectrum starting patch with OSC before POINTCLOUD, Shape Spectrum",
+      "source": "authoring/captures/2026-10-22/originals/01-spectrum-playing.png",
+      "published": "public/images/guides/audio-spectrum/result.png",
+      "crop": {
+        "left": 2,
+        "top": 322,
+        "width": 2232,
+        "height": 1255
+      },
+      "resize": {
+        "width": 1400
+      },
+      "sourceKind": "App Output view screenshot",
+      "captureTiming": "Song strip shows PLAYING at 0:03.42 of the 16-second authored test audio.",
+      "verifiedChecks": [
+        "Opened the supplied starting patch in the published macOS v0.21.1 app.",
+        "Loaded the authored test audio through File > Open Song... and engaged PLAY.",
+        "Observed the ring changing with the playing audio; this frame was captured at 3.42 seconds.",
+        "Published crop contains only the Output image; app chrome, tooltip, and Output borders are excluded."
+      ],
+      "sourceDimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 1400,
+        "height": 787
+      },
+      "sourceSha256": "920b660342db4e05ea7d431a1faadf2f546d2ba137b4fd535fce9125e8f63a4f",
+      "publishedSha256": "7bca9ebf3a6658f258206cdeb470d0db626a6729aeba07b937cc9df245f0355a"
+    },
+    {
+      "id": "audio-spectrum-controls",
+      "task": "Locate POINTCLOUD Shape Spectrum, Height, and Smoothing.",
+      "page": "src/content/docs/guides/audio-spectrum.md",
+      "patch": "Audio spectrum starting patch with POINTCLOUD selected",
+      "source": "authoring/captures/2026-10-22/originals/02-spectrum-controls.png",
+      "published": "public/images/guides/audio-spectrum/controls.png",
+      "crop": {
+        "left": 2250,
+        "top": 334,
+        "width": 620,
+        "height": 550
+      },
+      "resize": null,
+      "sourceKind": "App UI screenshot",
+      "captureTiming": "Song strip shows PLAYING at 0:05.03 of the same authored test audio.",
+      "verifiedChecks": [
+        "Selected POINTCLOUD 1 in the live app.",
+        "Observed Shape Spectrum with Height 0.50 and Smoothing 0.50.",
+        "Published crop retains module identity and the relevant controls at original pixel size."
+      ],
+      "sourceDimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 620,
+        "height": 550
+      },
+      "sourceSha256": "c8813dc0f4d2b0334ca69612edb4d50c760c9082055b7ecacf27b4b8fcc9e513",
+      "publishedSha256": "4fe3ee01ad89042eb851eb86fca923315f394f07b445d18c3098e58d24595ae7"
+    },
+    {
+      "id": "audio-spectrum-song-strip",
+      "task": "Recognize the PLAYING state and playback position on the song strip.",
+      "page": "src/content/docs/guides/audio-spectrum.md",
+      "patch": "Audio spectrum starting patch with authored test audio playing",
+      "source": "authoring/captures/2026-10-22/originals/03-song-strip.png",
+      "published": "public/images/guides/audio-spectrum/song-strip.png",
+      "crop": {
+        "left": 15,
+        "top": 190,
+        "width": 900,
+        "height": 74
+      },
+      "resize": null,
+      "sourceKind": "App UI screenshot",
+      "captureTiming": "Captured after Space restarted playback at the end. The preserved original visibly shows PLAYING at 0:02.23 of 0:16.00.",
+      "verifiedChecks": [
+        "Verified Space restarts playback after the test song reaches its end.",
+        "Observed PLAYING, elapsed time, waveform, and playhead in the preserved original.",
+        "Published crop excludes the unrelated Output tooltip visible farther down the original screenshot."
+      ],
+      "sourceDimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 900,
+        "height": 74
+      },
+      "sourceSha256": "cc20951591088b2a749cbaae9b10bf5a65c52511d4cf6b7a187da9c830c9a855",
+      "publishedSha256": "b38a40e8b818e5cc9cadd5e2b09e56e815d91d3b4a1708d65abb37ccf29ae373"
+    }
+  ],
+  "examples": [
+    {
+      "path": "public/examples/audio-spectrum.hxc",
+      "sha256": "dab52af1b1f38759d545cdc1753179e46f88dfd09a5a6637ac8f0313ce41c0eb",
+      "appVersion": "0.21.1",
+      "verifiedChecks": [
+        "Opened the starter through File > Open... in the published macOS app, loaded authored audio through File > Open Song..., and observed the spectrum react during playback.",
+        "Saved an Audio spectrum copy through File > Save As... and inspected its JSON. Closing the song strip preserves its song reference, so the reference was removed from the portable starter JSON after saving.",
+        "Opened the exact final portable starter by setting it as the temporary app configuration\u2019s startup patch and restarting the published macOS app. Observed Audio spectrum with the cyan ring and no song strip. This final reopen used startup restore, not the native Open dialog. The final song-free fixture was not resaved through the app.",
+        "Inspected all JSON strings: no nonempty external file/font/media paths, absolute user paths, temporary paths, or song reference remain."
+      ],
+      "externalReferenceAudit": "All JSON strings inspected; no nonempty external file/font/media paths, absolute user paths, temporary paths, or song reference remain."
+    }
+  ],
+  "unusedOriginals": [
+    {
+      "source": "authoring/captures/2026-10-22/originals/04-portable-spectrum-reopened.png",
+      "sha256": "052b42c8b320132af056823d326ed42dabafc62ec4725a87f8f7af2d7f3cd69f",
+      "dimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "reason": "Evidence that the final song-free portable fixture opens through startup restore; not needed in the published guide."
+    }
+  ]
+}

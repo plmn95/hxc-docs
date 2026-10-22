@@ -1,87 +1,70 @@
 ---
 title: "Export Video"
-description: "Render a patch to a file frame by frame, as a Perfect loop, and following an audio file."
+description: "Render a patch at an exact frame rate, make a repeating loop, or export with a song."
 ---
 
-Recording captures what plays live, so a patch too heavy to run at full
-frame rate records with dropped frames. `File > Export Video` renders the
-patch to a file frame by frame instead: every frame lands at its exact time
-however long it takes to draw, and the same patch always gives the same
-file. The live view pauses while an export runs and picks up where it left
-off.
+Use `File > Export Video...` for a fixed-length clip without the dropped
+frames of an overloaded live recording. It renders the patch frame by
+frame from its beginning, taking as long as each frame needs. The live view
+pauses during export and continues from where it stopped.
 
-## Formats
+Choose a preset with `For`, or set the format, size, frame rate, and quality
+individually. The output keeps the aspect ratio set in `Settings > Output`.
+Files use the folder and filename in `Settings > Recording`.
 
-`MP4` is H.264 video. `WebM` is VP9 video and can keep the picture's
-transparency with `Transparent background`. `GIF` uses one set of colors
-for the whole file, so nothing flickers, and repeats forever; `Smooth
-gradients` blends neighboring colors so gradients don't band. A video can
-be at most 10 minutes long, a GIF at most 60 seconds.
+## Formats and inputs
 
-The `For` Selector fills in the format, size, frame rate and quality for a
-platform. Changing any row afterwards makes it `Custom`. `Size` sets the
-long edge; the shape always follows the Output. Files go to the folder and
-filename set in `Settings > Recording`.
+`MP4` uses H.264. `WebM` uses VP9 and can preserve transparency with
+`Transparent background`. `GIF` repeats forever and uses one palette for
+the whole file; `Smooth gradients` reduces banding. Video exports can be
+at most 10 minutes long, GIFs at most 60 seconds.
 
-An export renders on its own copy of the patch. MIDI and OpenSoundControl
-values stay as they were when the export started. Cameras, NDI, Spout and
-Syphon inputs show the picture they had at that moment, holding still.
-Video clips play frame by frame in step with the export.
+Live inputs do not continue during export. MIDI, OpenSoundControl, and
+macro values stay at their starting values. Cameras, NDI, Spout, and
+Syphon inputs hold a still image. Video clips advance with the export.
+Audio sources follow the patch's song when `Use song` is on; otherwise
+they are silent. CV and Gate inputs are silent.
 
-## Perfect loops
+## Repeating loops
 
-With `Perfect loop` on, the file is exactly one loop and its last frame
-flows into its first. `Length` is set in bars, beats or seconds; bars and
-beats follow the tempo. An export needs a whole number of frames, so in bars
-or beats it renders at a tempo a fraction of a BPM away when needed, and the
-dialog says so. The loop setting is part of the patch.
+`Perfect loop` sets a repeat length in bars, beats, or seconds. Bars and
+beats follow the tempo. The export rounds the length to whole frames and,
+for bars or beats, adjusts its rendering tempo when needed to fit them.
+The dialog reports that adjustment.
 
-The loop check list shows what repeats cleanly and what won't. `Snap`
-rounds every rate it can to whole cycles per loop, as one step that can be
-undone. Anything with memory (feedback, simulations, envelopes, glide)
-plays one loop before the recorded one, so the file starts in the state it
-ends in.
+The loop checklist identifies rates that do not complete whole cycles,
+motion that holds still, and inputs that cannot be reproduced. `Snap`
+adjusts the rates it can to fit the loop in one undoable step. A loop
+setting alone does not make every patch repeat: simulations and feedback
+can keep changing from one loop to the next.
 
-`Crossfade` fades the end of the loop into the frames right before its start,
-so parts that keep changing from loop to loop don't jump at the loop point.
-Parts that already repeat pass through unchanged. With a length in bars or
-beats it is set in beats. Only the file is crossfaded; the live view still
-jumps.
+`Video crossfade` blends the end into the start to soften that change.
+Content that already repeats passes through unchanged. This crossfade
+applies to the file; it does not smooth the live view's loop point.
+Feedback and other processes with memory get a warm-up loop before the
+frames kept for the file.
 
-## Audio
+The loop settings are saved with the patch and also affect built-in motion
+in the live view. See [Perfect loop](../../reference/windows/export-video/#length-and-loops)
+for the checklist, crossfade limits, and motion that follows the loop.
 
-`Audio` takes a sound file (WAV, MP3, FLAC, Ogg, Opus, M4A, AAC or AIFF).
-While the export renders, every audio source in the patch follows that file
-instead of the live input: the levels and bands in the
-[Modulation Matrix](../modulation-matrix/), custom bands, SCOPE, and
-envelopes triggered by audio. The same file and patch always give the same
-video. CV and Gate inputs stay silent.
+## Export with a song
 
-`Start` sets where in the file the export begins. The line under it shows
-which part of the audio plays. `Include audio track` puts the sound in the
-file: AAC in an MP4, Opus in a WebM. The track ends exactly where the video
-does. GIFs have no sound, but the picture still follows the audio. When
-`Start` is past the beginning of the file, the export first listens to up to
-5 seconds of the music before it, so levels and bands are already settled on
-the first frame.
+`Choose Song...` selects the patch's audio file. With `Use song` on, the
+patch's audio levels, frequency bands, SCOPE, and audio-triggered envelopes
+follow that file while rendering. `Start` sets where the song begins.
+`Use audio length` fits the clip's length to the remaining audio.
 
-When the audio is shorter than the export, the rest is silent and the
-dialog says how much. `Use audio length` sets `Length` to the audio from
-`Start`, rounded to whole frames.
+`Include audio track` adds AAC sound to MP4 or Opus sound to WebM. With it
+off, the song still drives the picture. GIF has no audio track.
 
-With a Perfect loop, every loop hears the same stretch of audio, starting at
-`Start`. The warm-up loop hears the music right before `Start`, and the
-crossfade blends the sound along with the picture, so the loop's end flows
-back into the start like the music around it. Audio already cut to the
-loop's length fits it: when the audio from `Start` is within half a frame of
-the loop, it is stretched by that sliver, so the sound repeats exactly. `Use audio length` sets the loop to the audio; in bars or beats it
-picks the nearest whole number of beats, and when those don't hold the
-audio at the current tempo, the dialog names the tempo that would.
+For a repeating loop, `Audio crossfade` controls the sound independently
+of `Video crossfade`. The dialog reports audio that ends before the video
+or needs fitting to the loop.
 
-The audio file, `Start` and `Include audio track` are export settings
-remembered by the app, not part of the patch, and they are not modulation
-targets: they decide what the file is made from, not what the picture
-shows.
+The song and its start point are saved with the patch. `Use song` and
+`Include audio track` are app settings. See [Export Video controls](../../reference/windows/export-video/)
+for supported files and the full settings.
 
 Related: [Output and Recording](../output-and-recording/),
 [Modulation Matrix](../modulation-matrix/).

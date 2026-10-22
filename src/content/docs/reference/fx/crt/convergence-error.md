@@ -8,8 +8,6 @@ three electron guns don't quite land on the same spot.
 
 | Parameter | Control | Range |
 | --- | --- | --- |
-| R x / R y | Pad | -5 to 5px |
-| G x / G y | Pad | -5 to 5px |
-| B x / B y | Pad | -5 to 5px |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `R x` / `R y` | Pad | -5 to 5 px |
+| `G x` / `G y` | Pad | -5 to 5 px |
+| `B x` / `B y` | Pad | -5 to 5 px |

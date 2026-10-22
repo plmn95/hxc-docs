@@ -1,21 +1,25 @@
 ---
 title: "First Launch"
-description: "Find your way around the default docked layout, including Output, Module, Chain, Patches, and Modulation."
+description: "Find the output image, select a module, and locate the patch and modulation controls."
 ---
 
 Launch Hex Composer. If the panels are hidden or arranged differently,
 choose `View > Layouts > Restore Default Layout`.
 
-Find `Output` in the center, `Module` on the right, and `Chain` and
-`Patches` across the bottom. Click the `Patches` tab if it shares a dock
-with `Chain`.
+![The default workspace with Output on the left, Module and Modulation tabs on the right, and Chain and Patches tabs at the bottom.](../../images/getting-started/workspace.png)
 
-Click a module in `Chain` to inspect its controls in `Module`. The default
-patch contains one `OSC` module, the oscillator generator.
+`Output` is the large Screen on the left. `Module` and `Modulation` share
+the dock on the right. `Chain` and `Patches` share the bottom dock.
 
-Open `View > Modulation` to show the modulation controls beside `Module`.
+Click the `Chain` tab, then select a module to inspect its controls in
+`Module`. A default patch contains one `OSC`, the oscillator generator.
 
-Use [Reading the Panel](../../concepts/reading-the-panel/) to identify
-Knobs, Troughs, Wheels, and Pads as you work through the next pages.
+Click `Patches` to see the open patch slots, then return to `Chain`.
+Click `Modulation` in the right dock. If its tab is missing, enable
+`View > Modulation`. Click `Module` to return to the selected module's controls.
+
+See [Reading the Panel](../../concepts/reading-the-panel/) for control
+names, or [parameter gestures](../../reference/shortcuts/#any-parameter)
+for numeric entry and mouse controls.
 
 Next: [Load a Factory Patch](../02-load-a-factory-patch/).

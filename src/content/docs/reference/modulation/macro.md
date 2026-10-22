@@ -3,16 +3,20 @@ title: "Macro"
 description: "Control multiple parameters from a named macro with an optional MIDI CC binding."
 ---
 
-A named control for modulating multiple parameters, with an optional MIDI
-CC binding.
+A macro groups several parameter changes under one Knob. Set its value in
+`Modulation > MACRO`, then assign that macro to each target with its own
+`Depth` and `Offset`.
 
-A macro's own value is itself a modulation target: assign an LFO, another
-macro, or any other source to it like any other parameter, including
-self- or cross-macro modulation.
+A macro can also receive modulation. Right-click its Knob and choose
+`Edit Modulation...` to assign an LFO, another macro, or another source.
 
-Mixer Mode has a separate, fixed set: 4 macro knobs per deck, each with its
-own independent MIDI CC binding. These are scoped to their deck rather than
-to the patch, don't grow, and aren't modulation targets.
+To bind a hardware controller, open a MIDI input in `Settings > MIDI`,
+engage the macro's `LEARN` Rocker, and move the desired CC control. `Clear`
+removes that binding.
+
+Mixer Mode has four separate macro Knobs per deck, each with its own MIDI
+CC binding. They belong to their deck, have a fixed count, and cannot
+receive modulation.
 
 Related: [Modulation Matrix](../../../concepts/modulation-matrix/),
 [Mixer Mode](../../../concepts/mixer-mode/).

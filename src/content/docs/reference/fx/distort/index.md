@@ -1,10 +1,9 @@
 ---
 title: "DISTORT"
-description: "Effects that move or reshape pixels geometrically, rather than recoloring them in place."
+description: "Effects that warp, mirror, or reposition the image."
 ---
 
-Effects that move or reshape pixels geometrically, rather than recoloring
-them in place.
+Effects that warp, mirror, or reposition the image.
 
 - [Wave Warp](wave-warp/)
 - [Kaleidoscope](kaleidoscope/)

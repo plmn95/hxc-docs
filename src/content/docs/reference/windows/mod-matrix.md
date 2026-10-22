@@ -17,18 +17,17 @@ a share of the target's range. At the source's peak the meter reaches the
 percentage shown beside `DEPTH`, so a lower LFO Level or a smaller Depth
 shrinks it, and a negative Depth fills it the other way. The number beside
 the meter shows the same change in the target's own units, including
-Offset. `BYP` turns an assignment off without deleting it. The delete column removes
-it outright.
+Offset. `BYP` turns an assignment off without deleting it. The final column deletes it.
 
 `DEPTH` sets how far the assignment moves its target, in the target's own
 units, with the matching percentage of the target's range shown beside it.
 A target shown in Hz, such as OSC's Rate R/G/B, shows its Depth and Offset in
 Hz too. They stay a rate even when the target shows as time.
-A negative Depth
-inverts the modulation. Beside it sit an Offset control (`±`), which adds a
-constant offset on top of the swing, and a shaping control. The shaping
-control is live only for assignments driven by the `L Level` or `R Level`
-audio sources; on every other source it is greyed out. See [Audio-Reactive](../../modulation/audio-reactive/).
+A negative Depth inverts the modulation. Beside it sit an Offset control (`±`), which adds a
+constant offset on top of the swing, and audio shaping controls.
+
+Audio shaping is available only for `L Level` and `R Level` assignments;
+other sources leave these controls dimmed. See [Audio-Reactive](../../modulation/audio-reactive/).
 
 Mixer controls can also be modulated from the controls themselves; see
 [Mixer Mode](../../../concepts/mixer-mode/).
@@ -37,8 +36,8 @@ In the Mixer Mode matrix, `TARGET` offers `MIXER` (the mixer controls,
 grouped under the Mixer panel's section names) and the settings of Mixer
 Mode's own LFO, Envelope and Time banks. Mixer assignments are shared
 across every patch in the same bank and are saved with the bank rather than
-with any individual patch. **NOTE:** the Mixer Mode matrix has no
-meta-modulation: an assignment's `AMOUNT` there cannot itself be a target.
+with any individual patch. An assignment's Depth cannot itself be modulated
+in the Mixer Mode matrix.
 
 Related: [Modulation Matrix](../../../concepts/modulation-matrix/),
 [Mixer Controls](../mixer-controls/).

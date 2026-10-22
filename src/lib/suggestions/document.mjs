@@ -10,6 +10,30 @@ export function splitDocument(source) {
   return { metadata: match[0], body: source.slice(match[0].length) };
 }
 export function parseBody(body) { return parser.parse(body); }
+// Public documentation images are checked into the site. Keep their source
+// relative so the same page works at / and at a bundled/manual base path.
+export function sourceRoute(sourcePath) {
+  return sourcePath.replace(/^src\/content\/docs\//, '').replace(/\.md$/, '').replace(/(?:^|\/)index$/, '');
+}
+export function isLocalImageUrl(url, route) {
+  if (typeof url !== 'string' || !url || /[\u0000-\u0020\u007f\\]/.test(url)) return false;
+  let decoded, pathname;
+  try { decoded = decodeURIComponent(url); pathname = decodeURIComponent(url.split(/[?#]/)[0]); } catch { return false; }
+  if (/^[a-z][a-z\d+.-]*:/i.test(decoded) || decoded.startsWith('/') || /[\u0000-\u001f\u007f\\]/.test(decoded)) return false;
+  if (!/\.(?:avif|gif|jpe?g|png|svg|webp)$/i.test(pathname)) return false;
+  if (route !== undefined) {
+    const segments = route.split('/').filter(Boolean);
+    for (const segment of pathname.split('/')) {
+      if (segment === '..') { if (!segments.length) return false; segments.pop(); }
+      else if (segment && segment !== '.') segments.push(segment);
+    }
+  }
+  return true;
+}
+export function validateImage(node, route) {
+  if (!node.alt?.trim()) throw new Error('Add descriptive alt text to documentation images.');
+  if (!isLocalImageUrl(node.url, route)) throw new Error('Use a relative URL for an image included within the documentation.');
+}
 // Milkdown serializes a lone empty table-cell paragraph as <br />. This is
 // editor scaffolding, not authored HTML. Remove ONLY that entire empty-cell
 // placeholder; never strip HTML generally or touch real inline line breaks.
@@ -34,17 +58,18 @@ export function semantic(node) {
 const signature = node => JSON.stringify(semantic(node));
 export function equivalent(a, b) { return signature(parseBody(a)) === signature(parseBody(b)); }
 
-export function validateBody(body) {
+export function validateBody(body, route) {
   if (typeof body !== 'string' || !body.trim() || new TextEncoder().encode(body).length > MAX_DOCUMENT)
     throw new Error('Please keep the page between 1 and 100,000 bytes.');
   if (/^\s*---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/.test(body)) throw new Error('Page metadata cannot be edited here.');
   const supported = new Set(['root', 'paragraph', 'text', 'heading', 'strong', 'emphasis', 'delete', 'inlineCode',
-    'code', 'blockquote', 'list', 'listItem', 'table', 'tableRow', 'tableCell', 'link', 'break', 'thematicBreak']);
+    'code', 'blockquote', 'list', 'listItem', 'table', 'tableRow', 'tableCell', 'link', 'image', 'break', 'thematicBreak']);
   let count = 0;
   function visit(node, depth = 0) {
     if (++count > 12000 || depth > 40) throw new Error('This document is too complex to submit.');
     if (!supported.has(node.type)) throw new Error('This page contains unsupported formatting. Keep your draft and describe the change instead.');
     if (node.type === 'heading' && node.depth === 1) throw new Error('Use section headings below the existing page title.');
+    if (node.type === 'image') validateImage(node, route);
     if (node.type === 'link') {
       const url = node.url.replace(/[\u0000-\u0020\u007f]/g, '');
       if (/^[a-z][a-z\d+.-]*:/i.test(url) && !/^(https?:|mailto:)/i.test(url)) throw new Error('Use a web, email, or documentation link.');
@@ -60,8 +85,8 @@ export function validateBody(body) {
 // Match entire semantic blocks in order. Unchanged blocks and their original
 // whitespace are retained verbatim; only changed blocks use editor Markdown.
 // A final semantic check ensures reuse can never silently change the proposal.
-export function preserveSource(original, edited) {
-  const a = parseBody(original).children, b = validateBody(edited).children;
+export function preserveSource(original, edited, route) {
+  const a = parseBody(original).children, b = validateBody(edited, route).children;
   if (a.length > 500) throw new Error('This page is too large for visual editing.');
   const ak = a.map(signature), bk = b.map(signature);
   if (signature(a) === signature(b)) return original;
@@ -89,9 +114,9 @@ export function preserveSource(original, edited) {
   return output;
 }
 
-export function preparePage(source, replacement) {
+export function preparePage(source, replacement, route) {
   const { metadata, body } = splitDocument(source);
-  const content = preserveSource(body, replacement);
+  const content = preserveSource(body, replacement, route);
   if (content === body) throw new Error('Make a change before sending your suggestion.');
   return { content: metadata + content };
 }

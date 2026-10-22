@@ -8,7 +8,5 @@ glass.
 
 | Parameter | Control | Range |
 | --- | --- | --- |
-| Radius | Trough | 1 to 16 |
-| Intensity | Trough | 0 to 4 |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Radius` | Trough | 1 to 16 |
+| `Intensity` | Trough | 0 to 4 |

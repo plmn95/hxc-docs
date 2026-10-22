@@ -1,15 +1,12 @@
 ---
 title: "Motion Key"
-description: "Pulls an alpha matte from frame-to-frame motion: whatever is moving keys in."
+description: "Keeps areas that change between frames and makes still areas transparent."
 ---
 
-Pulls an alpha matte from frame-to-frame motion: whatever is moving keys in.
+Keeps areas that change between frames and makes still areas transparent.
+The original colors remain visible where the image is kept.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| Sensitivity | Trough | 0 to 1 | |
-| Softness | Trough | 0 to 0.5 | Feathers the matte's edge. |
-
-Outputs an alpha-only matte.
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Sensitivity` | Trough | 0 to 1 | The minimum color change to keep. Higher values reject smaller changes. |
+| `Softness` | Trough | 0 to 0.5 | Softens the transition between still and changing areas. |

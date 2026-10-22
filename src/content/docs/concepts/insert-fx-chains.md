@@ -1,10 +1,11 @@
 ---
 title: "Insert FX Chains"
-description: "Build a local effects stack for each module with up to eight ordered Insert FX slots."
+description: "Process a module's image with its own ordered Insert FX stack."
 ---
 
-Each module has an `INSERT FX` section with up to 8 effect slots. Effects
-run in slot order on that module's output.
+Use a generator's `INSERT FX` to process its image before it blends into the
+chain. Effects run in slot order, so changing their order can change the
+result. A module can hold up to 8 slots.
 
 Slots reorder by dragging their grips. The `ACTIVE`/`BYPASSED` Rocker
 bypasses a slot without removing it.

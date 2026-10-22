@@ -2,7 +2,7 @@ import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkFrontmatter from 'remark-frontmatter';
 import remarkGfm from 'remark-gfm';
-import { validateBody } from './document.mjs';
+import { sourceRoute, validateBody } from './document.mjs';
 
 const parser = unified().use(remarkParse).use(remarkFrontmatter, ['yaml']).use(remarkGfm);
 export const normalize = (text) => text.replace(/\r?\n/g, ' ');
@@ -75,6 +75,6 @@ export function validateSubmission(value) {
   if (kind === 'edit' && (!/^\d+-\d+$/.test(passage) || !original.trim() || !replacement.trim() || original === replacement))
     throw new Error('Please change the wording before sending.');
   if (kind === 'problem' && !explanation.trim()) throw new Error('Please describe the problem.');
-  if (kind === 'page') { if (original || passage) throw new Error('Invalid page suggestion.'); validateBody(replacement); }
+  if (kind === 'page') { if (original || passage) throw new Error('Invalid page suggestion.'); validateBody(replacement, sourceRoute(path)); }
   return { id, path, revision, kind, passage, original, replacement, explanation, version };
 }

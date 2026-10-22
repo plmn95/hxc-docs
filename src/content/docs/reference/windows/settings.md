@@ -1,43 +1,73 @@
 ---
 title: "Settings"
-description: "Configure Hex Composer using the eight categories in the Settings window."
+description: "Configure video output, audio input, controllers, recording, patch assets, and interface behavior."
 ---
 
-| Category | Covers |
+Open `View > Settings`. Select a category on the left; the version at the
+bottom can be copied when reporting a problem.
+
+| Category | Settings |
 |---|---|
-| Output | Graphics Card, Display Fit, Dual Monitor Output, NDI/Spout/Syphon output. |
-| Audio | Audio input: a Device to capture from, or capturing another application's audio (not available on any platform yet). Also `CV/Gate Channels`, where each input channel past the stereo pair is marked `Off`, `CV`, or `Gate` and given a voltage range; and `Custom Frequency Bands`, the 4 user-defined bands' low/high Hz ranges. |
-| MIDI | MIDI port selection. |
-| OpenSoundControl | The UDP listen port. |
-| Recording | Quality (4 stops, Low to Lossless), frame rate (24, 30, or 60), codec (H.264 or H.265), and whether to include audio. Also `Output Folder` (defaults to Movies on macOS, Videos on Windows, the home folder on Linux) and `Filename` (strftime tokens, listed in the `(?)` tooltip beside it; `.mp4` is always appended). After a recording that skipped frames because encoding fell behind, a note under `Codec` suggests a faster choice. |
-| Patches | Whether referenced sprites, images, and video are embedded inside a saved `.hxc` file, so the patch stays portable if the original files move. Increases file size. |
-| Appearance | UI Scale: `Auto`, or one of four fixed stops, `100%`, `125%`, `150%`, `200%`. |
-| Interaction | Fine Mouse Control: how much Shift-drag slows a Trough or Knob down, across six stops from `20% (Coarser)` to `1% (Finest)`. |
+| `Output` | Graphics card, resolution and aspect ratio, render quality, display fit, second-display output, and NDI, Spout, or Syphon sending. |
+| `Audio` | Device, application, or file input; song playback device; CV/Gate channel roles; custom frequency bands. See [Audio sources](#audio-sources). |
+| `MIDI` | Controller input ports. |
+| `OpenSoundControl` | UDP listen port for incoming messages. |
+| `Recording` | Quality, frame rate, codec, audio inclusion, output folder, and filename pattern. |
+| `Patches` | `Embed assets in save files` includes referenced images, sprites, video, and the patch's song. It makes patches portable and increases file size. |
+| `Appearance` | `UI Scale`: `Auto`, `100%`, `125%`, `150%`, or `200%`. |
+| `Interaction` | `Fine Mouse Control` adjusts Shift-drag sensitivity, from `20% (Coarser)` to `1% (Finest)`. `Show tooltips` controls hover help. |
 
-**NOTE:** the version number at the bottom of the category list can be copied.
+## Audio sources
 
-## Graphics
-
-The `Graphics` section at the top of the `Output` category sets which graphics
-card Hex Composer renders on, and reports which one is in use.
-
-| Control | Covers |
+| `Source` | Input |
 |---|---|
-| Graphics Card | `High performance (dedicated graphics)` or `Power saving (built-in graphics)`. Present only on machines with two graphics cards. Takes effect on the next launch; a `Restart Hex Composer to apply` line appears once the selection differs from the card in use. |
-| Rendering on | Read-only. Names the graphics card the current session is actually running on. Shown on every machine, including those with a single card. |
+| `Device` | Select an input device, then click `Open`. `Refresh` updates the device list. |
+| `Application` | Select a running application, then click `Open`. Availability depends on the platform and its capture permissions. |
+| `File` | Uses the patch's song. Choose it with `File > Open Song...` or drop an audio file onto the window. `Output` selects where the song is heard. |
 
-Laptops with two graphics cards default to the discrete card.
-`Power saving` selects the integrated card to reduce battery use.
+Application capture needs macOS 14.4 or later with capture permission,
+Windows build 20348 or later, or PipeWire on Linux. Read the status shown
+under the application list if capture is unavailable.
 
-**NOTE:** when a launch fails to reach a window on the discrete card, the next
-launch comes up on the integrated one and says so beneath the control.
-Selecting `High performance` again is what asks Hex Composer to retry.
+`CV/Gate Channels` appears for input channels beyond the stereo pair.
+Assign each channel `Off`, `CV`, or `Gate`, with its voltage range.
+Application and file sources are stereo and do not provide extra CV/Gate
+channels.
 
-**NOTE:** the `HEXCOMPOSER_GPU` environment variable overrides the setting for
-one session (`VIZARD_GPU` works as well). Accepted values are `discrete`,
-`integrated`, `auto` and `off`. Any graphics-card variable already set in the
-environment, such as `DRI_PRIME`, is honoured untouched and disables the
-control for that session, which reads `Set by the environment this session.`
-Both are troubleshooting aids; neither is persisted.
+`Custom Frequency Bands` sets the low and high frequencies for the four
+user bands. These settings apply across patches and audio sources. See
+[Audio-Reactive](../../modulation/audio-reactive/) for level and band
+assignments, or [Make an Audio Spectrum](../../../guides/audio-spectrum/)
+for a song-driven example.
 
-Related: [Output and Recording](../../../concepts/output-and-recording/).
+## Recording files
+
+Quality runs from `Low` to `Lossless`; frame rate is `24`, `30`, or `60`,
+and codec is `H.264` or `H.265`. `Include Audio` needs an open audio source.
+
+`Output Folder` defaults to Movies on macOS, Videos on Windows, or the home
+folder on Linux. `Filename` accepts date/time tokens listed in its `(?)`
+help; `.mp4` is appended. The folder and filename pattern also apply to
+exports. After an overloaded recording, a note under `Codec` suggests a
+faster choice.
+
+See [Output and Recording](../../../concepts/output-and-recording/) for
+save completion and output transparency.
+
+## Graphics card selection
+
+| Control | Behavior |
+|---|---|
+| `Graphics Card` | On machines with two cards, selects `High performance (dedicated graphics)` or `Power saving (built-in graphics)` for the next launch. |
+| `Rendering on` | Reports the card this session actually uses, including on single-card machines. |
+
+A changed selection shows `Restart Hex Composer to apply`. Dual-card
+laptops default to the dedicated card. If a launch cannot open a window
+on it, the next launch falls back to the integrated card and reports this.
+Select `High performance` again to retry.
+
+For troubleshooting, `HEXCOMPOSER_GPU` overrides the preference for one
+session; `VIZARD_GPU` is also accepted. Values are `discrete`, `integrated`,
+`auto`, and `off`. An existing graphics-card environment variable such as
+`DRI_PRIME` takes precedence and disables the control, which reads
+`Set by the environment this session.` These overrides are not saved.

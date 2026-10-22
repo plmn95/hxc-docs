@@ -7,6 +7,4 @@ Reduces each color channel to a fixed number of discrete levels.
 
 | Parameter | Control | Range |
 | --- | --- | --- |
-| Levels | Trough | 2 to 16 |
-
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+| `Levels` | Trough | 2 to 16 |

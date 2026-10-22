@@ -1,10 +1,9 @@
 ---
 title: "GRADE"
-description: "Color-correction and grading tools: per-channel or tonal adjustments to the image's existing color, distinct from COLOR's tone/value remapping."
+description: "Adjusts contrast, saturation, color balance, and tone curves."
 ---
 
-Color-correction and grading tools: per-channel or tonal adjustments to the
-image's existing color, distinct from COLOR's tone/value remapping.
+Adjusts contrast, saturation, color balance, and tone curves.
 
 - [Channel Attenuverter](channel-attenuverter/)
 - [Contrast](contrast/)

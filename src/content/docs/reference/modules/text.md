@@ -3,48 +3,40 @@ title: "TEXT"
 description: "Draw, position, size, and scroll text in the video chain using the TEXT module."
 ---
 
-Draws text with font, layout, styling, and scrolling controls.
+TEXT draws a text block that can stay still or scroll repeatedly across the
+image. It uses bundled, installed, or custom fonts.
 
 | Parameter | Control | Notes |
 |---|---|---|
-| Text | text field | Multiline text with no length limit. |
-| Font | Dropdown | Bundled and installed fonts. `Load Custom...` accepts `.ttf`, `.otf`, or `.ttc` files; `Refresh List` reloads installed fonts. A font that cannot be found on this machine is drawn with the bundled default and shown as `(missing)`. |
-| Style | Dropdown |  |
-| B / I / U / S | Rocker | Bold, italic, underline, strikethrough. `B` and `I` switch Style to the family's real bold or italic when it has one and simulate it otherwise; hovering a lit `B` or `I` says when it is simulated. Cannot be modulated. |
-| Mix | Trough | Opacity of the module's contribution to the chain. |
-| Blend | Selector | How the text lands on the chain; see [Blend modes](../../../concepts/signal-chain/#blend-modes). |
-| Alignment | Selector, Trough | `L`, `C`, `R` snap lines to the left, centre or right of the block; the Trough (0 to 1) places them anywhere in between. |
-| Line Spacing | Trough | Distance between lines, 0.5 to 3 times the font's line height. |
-| Letter Spacing | Trough | Extra space between letters, -0.1 to 1 em. Applies on release. Cannot be modulated. |
-| Position | Pad | |
-| Scale | Pad, Rocker | Text width and height around the frame centre. `Link X/Y` (on by default) resizes without stretching; `Flip X` / `Flip Y` mirror the text. |
-| Rotation | Wheel | Degrees, clockwise. |
-| Speed | Pad | Scroll speed per axis in passes per second (Hz), the same pass time whatever the text length. Positive scrolls right or up, negative left or down; the centre is still. The pad gives slow speeds most of its area, and faint ticks on its edges mark 0.01, 0.1 and 1 Hz. Right-click an axis to show it as the time one pass takes. |
-| Offset | Pad | Position within the scroll loop per axis; wraps around. |
-| Gap | Trough | Space before the scrolled text repeats, in screens (0 to 2). |
-| Fill | Trough | Fill color and alpha. |
-| Stroke | Rocker, Trough | An outline around the glyphs: width (0 to 24) and color/alpha. |
-| Emboss | Rocker, Wheel, Trough | A directional light shading the glyph edges: angle, depth and strength. |
-| Warp | Selector, Trough | None, Arc, Bulge, Flag, Wave, or Fisheye, driven by Bend, Horizontal and Vertical. |
+| `Font` / `Style` | Selector | Font family and face. `Load Custom...` accepts `.ttf`, `.otf`, or `.ttc`; `Refresh List` reloads installed fonts. Missing fonts use the bundled default and display `(missing)`. |
+| `B` / `I` / `U` / `S` | Rocker | Bold, italic, underline, strikethrough. `B` and `I` select a matching font face when available and simulate it otherwise; hover a lit control to check. Cannot be modulated. |
+| `Opacity` / `Blend` | Trough, Selector | Strength and [blend mode](../../../concepts/signal-chain/#blend-modes) of the text against the chain. |
+| `Alignment` | Selector, Trough | `L`, `C`, `R` align lines to the block's left, center, or right. The Trough allows positions between them. |
+| `Line Spacing` | Trough | Distance between lines, 0.5 to 3 times the font's line height. |
+| `Letter Spacing` | Trough | Extra space between letters, -0.1 to 1 em. Applies on release and cannot be modulated. |
+| `Scale X` / `Scale Y` | Pad | Text width and height. `Link X/Y` resizes without stretching; `Flip X` / `Flip Y` mirror the text. |
+| `Speed X` / `Speed Y` | Pad | Scroll speed in passes per second (Hz), independent of text length. Positive moves right or up; negative moves left or down. Right-click an axis and choose `Show as Time` for the duration of a pass. |
+| `Offset X` / `Offset Y` | Pad | Position within the repeating scroll, wrapping past 1. An LFO or Time assignment can drive custom scrolling motion. |
+| `Gap` | Trough | Space before the scrolled text repeats, 0 to 2 screens. |
+| `Fill` | Trough | Text color and alpha. |
+| `Stroke` | Rocker, Trough | Outline width (0 to 24) and color/alpha. |
+| `Emboss` | Rocker, Wheel, Trough | Directional shading at glyph edges, with angle, depth, and strength. |
+| `Warp` | Selector, Trough | `None`, `Arc`, `Bulge`, `Flag`, `Wave`, or `Fisheye`, adjusted by `Warp Bend`, `Warp Horizontal`, and `Warp Vertical`. |
 
-**NOTE:** an axis repeats only while its Speed or Offset is not 0. Still
-text never shows copies of itself.
+An axis repeats only while its `Speed` or `Offset` is nonzero. Still text
+does not show repeated copies.
 
-**NOTE:** scrolled text moves through the Warp; the warp shape stays in
-place. For a strip like a shop-window LED sign, add a Mask insert effect.
+Scrolled text moves through the warp while the warp shape stays in place.
+Add a `Mask` Insert FX to confine scrolling text to a strip.
 
-**NOTE:** an LFO or Time source on Offset gives scrolling motion of any
-shape. Offset keeps wrapping past 1, so a steadily rising source scrolls
-forever.
-
-**NOTE:** content, font, and Letter Spacing changes can take several frames
+Content, font, and `Letter Spacing` changes can take several frames
 to appear. The previous text remains visible during the update.
 
-**NOTE:** enable embedded assets in `Settings > Patches` to include custom
+Enable embedded assets in `Settings > Patches` to include custom
 font files in saved patches.
 
-With [Perfect loop](../../windows/export-video/#perfect-loop) on, scrolling starts again at each loop start;
-`Snap` sets Speed to whole passes per loop.
+With [Perfect loop](../../windows/export-video/#length-and-loops) on, scrolling starts again at each loop start;
+`Snap` sets `Speed` to whole passes per loop.
 
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/),

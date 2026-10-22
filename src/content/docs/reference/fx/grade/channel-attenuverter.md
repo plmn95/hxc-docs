@@ -1,16 +1,14 @@
 ---
 title: "Channel Attenuverter"
-description: "Attenuates or inverts each of the R/G/B channels independently, through zero."
+description: "Dims or inverts red, green, and blue independently."
 ---
 
-Attenuates or inverts each of the R/G/B channels independently, through
-zero. Positive gain attenuates toward black; negative gain inverts and
-attenuates.
+Adjusts red, green, and blue independently. Positive values dim the
+original channel; negative values dim an inverted copy of it.
 
-| Parameter | Control | Range | Notes |
-|---|---|---|---|
-| R | Ganged trough | -1 to 1 | 1 = pass-through, 0 = channel silenced, -1 = full invert. |
-| G | Ganged trough | -1 to 1 | Same as R. |
-| B | Ganged trough | -1 to 1 | Same as R. |
+| Parameter | Control | Range |
+|---|---|---|
+| `R` / `G` / `B` | Ganged Troughs | -1 to 1 |
 
-Related: [Insert FX Chains](../../../../concepts/insert-fx-chains/).
+For each channel, 1 preserves its value, 0 makes it black, and -1 fully
+inverts it.

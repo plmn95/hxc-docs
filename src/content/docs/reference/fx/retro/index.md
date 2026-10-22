@@ -1,10 +1,9 @@
 ---
 title: "RETRO"
-description: "Effects that add analog imperfection: tape artifacts, film grain, and raster displacement layered over the image."
+description: "Effects for tape artifacts, film-style noise, and raster displacement."
 ---
 
-Effects that add analog imperfection: tape artifacts, film grain, and raster
-displacement layered over the image.
+Effects for tape artifacts, film-style noise, and raster displacement.
 
 - [VHS](vhs/)
 - [Grain](grain/)
