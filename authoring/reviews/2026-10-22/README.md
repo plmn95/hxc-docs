@@ -233,6 +233,16 @@ build or browser checks. These checks were completed before committing or
 pushing and do not establish deployment success. No app release or session-log
 edit was performed.
 
+## CI follow-up after the first push
+
+Linux browser validation of `c807809` found the review header clipping `Cancel`
+in a 320px window with a classic scrollbar. A local 305px viewport reproduced
+the same overflow (`Cancel` began at -4.8125px). The review actions now wrap
+when their row is too narrow. The browser regression checks each control at
+305/320/390px with named bounds assertions. All 10 editor tests passed again,
+including the full 112-page corpus. The preview manifest above describes the
+earlier captured manual; deployment checks belong to the subsequent commits.
+
 ## Complete page inventory
 
 Paths are relative to `src/content/docs/`. Each listed page was reviewed;

@@ -117,18 +117,24 @@ test('image drafts restore, render in review, and submit their original Markdown
     return brand.right <= actions.left;
   })).toBe(true);
   await page.screenshot({ path: '/tmp/vizard-image-review-desktop.png' });
-  for (const width of [320, 390]) {
+  // 305px also covers a 320px window whose classic scrollbar takes 15px.
+  for (const width of [305, 320, 390]) {
     await page.setViewportSize({ width, height: 844 });
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-    expect(await page.locator('.edit-header').evaluate(header => {
+    const headerGeometry = await page.locator('.edit-header').evaluate(header => {
       const brand = header.querySelector('[data-vizard-brand]')!.getBoundingClientRect();
       const actions = header.querySelector('.actions')!.getBoundingClientRect();
       const controls = Array.from(header.querySelectorAll('a,button')).filter(element => !(element as HTMLElement).hidden);
-      return brand.bottom <= actions.top && controls.every(element => {
+      return { brandBottom: brand.bottom, actionsTop: actions.top, controls: controls.map(element => {
         const box = element.getBoundingClientRect();
-        return box.left >= 0 && box.right <= innerWidth;
-      });
-    })).toBe(true);
+        return { label: element.getAttribute('aria-label') || element.textContent, left: box.left, right: box.right };
+      }) };
+    });
+    expect(headerGeometry.brandBottom).toBeLessThanOrEqual(headerGeometry.actionsTop);
+    for (const control of headerGeometry.controls) {
+      expect(control.left, `${control.label} at ${width}px`).toBeGreaterThanOrEqual(0);
+      expect(control.right, `${control.label} at ${width}px`).toBeLessThanOrEqual(width);
+    }
   }
   await page.screenshot({ path: '/tmp/vizard-image-review-mobile.png' });
   await page.getByRole('button', { name: 'Send suggestion', exact: true }).click();
