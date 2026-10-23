@@ -3,7 +3,7 @@ title: "Patches, Slots, and Banks"
 description: "Save signal chains and modulation as .hxc patches, manage patch slots, and organize sessions into banks."
 ---
 
-A patch keeps a chain and its modulation together so you can return to it
+A patch keeps a chain, its modulation, and its loop settings together so you can return to it
 or use it in another session. Each slot in `Patches` holds a separate
 patch. Save one patch as `.hxc`, or save the open slots together as a bank.
 
