@@ -11,13 +11,34 @@ internal generators for curves, or manual values for a point.
 |---|---|---|
 | `X Source` / `Y Source` | Selector | `Manual`, `Audio L`, `Audio R`, `Generator A`, or `Generator B`, independently per axis. |
 | `X` / `Y` | Trough | Position, -1 to 1, for an axis set to `Manual`. |
+| `Size` | Trough | Uniform visual magnification, default 1. Enlarges the drawing while preserving beam brightness and relative stroke weight. Supports modulation. |
 | `X Scale` / `Y Scale` | Trough | Axis gain, 0 to 2. Available for audio and generator sources. Corrects trace proportions on a non-square canvas. |
 | `Mix` / `Blend` | Trough, Selector | Strength and [blend mode](../../../concepts/signal-chain/#blend-modes) of the trace and backdrop together. |
 | `Persistence` | Trough | How long the phosphor glow lingers, without smoothing the signal itself. |
-| `Brightness` | Trough | Strength of the trace's glow, 0 to 4. |
+| `Brightness` | Trough | Light deposited by the beam, 0 to 4. |
+| `Exposure` | Trough | Display brightness in stops, -4 to +4 EV on the control. +1 EV doubles light before display mapping. Default 0 EV preserves existing patches. Supports modulation. Available in the SCOPE preview. |
 | `Width` | Trough | Thickness of lines, or point size with `Points Only`. |
+| `Glow` | Trough | Halo strength, independent of the beam core; 0 disables the halo. Default 0.45 for a missing saved value. |
+| `Glow Size` | Trough | Halo spread as a percentage of frame height; default 0.6%. |
 | `Points Only` | Rocker | Draws a dot at each sample instead of the beam's path between samples. Where dots overlap they don't add up. |
 | `Reset Generators` | Button | Realigns the generators, restarts the `S+H` sequence, and clears the trace. Available when a generator drives either axis. |
+
+Use `Size` to enlarge a finished trace. `X Scale` and `Y Scale` remain raw
+signal gains for proportion correction, and `Glow Size` remains independent of
+visual magnification. Patches without a saved Size load at 1, preserving their
+appearance relative to this beam renderer.
+
+The `Beam` section groups Brightness, Exposure, Width, Persistence, Glow and Glow Size.
+The beam accumulates light by time spent tracing: slow or repeated paths become
+brighter, while fast travel deposits less light. Persistence controls decay;
+Glow adds a halo around the resolved core. Older patches intentionally adopt
+this renderer's beam appearance, with the missing glow values listed above.
+
+Set `Glow` to 0 and bypass Insert FX when judging the core trace. Use `Exposure`
+to brighten it, then add the halo with `Glow`. Exposure changes the displayed
+light without changing beam geometry or stored persistence. Faint edges can
+become visible at higher exposure, making the trace appear broader; `Width`
+still sets the beam thickness.
 
 `Generator A` and `Generator B` each have waveform, frequency, phase, and
 amplitude controls. Waveforms include `Sine`, `Square`, `Sawtooth`, `Triangle`,

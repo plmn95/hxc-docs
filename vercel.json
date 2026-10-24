@@ -52,5 +52,10 @@
       "source": "/vizard-docs/releases/:path*",
       "destination": "https://plmn95.github.io/hxc-docs/releases/:path*"
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "codex/scope-capture-docs": false
+    }
+  }
 }
