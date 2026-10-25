@@ -3,24 +3,18 @@ title: "AUX Sends and Buses"
 description: "Route, duplicate, and combine module outputs with AUX buses, sends, and returns in Hex Composer."
 ---
 
-Use an `AUX` bus to branch the image at one point in the chain, or combine
-images from several points before processing them together.
+Images can be redirected, duplicated, and combined via the `AUX` buses.
+Every module has a `SENDS` section from which the chain image after that
+module can be sent to one or more of the `AUX` buses. This includes any
+earlier images still visible at that point. An `AUX` bus can be read by an
+`INSERT` module through its `Source` Selector, or by `FEEDBACK` through
+`Input source`. A single module can send to multiple buses, and multiple
+modules can send to a single bus. Use the `AUX` buses to split an image and
+send it to multiple other modules, or to merge images from several points
+in the chain.
 
-A module's `SENDS` section copies the chain image after that module,
-including any earlier images still visible there. Each send has an
-`Amount` and `Blend`, so several points in the chain can contribute to the
-same bus at different strengths. Sending does not remove the image from
-the chain.
+Keep senders to the left of their readers in `Chain`: a reader only sees
+contributions made before it runs.
 
-Choose the bus in an `INSERT` module's `Source` Selector, or in
-`FEEDBACK`'s `Input source`, to read its image. The same bus can supply more
-than one reader. Keep senders to the left of their readers in `Chain`: a
-reader sees only the contributions made before it runs.
-
-Open `View > AUX Buses` to inspect the bus images and see which modules send
-to or read from each bus. Its send controls also let you balance the
-contributors without opening each module.
-
-Related: [AUX Buses Monitor](../../reference/windows/aux-buses-monitor/),
-[INSERT](../../reference/modules/insert/),
-[Signal Chain](../signal-chain/).
+Related: [AUX Buses](../../reference/windows/aux-buses-monitor/),
+[Insert FX Chains](../insert-fx-chains/), [Signal Chain](../signal-chain/).
