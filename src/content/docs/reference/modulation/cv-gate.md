@@ -23,4 +23,4 @@ voltage represented by each value.
 
 CV/Gate sources are unavailable for Mixer modulation.
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

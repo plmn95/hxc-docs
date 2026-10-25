@@ -35,4 +35,4 @@ loop jumps at the loop point until `Snap` rounds it. A synced LFO fits
 every loop of whole bars; in a loop of beats, `Snap` moves one that doesn't
 fit to the longest sync that does.
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

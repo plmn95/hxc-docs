@@ -67,4 +67,4 @@ The song and its start point are saved with the patch. `Use song` and
 for supported files and the full settings.
 
 Related: [Output and Recording](../output-and-recording/),
-[Modulation Matrix](../modulation-matrix/).
+[Modulation](../modulation/).

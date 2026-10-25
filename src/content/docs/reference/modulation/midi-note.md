@@ -14,4 +14,4 @@ all channels. For continuous-controller input, use [MIDI](../midi/).
 | `Pitch Bend` | -1 to 1 across the pitch wheel's travel, with 0 at the center. |
 | `NRPN` | Set `Param # (0-16383)` to a 14-bit parameter number. Reads its most recent value while it is the last NRPN updated on that channel. Updating a different NRPN makes this source return 0. |
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

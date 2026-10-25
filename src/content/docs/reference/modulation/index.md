@@ -5,7 +5,7 @@ description: "Modulation sources available from Edit Modulation."
 
 Right-click a parameter and choose `Edit Modulation...`, then `+ Add Source`
 to choose a source. See
-[Modulation Matrix](../../concepts/modulation-matrix/) for assignment controls.
+[Modulation](../../concepts/modulation/) for assignment controls.
 
 | Source | What it is |
 |---|---|

@@ -18,4 +18,4 @@ the next incoming message at whatever address sent it, instead of typing an
 address by hand; see
 [MIDI and OpenSoundControl Learn](../../../concepts/midi-and-opensoundcontrol-learn/).
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

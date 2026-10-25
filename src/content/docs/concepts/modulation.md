@@ -1,6 +1,6 @@
 ---
-title: "Modulation Matrix"
-description: "Assign modulation sources, adjust their amount, and inspect active parameter assignments in the Modulation Matrix."
+title: "Modulation"
+description: "Assign modulation sources, adjust their depth, and inspect active parameter assignments."
 ---
 
 Modulation moves a parameter around its base value. An LFO can turn a

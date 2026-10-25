@@ -39,5 +39,5 @@ across every patch in the same bank and are saved with the bank rather than
 with any individual patch. An assignment's Depth cannot itself be modulated
 in the Mixer Mode matrix.
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/),
+Related: [Modulation](../../../concepts/modulation/),
 [Mixer Controls](../mixer-controls/).
