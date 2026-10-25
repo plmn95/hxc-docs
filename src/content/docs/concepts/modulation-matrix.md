@@ -3,35 +3,7 @@ title: "Modulation Matrix"
 description: "Assign modulation sources, adjust their amount, and inspect active parameter assignments in the Modulation Matrix."
 ---
 
-Right-click a parameter and choose `Edit Modulation Connections...` to manage
-its sources, or `Add Modulation Source` to open the source picker.
-
-**Unverified in the released app:** these menu labels need a live desktop
-check. They were checked against the local development build's source.
-
-`+ Add Source` opens the source picker. Sources can also be dragged onto a
-parameter from `Modulation`, or assigned through `MIDI Learn` and
-`OpenSoundControl Learn`. Multiple sources can modulate the same parameter.
-
-In the source picker, choose a `Source type`, select a source, and click
-`Add Connection`. `Esc` or clicking outside closes the picker without adding
-a connection. Edit an existing assignment in the connection editor.
-
-Each assignment has a signed `Depth` in the parameter's units. Negative
-Depth inverts the modulation. `Offset` adds a constant shift.
-
-A source can modulate another assignment's Depth.
-
-Every active assignment also shows up in the
-[Mod Matrix](../../reference/windows/mod-matrix/) window, which lists and
-edits them from one place instead of hunting through each module's own
-parameters. Mixer Mode keeps its modulation in a separate Mod Matrix of its
-own.
-
-Removing sources and using `Clear All Modulation` can be undone.
-
-The [Mod Matrix](../../reference/windows/mod-matrix/) window lists the
-patch's assignments together.
+A module's parameter values can be manipulated by mechanisms other than direct keyboard or mouse input. These external adjustments are called `modulation`. The mechanisms providing modulation are called [`modulation sources`](https://plmn95.github.io/hxc-docs/reference/modulation/), and the parameters that they modulate are called `modulation `targets. Modulation sources can be assigned to mod targets by a number of mechanisms, but all modulation assignments always appear in the [Modulation Matrix](../../reference/windows/mod-matrix/), where they can be viewed and edited. Modulation assignments can be made by right clicking a parameter and selecting `edit modulation`, by clicking and dragging a mod source onto a target, or by manually selecting the sources and targets from the drop-down selections within the mod matrix itself.
 
 Related: [Modulation Sources](../../reference/modulation/),
 [MIDI and OpenSoundControl Learn](../midi-and-opensoundcontrol-learn/).
