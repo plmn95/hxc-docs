@@ -22,6 +22,9 @@ A factual sentence is not automatically a useful sentence.
 - Keep limits that affect use. Avoid incidental totals such as the number
   of module types or catalog entries in explanatory prose.
 - Delete redundant wording rather than replacing it with shorter filler.
+- Assume familiar application behavior unless a limitation matters. Undo
+  support does not need mentioning for every edit; explain exceptions or
+  actions that cannot be undone when readers need to know before acting.
 - Start with an action that advances the task. Include routine preparation
   only when it prevents a specific problem, such as losing edits before
   resetting a patch.
@@ -44,6 +47,16 @@ Avoid stock openings, praise, invented personal experience, and summaries
 that repeat the page. Read an awkward passage aloud, then check whether it
 says something the reader needs. Removing a particular word or punctuation
 mark does not establish that the writing is useful or accurate.
+
+The tester-written modulation suggestion in
+[PR #22](https://github.com/plmn95/hxc-docs/pull/22) is a reference for
+explanatory voice: begin with something familiar, name the unfamiliar
+concept, and connect its terms before describing how to use it. Let one
+sentence supply the context for the next. Preserve that connected prose
+when editing a contribution; correct labels, links, or factual claims
+without turning it into a checklist of every related feature. Use this
+approach as guidance, not a requirement to copy the submission's wording,
+formatting, or level of detail.
 
 | Instead of | Write |
 |---|---|
@@ -75,8 +88,9 @@ Explain the feature's purpose and behavior. Include a short instruction
 when it helps the reader find or use the feature; put extended walkthroughs
 in Getting Started or a task guide.
 
-Start with a situation where the feature is useful, then explain how it
-works. Keep numeric limits when they affect the reader's choices. Counts
+Start with a familiar situation or explain an unfamiliar concept through
+terms the reader already knows, then explain how it works. Keep numeric
+limits when they affect the reader's choices. Counts
 of module types, buses, or blend modes rarely explain why to use a feature.
 
 > **Example (Concepts page: Signal Chain):**
@@ -284,8 +298,8 @@ with no memory of why each rule exists. Apply it literally.
       clean when annotations add no information.
 - [ ] **No template padding.** Tables, summaries, and callouts contain
       useful information rather than repeating control labels or paragraphs.
-- [ ] **Concepts pages only:** opens with a situation where the feature is
-      useful. Counts and limits are included when they help the reader
+- [ ] **Concepts pages only:** opens with a useful situation or connects an
+      unfamiliar concept to familiar terms. Counts and limits help the reader
       choose or operate it.
 - [ ] **Getting Started and task guides:** every instruction names a concrete,
       checkable action: a specific menu path, key, or control, not a vague

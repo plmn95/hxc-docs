@@ -3,34 +3,26 @@ title: "Modulation"
 description: "Assign modulation sources, adjust their depth, and inspect active parameter assignments."
 ---
 
-Modulation moves a parameter around its base value. An LFO can turn a
-pattern back and forth; an audio level can change its size. Several sources
-can contribute to the same parameter.
+Modulation lets a source, such as an LFO or an audio signal, change a
+parameter’s value for you. The parameter being controlled is called the
+modulation target. An LFO can modulate a shape’s size, for example, while
+an audio level can modulate its brightness.
 
-Right-click the parameter and choose `Edit Modulation...`, then `+ Add
-Source` to open `Pick a source`. Sources can also be dragged onto a
-parameter from `Modulation`, or assigned through `MIDI Learn` and
-`OpenSoundControl Learn`.
+Assigning a source to a target creates a modulation assignment. You can
+make an assignment by right-clicking a parameter and choosing
+`Edit Modulation...`, dragging a modulation source onto a target, or
+selecting a source and target in the empty row of the
+[Mod Matrix](../../reference/windows/mod-matrix/). The Mod Matrix lists
+the assignments so they can be viewed and edited together.
 
-Choose the source's tab in the picker. For an LFO, select `LFO` and click
-its waveform card.
+![Connection editor showing Size as the target, LFO 1 selected as the source, and Depth set to 0.18 (18%).](../../images/concepts/modulation/assignment.png)
 
-Each assignment has a signed `Depth` in the parameter's units. Negative
-Depth inverts the modulation. `Offset` adds a constant shift.
-Set these values in the connection editor, then click `Done`.
+In this example, `LFO 1` is the source and `Size` is the target.
 
-A source can modulate another assignment's Depth.
-
-The [Mod Matrix](../../reference/windows/mod-matrix/) window lists the
-patch's assignments together, so you can inspect or edit them without
-opening each parameter. Mixer Mode keeps its assignments in a separate
-matrix.
-
-To make a parameter follow a [Perfect loop](../../reference/windows/export-video/#length-and-loops),
-connect it to `Loop Phase` on the source picker's `TIME` tab.
-
-`Clear All` in a parameter's connection list removes its assignments.
-Removing a source or clearing the list can be undone.
+Each assignment has a `Depth`, which controls how far the source moves the
+target’s value. A negative Depth reverses the direction. Several sources
+can affect the same target, with each assignment contributing its own
+adjustment.
 
 Related: [Modulation Sources](../../reference/modulation/),
 [MIDI and OpenSoundControl Learn](../midi-and-opensoundcontrol-learn/).

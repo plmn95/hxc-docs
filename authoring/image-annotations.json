@@ -280,6 +280,39 @@
           "description": "Click to play or pause the song. Space does the same."
         }
       ]
+    },
+    {
+      "id": "modulation-assignment",
+      "source": "images/concepts/modulation/assignment.png",
+      "width": 1008,
+      "height": 548,
+      "page": "src/content/docs/concepts/modulation.md",
+      "targets": [
+        {
+          "number": 1,
+          "x": 32,
+          "y": 194,
+          "width": 125,
+          "height": 86,
+          "label": "Source: LFO 1",
+          "badge": {
+            "side": "left",
+            "position": 237
+          }
+        },
+        {
+          "number": 2,
+          "x": 22,
+          "y": 24,
+          "width": 224,
+          "height": 34,
+          "label": "Target: Size",
+          "badge": {
+            "side": "top",
+            "position": 134
+          }
+        }
+      ]
     }
   ]
 }
