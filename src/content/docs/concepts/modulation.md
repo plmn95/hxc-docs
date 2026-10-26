@@ -15,5 +15,10 @@ right-clicking a parameter and selecting `Edit Modulation...`, by clicking
 and dragging a modulation source onto a target, or by manually selecting
 the sources and targets from the Selectors within the Mod Matrix itself.
 
+A pad holds two parameters, so right-clicking it offers one `Modulate`
+item per axis, such as `Modulate Scale X...` and `Modulate Scale Y...`.
+To drag a source onto a pad, drop it on the X or Y value beside or below
+the pad, not on the pad itself.
+
 Related: [Modulation Sources](../../reference/modulation/),
 [MIDI and OpenSoundControl Learn](../midi-and-opensoundcontrol-learn/).
