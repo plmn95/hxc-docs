@@ -7,6 +7,9 @@ A macro groups several parameter changes under one Knob. Set its value in
 `Modulation > MACRO`, then assign that macro to each target with its own
 `Depth` and `Offset`.
 
+To set an exact value, click the value field next to the Knob, type a
+number, and press Enter. In a narrow window the field sits under the Knob.
+
 A macro can also receive modulation. Right-click its Knob and choose
 `Edit Modulation...` to assign an LFO, another macro, or another source.
 
