@@ -55,5 +55,8 @@ than about a minute they hold still. `Snap` sets `Strange Attractor`'s
 `Speed` to whole turns per loop, or to 0 when one turn doesn't fit its range.
 `Trail/Comet` warms up for one loop before an export.
 
+To turn a picture with this camera without breaking it into points, use the
+[3D Tilt](../../fx/distort/3d-tilt/) Insert FX.
+
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/).

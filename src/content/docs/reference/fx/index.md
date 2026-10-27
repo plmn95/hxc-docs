@@ -9,7 +9,7 @@ control in addition to the effect's parameters.
 
 | Category | Members |
 |---|---|
-| [DISTORT](distort/) | Wave Warp, Kaleidoscope, Transform |
+| [DISTORT](distort/) | Wave Warp, Kaleidoscope, Transform, 3D Tilt |
 | [COLOR](color/) | Hue Rotate, Posterize, Dither, Palette Map, Threshold, Black & White, Invert |
 | [FILTER](filter/) | Pixelate, Mask, Edge Detect, Edge Enhance |
 | [RETRO](retro/) | VHS, Grain, Rutt-Etra |

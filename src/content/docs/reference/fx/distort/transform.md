@@ -21,3 +21,5 @@ Empty only shows a layer underneath when Transform sits in a generator's own Ins
 As a `FEEDBACK` `Pre` insert, Transform runs on every lap. Extend keeps stretching the edge outward, so streaks build up. Empty clears the surround every lap, which turns a slow zoom out into a tunnel with a clean border. Mirror and Tile repeat the shrinking loop inside itself and fill the whole frame.
 
 To frame a shrunk picture with a border instead, place a [Vignette](../../crt/vignette/#borders) set to a sharp Rectangle before Transform.
+
+To turn the picture in 3D, with perspective, use [3D Tilt](../3d-tilt/).
