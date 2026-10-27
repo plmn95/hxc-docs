@@ -13,7 +13,7 @@ combine Deck A and Deck B before the final output.
 | Mode | Crossfade / Blend, Luma Key, Chroma Key, Strobe, or Dirty Mix. |
 | `INVERT B` | Inverts Deck B, independent of Mode. |
 | Quality | `Half-res decks` or `Full-res decks`. |
-| BPM | The shared transport tempo, with a `TAP` button beside it. A Lamp reads `strobe-sync` while Strobe is locked to a division. |
+| BPM | The shared transport tempo, 1 to 999 BPM, with a `TAP` button beside it. A Lamp reads `strobe-sync` while Strobe is locked to a division. |
 | `Hide Controls` | Hides the on-screen controls, same as `H`. |
 
 | `Mode` | Additional controls |

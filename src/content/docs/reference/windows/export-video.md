@@ -59,8 +59,10 @@ Length accepts 1–64 bars, 1–256 beats, or 0.5–600 seconds. GIF is limited
 to 60 seconds; MP4 and WebM to 600. With `File` selected as the audio
 source, Length is limited to the song remaining after `Start`.
 
-In bars or beats, the export may adjust its tempo slightly to fit a whole
-number of frames. The dialog reports the adjusted BPM. Seconds are rounded
+In bars or beats, the export may adjust its tempo to fit a whole number of
+frames. The change is slight at everyday tempos and can be large for very
+short loops at very fast tempos, such as a single beat at 999 BPM. The
+dialog reports the adjusted BPM. Seconds are rounded
 to whole frames without changing the tempo.
 
 ### Crossfades
