@@ -16,8 +16,7 @@ Files use the folder and filename in `Settings > Recording`.
 
 `MP4` uses H.264. `WebM` uses VP9 and can preserve transparency with
 `Transparent background`. `GIF` repeats forever and uses one palette for
-the whole file; `Smooth gradients` reduces banding. Video exports can be
-at most 10 minutes long, GIFs at most 60 seconds.
+the whole file; `Smooth gradients` reduces banding.
 
 Live inputs do not continue during export. MIDI, OpenSoundControl, and
 macro values stay at their starting values. Cameras, NDI, Spout, and

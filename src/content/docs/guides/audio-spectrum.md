@@ -20,6 +20,8 @@ Choose `File > Open Song...` and select an audio file. Click `PLAY` on the
 song strip beneath the toolbar, or press `Space`.
 
 The ring expands with the music. `Space` pauses and resumes playback.
+Click anywhere on the waveform to move the playhead; the bar along its
+top moves and resizes the loop.
 
 [![The song strip playing an audio file, with elapsed time and a waveform.](../../images/guides/audio-spectrum/song-strip.png)](../../images/guides/audio-spectrum/song-strip.png)
 

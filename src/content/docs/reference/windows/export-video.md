@@ -37,7 +37,7 @@ Supported files include WAV, MP3, FLAC, Ogg, Opus, M4A, AAC, and AIFF.
 |---|---|
 | `Song` | `Choose Song...` or `Change...` selects an audio file. `Clear` removes the patch's song. |
 | `Use song` | Lets the patch react to the song during export. With it off, the export is silent and audio-driven parameters receive no audio input. |
-| `Start` | Where playback begins in the song, shared with the song strip's loop start. |
+| `Start` | Where playback begins in the song, shared with the song strip's loop start. Live playback also goes back here when it stops. |
 | `Include audio track` | Adds the soundtrack to MP4 (AAC) or WebM (Opus). GIF has no audio track, but its picture can still react to the song. |
 | `Use audio length` | Sets `Length` from the audio remaining after `Start`. |
 
@@ -50,14 +50,18 @@ are app settings.
 
 | Control | Behavior |
 |---|---|
-| `Length` | Bars, beats, or seconds, whether `Perfect loop` is on or off. One bar is four beats. Each unit retains its own value. |
+| `Length` | Bars, beats, or seconds, whether `Perfect loop` is on or off. One bar is four beats. Each unit retains its own value. With `Perfect loop` off, the song strip plays this length once and stops. |
 | `Perfect loop` | Makes the exported file one repeating loop and synchronizes supported motion to that loop in the live patch. |
 | `Video crossfade` | With the loop on, blends its final picture into its start. Affects the exported picture only. |
 | `Audio crossfade` | With a song and the loop on, blends the end of its sound into the music before `Start`. Affects both live song playback and export. |
 
-Length accepts 1–64 bars, 1–256 beats, or 0.5–600 seconds. GIF is limited
-to 60 seconds; MP4 and WebM to 600. With `File` selected as the audio
-source, Length is limited to the song remaining after `Start`.
+Length accepts 1–9999 bars, 1–39996 beats, or 0.5 seconds to 24 hours.
+With `File` selected as the audio source, Length is limited to the song
+remaining after `Start`. Any length exports. A GIF longer than 60 seconds
+or a video longer than 10 minutes shows a note: it can take hours to
+render and make a large file. While exporting, the dialog shows the file's
+size so far, its expected size, and the disk's free space, and warns when
+the disk may run out.
 
 In bars or beats, the export may adjust its tempo to fit a whole number of
 frames. The change is slight at everyday tempos and can be large for very
