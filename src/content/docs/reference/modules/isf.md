@@ -29,6 +29,17 @@ See [Signal Chain](../../../concepts/signal-chain/).
 A filter with `Blend` set to `XOR` or `Phoenix` also leaves dark results over
 empty areas transparent.
 
+## Transitions
+
+A transition declares two image inputs. Its first image is always the chain.
+The `Second image` Selector, shown only for transitions, picks the
+[AUX bus](../../../concepts/aux-sends-and-buses/) it runs to; the bus is
+received over black, like the chain. Send the module with the second
+picture to that bus from a position to the left of the ISF module, then
+drive the shader's progress input to move from one picture to the other.
+With `Second image` on `Chain (same as first)`, or while nothing has been
+sent to the chosen bus, both images are the chain.
+
 ## Looping shaders
 
 Besides the standard ISF values, Hex Composer gives every shader two

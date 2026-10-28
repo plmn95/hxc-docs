@@ -18,3 +18,4 @@ control in addition to the effect's parameters.
 | [BLUR](blur/) | Gaussian Blur, Box Blur, Motion Blur, Radial Blur |
 | [GRADE](grade/) | Channel Attenuverter, Channel Curves, Contrast, Saturation Adjust, White Balance |
 | [SIMULATE](simulate/) | Fluid, Ripple, Reaction-Diffusion |
+| [COMBINE](combine/) | Morph |
