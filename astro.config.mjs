@@ -18,6 +18,9 @@ const imageRenderer = createHash('sha256').update(readFileSync(new URL('./src/li
 export default defineConfig({
 	site: isVercel ? 'https://docs.hexcomposer.com' : 'https://plmn95.github.io',
 	base,
+	redirects: {
+		'/concepts/modulation-matrix/': `${base.replace(/\/$/, '')}/concepts/modulation/`,
+	},
 	// Imported helper edits must invalidate cached Markdown, as annotation data does.
 	markdown: { processor: unified({ remarkPlugins: [[publicImages, { base, annotations: imageAnnotations, imageRenderer }]] }) },
 	integrations: [
@@ -65,7 +68,7 @@ export default defineConfig({
 						{ slug: 'concepts/signal-chain' },
 						{ slug: 'concepts/patches-slots-and-banks' },
 						{ slug: 'concepts/insert-fx-chains' },
-						{ slug: 'concepts/modulation-matrix' },
+						{ slug: 'concepts/modulation' },
 						{ slug: 'concepts/midi-and-opensoundcontrol-learn' },
 						{ slug: 'concepts/aux-sends-and-buses' },
 						{ slug: 'concepts/chain-groups' },

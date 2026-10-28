@@ -21,4 +21,4 @@ Frequency bands are already smoothed and ignore these shaping controls.
 Each assignment's signed `Depth` determines how far, and in which direction,
 the audio moves its target.
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

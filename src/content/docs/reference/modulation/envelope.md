@@ -21,4 +21,4 @@ waiting for a trigger.
 | `Input` / `Threshold` | Selector, Trough | `Audio Threshold` only: `Audio L` or `Audio R`, and the level that opens the gate. |
 | `LFO` / `Split` | Selector, Trough | `LFO Edge` only: which LFO drives the gate, and the phase position (0 to 1) below which it stays open. |
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

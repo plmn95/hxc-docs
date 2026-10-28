@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "captureDate": "2026-10-25",
+  "baseline": {
+    "app": "Hex Composer",
+    "version": "0.21.1",
+    "distribution": "Published macOS release",
+    "releaseUrl": "https://github.com/3rd-Party-Guy/retrovid/releases/download/v0.21.1/hexcomposer-macos.zip",
+    "executableSha256": "2aa295b93286e8a722e707db8567ffdbe3545d2fee6688e155ea0b2afd340191",
+    "platform": "macOS",
+    "osVersion": "26.7.1",
+    "osBuild": "25G241"
+  },
+  "releaseComparison": {
+    "capturedSourceCommit": "c2427521416e4800277a59c2b869c41de2d193bc",
+    "currentRelease": "0.21.2",
+    "currentReleaseCommit": "32ad0fd6d582e5f204058d1bc802f60cf6623adb",
+    "sourceCheck": "Compared release source identities. v0.21.2 changes Windows stability, edit commands, and tests; the depicted macOS controls and shaders are unchanged. Captures and live checks use v0.21.1, not v0.21.2."
+  },
+  "processing": {
+    "script": "scripts/prepare-doc-images.mjs",
+    "operations": "Crop real release-app screenshot without resizing, annotations, redactions or UI changes. Orange numbered callouts render separately through authoring/image-annotations.json.",
+    "sharpVersion": "0.35.4",
+    "libvipsVersion": "8.18.6"
+  },
+  "patchSettings": {
+    "file": "public/examples/feedback-ring-start.hxc",
+    "sha256": "4c9e811468934e15982d6d52ff444210cff95c7f91b8b0562c73e9c2de44426e",
+    "source": "LFO 1, Sine, Rate 0.12 Hz, Level 1",
+    "target": "SHAPE 1 Size",
+    "baseSize": 0.35,
+    "depth": 0.18,
+    "offset": 0,
+    "verification": "Opened the existing patch in the release app. Observed the cyan ring changing size and the matrix LIVE value changing. No patch files saved or modified."
+  },
+  "images": [
+    {
+      "id": "modulation-assignment",
+      "task": "Identify the selected LFO source, Size target and modulation Depth in a compact connection editor.",
+      "page": "src/content/docs/concepts/modulation.md",
+      "source": "authoring/captures/2026-10-25/modulation/originals/04-ring-connection-editor-clean.png",
+      "published": "public/images/concepts/modulation/assignment.png",
+      "crop": {
+        "left": 1872,
+        "top": 640,
+        "width": 1008,
+        "height": 548
+      },
+      "resize": null,
+      "sourceKind": "App UI screenshot",
+      "captureTiming": "Live sine LFO at an arbitrary phase. The ring is outside the published crop.",
+      "verifiedChecks": [
+        "Opened SHAPE 1 Size’s existing LFO 1 assignment in the release connection editor.",
+        "Target Size, selected LFO 1 waveform, Depth 0.18 (18%) and Offset 0 visible.",
+        "Observed the cyan ring expand and contract.",
+        "Final native capture excludes pointer and hover highlight."
+      ],
+      "remainingChecks": [
+        "Capture uses release 0.21.1, not 0.21.2; the existing release-source comparison records unchanged depicted macOS controls.",
+        "No Windows/Linux or packaged manual check performed."
+      ],
+      "sourceDimensions": {
+        "width": 2880,
+        "height": 1772
+      },
+      "publishedDimensions": {
+        "width": 1008,
+        "height": 548
+      },
+      "sourceSha256": "586042328d0cfc67a2a8c13eda909556b959b5b09f0e8f04c6c5cf5e7cbb47db",
+      "publishedSha256": "60880b7af5a6f45c467762b9400833c315591f33a0ffc0f73013e8308c74f33d"
+    }
+  ],
+  "rejectedCaptures": [
+    "Wide Mod Matrix crop rejected because labels were too small when rendered in the article. Originals retained."
+  ]
+}

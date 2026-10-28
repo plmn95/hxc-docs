@@ -15,8 +15,8 @@ const head = Astro.locals.starlightRoute.head.map((entry) => {
     return { ...entry, attrs: { ...entry.attrs, href: 'https://docs.hexcomposer.com/sitemap-index.xml' } };
   return entry;
 });
-const image = 'https://docs.hexcomposer.com/social-ribbons-v2.png';
-const imageAlt = 'Blue and violet ribbons generated in Hex Composer, with the Hex Composer logo';
+const image = 'https://docs.hexcomposer.com/social-docs-v1.png';
+const imageAlt = 'Hex Composer logo with an orange docs label on a dark background';
 ---
 <link rel="icon" href={assetWithBase(base, '/favicon.ico')} type="image/x-icon" sizes="16x16 32x32 48x48" />
 <link rel="apple-touch-icon" href={assetWithBase(base, '/apple-touch-icon.png')} sizes="256x256" />

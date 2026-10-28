@@ -40,4 +40,4 @@ With [Perfect loop](../../windows/export-video/#length-and-loops) on, scrolling 
 
 Related: [Insert FX Chains](../../../concepts/insert-fx-chains/),
 [AUX Sends and Buses](../../../concepts/aux-sends-and-buses/),
-[Modulation Matrix](../../../concepts/modulation-matrix/).
+[Modulation](../../../concepts/modulation/).

@@ -15,4 +15,4 @@ For assigning a control directly to a parameter, see
 The other MIDI message types, Velocity, Aftertouch, Pitch Bend, and NRPN,
 are on their own tab. See [MIDI Note](../midi-note/).
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).

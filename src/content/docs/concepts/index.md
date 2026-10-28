@@ -11,7 +11,7 @@ description: "How chains, modulation, patches, and output work together."
   organize open slots, and choose what opens at startup.
 - [Insert FX Chains](insert-fx-chains/): process one module's image with an
   ordered effect stack.
-- [Modulation Matrix](modulation-matrix/): assigning modulation sources
+- [Modulation](modulation/): assigning modulation sources
   to parameters.
 - [MIDI and OpenSoundControl Learn](midi-and-opensoundcontrol-learn/): the
   Learn-mode workflow shared by both input protocols.

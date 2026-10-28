@@ -18,5 +18,5 @@ Mixer Mode has four separate macro Knobs per deck, each with its own MIDI
 CC binding. They belong to their deck, have a fixed count, and cannot
 receive modulation.
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/),
+Related: [Modulation](../../../concepts/modulation/),
 [Mixer Mode](../../../concepts/mixer-mode/).

@@ -34,6 +34,6 @@ The pattern now turns back and forth. If it stays still, check that
 Change the LFO's `RATE` to adjust how fast it turns. `Depth` belongs to
 this connection and controls how far the source moves `Rotation`.
 
-Related: [Modulation Matrix](../../concepts/modulation-matrix/).
+Related: [Modulation](../../concepts/modulation/).
 
 Next: [Record and Output](../04-record-and-output/).

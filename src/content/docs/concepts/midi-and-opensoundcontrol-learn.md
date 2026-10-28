@@ -20,4 +20,4 @@ preserved; duplicate sources are not added.
 A pulsing `MIDI LEARN` label appears in the toolbar while MIDI Learn is
 armed. OpenSoundControl Learn has no toolbar indicator.
 
-Related: [Modulation Matrix](../modulation-matrix/).
+Related: [Modulation](../modulation/).

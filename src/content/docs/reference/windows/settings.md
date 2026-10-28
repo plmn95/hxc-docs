@@ -42,6 +42,11 @@ for a song-driven example.
 
 ## Application audio capture
 
+:::note[Next release]
+The capture status and recovery controls below describe merged changes for
+the next release. Verification in a released desktop build is pending.
+:::
+
 Choose `Application` in Audio settings, select a running app, then click `Open`.
 The status distinguishes the selected connection from the audio arriving through it:
 
@@ -50,9 +55,9 @@ The status distinguishes the selected connection from the audio arriving through
 | Starting capture | Capture opened but has not delivered its first audio buffer. |
 | Receiving audio | Recent buffers contain a signal above the quiet threshold. |
 | Receiving silence | Buffers are arriving, but their signal is quiet or silent. The connection is healthy. |
-| No audio buffers | No buffer has arrived for over two seconds. The app may be idle or capture may need reconnection. |
-| Capture stopped | The capture backend has stopped. |
-| Couldn't reconnect | The retry failed. The same app remains available for another attempt. |
+| No audio buffers. Try Reconnect | No buffer has arrived for over two seconds. The app may be idle or capture may need reconnection. |
+| Capture stopped. Try Reconnect | The capture backend has stopped. |
+| Couldn't reconnect. Try again or check access | The retry failed. The same app remains available for another attempt. |
 
 `Reconnect` closes and reopens capture for the same app. It does not restart
 that app, alter the patch, or request macOS permission. `Close` disconnects and
@@ -61,10 +66,7 @@ than modulation parameters.
 
 On macOS, screen/system audio capture requires recording access. When access is
 not granted, source polling does not request it automatically; use `Request
-Access` explicitly. Repeated clicks while a request is pending are combined
-into one request. A development preview signed without a stable certificate may
-need its macOS permission entry refreshed after rebuilding. Do not treat silence
-alone as a reason to change permissions.
+Access` explicitly. Do not treat silence alone as a reason to change permissions.
 
 ## Recording files
 

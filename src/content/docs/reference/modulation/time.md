@@ -29,4 +29,4 @@ and in Mixer Mode, it runs over four bars at the current BPM.
 Unlike TIME, `Loop Phase` repeats with each loop. A target with different
 values at the ramp's start and end still jumps at the loop point.
 
-Related: [Modulation Matrix](../../../concepts/modulation-matrix/).
+Related: [Modulation](../../../concepts/modulation/).
