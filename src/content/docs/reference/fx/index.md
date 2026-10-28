@@ -19,3 +19,4 @@ control in addition to the effect's parameters.
 | [GRADE](grade/) | Channel Attenuverter, Channel Curves, Contrast, Saturation Adjust, White Balance |
 | [SIMULATE](simulate/) | Fluid, Ripple, Reaction-Diffusion |
 | [COMBINE](combine/) | Morph |
+| [GLITCH](glitch/) | Datamosh, Block Crunch |

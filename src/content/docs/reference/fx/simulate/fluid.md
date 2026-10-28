@@ -17,6 +17,9 @@ edges stir it even in a still image.
 | `Recover` | Trough | 0 to 1 | How quickly the live image returns. Low values leave long smears in `Smear` and longer distortion in `Warp`. |
 | `Reset` | Button and Lamp | | Clears the flow and restarts from the current image. See [Reset with modulation](../#reset-with-modulation). |
 
+For a blocky, digital smear instead of liquid, see
+[Datamosh](../../glitch/datamosh/#datamosh-or-fluid).
+
 Fluid runs at a quarter of the output resolution. Below 20 frames per
 second, the flow slows down.
 

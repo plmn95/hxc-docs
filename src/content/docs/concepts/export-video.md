@@ -36,6 +36,8 @@ motion that holds still, and inputs that cannot be reproduced. `Snap`
 adjusts the rates it can to fit the loop in one undoable step. A loop
 setting alone does not make every patch repeat: simulations and feedback
 can keep changing from one loop to the next.
+[Datamosh](../../reference/fx/glitch/datamosh/#perfect-loops) instead starts
+from the clean picture at every loop start, so every loop moshes the same way.
 
 `Video crossfade` blends the end into the start to soften that change.
 Content that already repeats passes through unchanged. This crossfade

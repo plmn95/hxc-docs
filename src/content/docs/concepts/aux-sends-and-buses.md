@@ -9,7 +9,8 @@ module can be sent to one or more of the `AUX` buses. This includes any
 earlier images still visible at that point. An `AUX` bus can be read by an
 `INSERT` module through its `Source` Selector, by `FEEDBACK` through
 `Input source`, by a [Morph](../../reference/fx/combine/morph/) effect's
-`Into`, or by an [ISF](../../reference/modules/isf/) transition's
+`Into`, by a [Datamosh](../../reference/fx/glitch/datamosh/) effect's
+`Motion from`, or by an [ISF](../../reference/modules/isf/) transition's
 `Second image`. A single module can send to multiple buses, and multiple
 modules can send to a single bus. Use the `AUX` buses to split an image and
 send it to multiple other modules, or to merge images from several points
