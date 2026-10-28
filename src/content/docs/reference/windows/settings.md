@@ -40,6 +40,34 @@ user bands. These settings apply across patches and audio sources. See
 assignments, or [Make an Audio Spectrum](../../../guides/audio-spectrum/)
 for a song-driven example.
 
+## Application audio capture
+
+:::note[Next release]
+The capture status and recovery controls below describe merged changes for
+the next release. Verification in a released desktop build is pending.
+:::
+
+Choose `Application` in Audio settings, select a running app, then click `Open`.
+The status distinguishes the selected connection from the audio arriving through it:
+
+| Status | Meaning |
+|---|---|
+| Starting capture | Capture opened but has not delivered its first audio buffer. |
+| Receiving audio | Recent buffers contain a signal above the quiet threshold. |
+| Receiving silence | Buffers are arriving, but their signal is quiet or silent. The connection is healthy. |
+| No audio buffers. Try Reconnect | No buffer has arrived for over two seconds. The app may be idle or capture may need reconnection. |
+| Capture stopped. Try Reconnect | The capture backend has stopped. |
+| Couldn't reconnect. Try again or check access | The retry failed. The same app remains available for another attempt. |
+
+`Reconnect` closes and reopens capture for the same app. It does not restart
+that app, alter the patch, or request macOS permission. `Close` disconnects and
+clears the saved application selection. These are connection commands rather
+than modulation parameters.
+
+On macOS, screen/system audio capture requires recording access. When access is
+not granted, source polling does not request it automatically; use `Request
+Access` explicitly. Do not treat silence alone as a reason to change permissions.
+
 ## Recording files
 
 Quality runs from `Low` to `Lossless`; frame rate is `24`, `30`, or `60`,
