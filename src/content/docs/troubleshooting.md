@@ -32,6 +32,7 @@ See [Make an Audio Spectrum](../guides/audio-spectrum/) or
 | `Open a MIDI port in Settings > MIDI.` appears | Open your controller's input port in `Settings > MIDI`. |
 | A MIDI assignment does nothing | Check the input port, CC number, and channel. Channel `0` accepts any channel. Use the parameter's `MIDI Learn` action and move a control that sends MIDI CC. |
 | MIDI Learn stays armed | Send a MIDI CC message from the controller. A successful learn adds the assignment and disarms Learn. |
+| A loaded patch reacts to the wrong knobs or faders | The patch was mapped to another controller. Use `Edit > Clear MIDI Bindings...` and learn your own controls. |
 
 See [MIDI](../reference/modulation/midi/) and
 [MIDI and OpenSoundControl Learn](../concepts/midi-and-opensoundcontrol-learn/).

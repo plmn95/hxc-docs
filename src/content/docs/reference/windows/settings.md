@@ -10,7 +10,7 @@ bottom can be copied when reporting a problem.
 |---|---|
 | `Output` | Graphics card, resolution and aspect ratio, render quality, display fit, second-display output, and NDI, Spout, or Syphon sending. |
 | `Audio` | Device, application, or file input; song playback device; CV/Gate channel roles; custom frequency bands. See [Audio sources](#audio-sources). |
-| `MIDI` | Controller input ports. |
+| `MIDI` | Controller input ports; clear the patch's MIDI bindings. |
 | `OpenSoundControl` | UDP listen port for incoming messages. |
 | `Recording` | Quality, frame rate, codec, audio inclusion, output folder, and filename pattern. |
 | `Patches` | `Embed assets in save files` includes referenced images, sprites, video, and the patch's song. It makes patches portable and increases file size. |

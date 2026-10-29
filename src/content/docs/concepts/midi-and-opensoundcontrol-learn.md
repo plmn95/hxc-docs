@@ -20,4 +20,17 @@ preserved; duplicate sources are not added.
 A pulsing `MIDI LEARN` label appears in the toolbar while MIDI Learn is
 armed. OpenSoundControl Learn has no toolbar indicator.
 
+## Clear a patch's MIDI bindings
+
+MIDI bindings are saved with the patch, so a patch made on another
+controller can react to the wrong knobs or faders on yours.
+`Edit > Clear MIDI Bindings...`, also in `Settings > MIDI`, removes the
+active patch's MIDI CC and NRPN connections and unbinds every macro's CC.
+The macros themselves stay, ready to learn your own controls.
+Connections that modulate a removed connection are removed with it.
+
+Velocity, aftertouch, pitch bend and note-triggered envelopes stay, since
+every keyboard sends them the same way. A confirmation shows what will be
+removed, and one Undo brings it all back. Clearing also disarms MIDI Learn.
+
 Related: [Modulation](../modulation/).
