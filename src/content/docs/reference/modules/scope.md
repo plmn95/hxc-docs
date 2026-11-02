@@ -46,6 +46,12 @@ slides for the whole cycle without holding still.
 `Seed` chooses the sequence for `S+H` and noise. Noise controls for detail
 layers and density appear only for the waveforms that use them.
 
+Modulation of the generator controls, and of `X` or `Y` on a `Manual` axis
+while the other axis is live, takes effect within each frame. An LFO is
+followed sample by sample, so it can sweep or wobble a curve at any rate.
+Other sources, and moving a control yourself, slide from one frame's value to
+the next. The other SCOPE controls change once per frame.
+
 SCOPE draws every sample, and between samples the beam follows the
 waveform the way an analog scope fed by a sound card does, so fast audio
 keeps its curves and peaks instead of turning into straight lines. A
