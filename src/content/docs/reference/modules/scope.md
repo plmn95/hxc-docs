@@ -5,7 +5,8 @@ description: "Draw XY traces from audio, internal generators, or manual values, 
 
 SCOPE draws an XY trace: one signal controls the horizontal beam position
 and another controls the vertical position. Use audio for a waveform trace,
-internal generators for curves, or manual values for a point.
+internal generators for curves, or manual values for a point or a modulated
+path.
 
 :::note[Next release]
 The Size, Exposure, and glow controls below describe merged changes for the
@@ -46,11 +47,17 @@ slides for the whole cycle without holding still.
 `Seed` chooses the sequence for `S+H` and noise. Noise controls for detail
 layers and density appear only for the waveforms that use them.
 
-Modulation of the generator controls, and of `X` or `Y` on a `Manual` axis
-while the other axis is live, takes effect within each frame. An LFO is
-followed sample by sample, so it can sweep or wobble a curve at any rate.
-Other sources, and moving a control yourself, slide from one frame's value to
-the next. The other SCOPE controls change once per frame.
+Modulation of the generator controls, and of `X` and `Y` on a `Manual` axis,
+takes effect within each frame. An LFO is followed sample by sample, so it can
+sweep or wobble a curve at any rate. Other sources, and moving a control
+yourself, slide from one frame's value to the next. The other SCOPE controls
+change once per frame.
+
+With both axes on `Manual`, the beam rests as a single dot. While `X` or `Y`
+moves, it draws the path the beam takes, like turning the position knobs of a
+real scope, and `Points Only` puts a dot at each sample along it. A sudden
+jump while the beam is moving leaves a faint line; after it has rested for
+half a second, it jumps without one.
 
 SCOPE draws every sample, and between samples the beam follows the
 waveform the way an analog scope fed by a sound card does, so fast audio
