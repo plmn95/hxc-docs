@@ -34,10 +34,9 @@ The dialog reports that adjustment.
 The loop checklist identifies rates that do not complete whole cycles,
 motion that holds still, and inputs that cannot be reproduced. `Snap`
 adjusts the rates it can to fit the loop in one undoable step. A loop
-setting alone does not make every patch repeat: simulations and feedback
+setting alone does not make every patch repeat: simulations,
+[Datamosh](../../reference/fx/glitch/datamosh/#perfect-loops) and feedback
 can keep changing from one loop to the next.
-[Datamosh](../../reference/fx/glitch/datamosh/#perfect-loops) instead starts
-from the clean picture at every loop start, so every loop moshes the same way.
 
 `Video crossfade` blends the end into the start to soften that change.
 Content that already repeats passes through unchanged. This crossfade

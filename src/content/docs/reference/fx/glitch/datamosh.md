@@ -11,7 +11,7 @@ it.
 
 | Parameter | Control | Range | Notes |
 |---|---|---|---|
-| `Keyframe` | Button and Lamp | | Shows the clean image again and moshes on from there. The Lamp flashes on every keyframe, including one at the start of a Perfect loop. See [Keyframe with modulation](#keyframe-with-modulation). |
+| `Keyframe` | Button and Lamp | | Shows the clean image again and moshes on from there. The Lamp flashes on every keyframe. See [Keyframe with modulation](#keyframe-with-modulation). |
 | `Motion from` | Selector | This picture, AUX 1 to AUX 8 | Where the movement comes from. `This picture` uses the module's own image; an AUX bus moves this image with the movement of the picture sent there. A thumbnail shows the bus. When no module to the left sends to it, the panel warns and the image passes through. Default This picture. Not a modulation target: it is routing, like Morph's `Into`. |
 | `Style` | Selector | Smear, Bloom | How the movement is used. Can be modulated: it switches half way. Default Smear. |
 | `Blocks` | Selector | 8 px, 16 px, 32 px | Size of the blocks that move together. Bigger blocks look coarser. Can be modulated. Default 16 px. |
@@ -49,8 +49,8 @@ stays, so Bloom pours the clean image straight away.
 
 Datamosh holds a picture between frames, like a simulation. It starts again
 from the clean image when the effect is added or switched on, when `Mix`
-comes back from 0, at every Perfect loop start, after a patch load and when
-the output resolution changes. Changing `Blocks` clears the learned
+comes back from 0, after a patch load and when the output resolution
+changes. Changing `Blocks` clears the learned
 movement but keeps the picture. Moving or removing an Insert FX slot
 restarts it.
 
@@ -60,11 +60,16 @@ panel says so and the image passes through.
 ## Perfect loops
 
 With [Perfect loop](../../../windows/export-video/#length-and-loops) on,
-Datamosh starts from the clean image at every loop start, so every loop
-moshes the same way and the loop check lists it as a note. The jump from
-the moshed picture back to the clean one at the loop point is the same in
-every loop; [Video crossfade](../../../windows/export-video/#crossfades)
-softens it.
+Datamosh carries on through the loop start, so it never snaps back to the
+clean image there. The loop check lists it as warming up for one loop: the
+export plays one loop first, so the file opens on a picture that is already
+moshing. Each loop still differs a little from the last, and
+[Video crossfade](../../../windows/export-video/#crossfades) blends that
+at the loop point.
+
+To bring the clean image back at the same moment of every loop, drive
+`Keyframe` with a synced LFO. See
+[Keyframe with modulation](#keyframe-with-modulation).
 
 ## Datamosh or Fluid
 
