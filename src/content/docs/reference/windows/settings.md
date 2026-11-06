@@ -42,11 +42,6 @@ for a song-driven example.
 
 ## Application audio capture
 
-:::note[Next release]
-The capture status and recovery controls below describe merged changes for
-the next release. Verification in a released desktop build is pending.
-:::
-
 Choose `Application` in Audio settings, select a running app, then click `Open`.
 The status distinguishes the selected connection from the audio arriving through it:
 

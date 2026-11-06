@@ -8,11 +8,6 @@ and another controls the vertical position. Use audio for a waveform trace,
 internal generators for curves, or manual values for a point or a modulated
 path.
 
-:::note[Next release]
-The Size, Exposure, and glow controls below describe merged changes for the
-next release. Verification in a released desktop build is pending.
-:::
-
 `Mix` and `Blend` sit above the `Trace` and `Beam` sections. They control
 the strength and [blend mode](../../../concepts/signal-chain/#blend-modes)
 of the trace and backdrop together. `Size` sits below them, above `Trace`.
