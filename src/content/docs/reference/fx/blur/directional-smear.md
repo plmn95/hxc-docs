@@ -18,5 +18,9 @@ quickly the trail fades; `Spread` softens it across its width.
 `Empty` leaves the area beyond the picture transparent. `Extend` holds the
 outermost pixels, `Mirror` reflects the picture, and `Tile` repeats it.
 
+Directional Smear can slow live playback at high output resolutions. Lower
+the output resolution or set `Spread` to 0 to reduce its cost. Shortening
+`Length` while it remains above 0 still has a similar cost.
+
 For an evenly spread streak centered on the original picture, use
 [Motion Blur](../motion-blur/).
