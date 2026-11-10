@@ -5,14 +5,20 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
+    "check:node": "node scripts/check-node.mjs",
+    "predev": "npm run check:node",
     "dev": "astro dev",
+    "prestart": "npm run check:node",
     "start": "astro dev",
     "check:docs": "node scripts/check-docs.mjs",
+    "precheck": "npm run check:node",
     "check": "npm run test:docs && npm run check:docs && npm run build",
     "test:docs": "node --test scripts/check-docs.test.mjs scripts/image-annotations.test.mjs",
+    "prebuild": "npm run check:node",
     "build": "astro build && node scripts/check-branding.mjs",
     "preview": "astro preview",
     "astro": "astro",
+    "prebuild:release": "npm run check:node",
     "build:release": "node scripts/build-release.mjs",
     "assemble:archives": "python3 scripts/assemble-archives.py",
     "test:archives": "python3 scripts/test-archives.py",
@@ -40,7 +46,7 @@
     "esbuild": true
   },
   "engines": {
-    "node": ">=22.12.0"
+    "node": "26.x"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
