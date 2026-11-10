@@ -55,7 +55,8 @@
   ],
   "git": {
     "deploymentEnabled": {
-      "codex/scope-capture-docs": false
+      "codex/scope-capture-docs": false,
+      "codex/node-26": false
     }
   }
 }
