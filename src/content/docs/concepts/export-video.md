@@ -6,7 +6,9 @@ description: "Render a patch at an exact frame rate, make a repeating loop, or e
 Use `File > Export Video...` for a fixed-length clip without the dropped
 frames of an overloaded live recording. It renders the patch frame by
 frame from its beginning, taking as long as each frame needs. The live view
-pauses during export and continues from where it stopped.
+pauses during export and continues from where it stopped. With
+[Ableton Link](../../guides/ableton-link/) enabled, the live picture instead
+catches up to the current session phase when export ends.
 
 Choose a preset with `For`, or set the format, size, frame rate, and quality
 individually. The output keeps the aspect ratio set in `Settings > Output`.
@@ -47,6 +49,14 @@ frames kept for the file.
 The loop settings are saved with the patch and also affect built-in motion
 in the live view. See [Perfect loop](../../reference/windows/export-video/#length-and-loops)
 for the checklist, crossfade limits, and motion that follows the loop.
+
+## Export while linked
+
+Export captures the effective Link tempo once when rendering starts. It
+then uses a fixed clock, so later changes from peers do not alter the file.
+The saved `Perfect loop` settings apply to export even while Link suspends
+their live visual wrapping and snapping. Frame rounding can still adjust
+the export tempo for bar and beat loops.
 
 ## Export with a song
 

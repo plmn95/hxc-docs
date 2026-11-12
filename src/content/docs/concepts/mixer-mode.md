@@ -21,6 +21,13 @@ A dot marks a parameter with modulation. `X` opens the mixer's
 it lists mixer assignments, not assignments inside the deck patches.
 Mixer edits have a separate undo/redo history from patch edits.
 
+## Share a musical clock
+
+[Ableton Link](../../guides/ableton-link/) shares one tempo and musical
+clock across both decks, Mixer modulation and the Editor. Beat-synced LFOs
+and strobe follow it; free-running motion and song playback remain
+independent. Entering or leaving Mixer Mode does not disconnect Link.
+
 ## Perform and record
 
 `H` hides or shows the controls. `Escape` first restores hidden controls;

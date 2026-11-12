@@ -69,6 +69,12 @@ short loops at very fast tempos, such as a single beat at 999 BPM. The
 dialog reports the adjusted BPM. Seconds are rounded
 to whole frames without changing the tempo.
 
+While [Ableton Link](../../../guides/ableton-link/) is enabled, live visual
+wrapping and snapping to `Perfect loop` are suspended. The saved settings
+still apply to export. Export captures the effective BPM once, then ignores
+peer tempo changes while rendering. Returning to the live view reacquires
+Link's current phase, including after cancellation.
+
 ### Crossfades
 
 Crossfades use beats for a length in bars or beats, or seconds otherwise.

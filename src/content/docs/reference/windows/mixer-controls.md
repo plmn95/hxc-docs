@@ -13,7 +13,7 @@ combine Deck A and Deck B before the final output.
 | Mode | Crossfade / Blend, Luma Key, Chroma Key, Strobe, or Dirty Mix. |
 | `INVERT B` | Inverts Deck B, independent of Mode. |
 | Quality | `Half-res decks` or `Full-res decks`. |
-| BPM | The shared transport tempo, 1 to 999 BPM, with a `TAP` button beside it. A Lamp reads `strobe-sync` while Strobe is locked to a division. |
+| BPM | The shared tempo, 1 to 999 BPM locally or 20 to 999 while linked, with `TAP` beside it. A Lamp reads `strobe-sync` while Strobe is locked to a division. |
 | `Hide Controls` | Hides the on-screen controls, same as `H`. |
 
 | `Mode` | Additional controls |
@@ -23,6 +23,11 @@ combine Deck A and Deck B before the final output.
 | `Chroma Key` | Key-color swatch, `Tolerance`, and `Softness`. |
 | `Strobe` | Rate, either `Free` or `Beat-synced`. Right-click a free rate to show the time per flash. |
 | `Dirty Mix` | `Sum` (Add/Difference), `Overflow` (Clip/Wrap), `Center` (Clean/Hot), `INVERT A`, `INVERT B`, and `HARD-CUT` Rockers, plus `H-TEAR`, `V-ROLL`, `RGB BLEED`, and `DROPOUT` amounts. |
+
+[Ableton Link](../../../guides/ableton-link/) uses one clock for both decks
+and Mixer modulation. While linked, `BPM` shows the session tempo and
+`Beat-synced` strobe follows its phase. Editing `BPM` or using `TAP` shares
+the tempo with peers. Song playback remains independent.
 
 Modulatable mixer controls behave like patch parameters. A modulated
 Trough's handle moves with its source, with an amber marker and a tick at

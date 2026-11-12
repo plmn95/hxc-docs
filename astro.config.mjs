@@ -58,7 +58,7 @@ export default defineConfig({
 				},
 				{
 					label: 'Guides',
-					items: [{ slug: 'guides' }, { slug: 'guides/audio-spectrum' }, { slug: 'guides/feedback-trails' }, { slug: 'guides/crt-feedback' }],
+					items: [{ slug: 'guides' }, { slug: 'guides/audio-spectrum' }, { slug: 'guides/feedback-trails' }, { slug: 'guides/crt-feedback' }, { slug: 'guides/ableton-link' }],
 				},
 				{
 					label: 'Concepts',
