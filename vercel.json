@@ -55,6 +55,10 @@
   ],
   "rewrites": [
     {
+      "source": "/vizard-docs/releases/:version/:sitemap(sitemap(?:-(?:index|[0-9]+))?\\.xml)",
+      "destination": "/api/archive?archivePath=:version/:sitemap"
+    },
+    {
       "source": "/vizard-docs/releases/:path*/index.html",
       "destination": "/api/archive?archivePath=:path*/index.html"
     },

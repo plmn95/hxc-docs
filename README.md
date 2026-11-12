@@ -63,7 +63,8 @@ manuals without copying or rebuilding them. Vercel serves
 `/vizard-docs/releases/...` from the frozen GitHub Pages manuals. `api/archive.js` adjusts only the online HTML response: titles and
 descriptions identify the archived version, canonical and Open Graph URLs use
 the public archive URL, and the archive notice links to the current page on
-`docs.hexcomposer.com`. Article content stays unchanged. Assets continue through
+`docs.hexcomposer.com`. The online archive sitemap index and URL entries use
+the same public archive origin. Article content stays unchanged. Assets continue through
 the compatibility proxy, preserving embedded navigation, media and search paths.
 The ZIPs, manifests and files assembled on GitHub Pages remain byte-identical.
 This online metadata layer does not run in installed/offline manuals. The

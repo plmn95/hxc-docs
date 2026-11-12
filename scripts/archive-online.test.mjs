@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { test, mock } from 'node:test';
-import { archiveRequest, onlineArchiveHtml, serveArchive } from '../src/lib/archive-online.mjs';
+import { archiveRequest, onlineArchiveHtml, onlineArchiveSitemap, serveArchive } from '../src/lib/archive-online.mjs';
 import { GET, HEAD } from '../api/archive.js';
 
 const request = (path, method = 'GET') => new Request(`https://preview.example/api/archive?archivePath=${encodeURIComponent(path)}`, { method });
@@ -95,4 +95,20 @@ test('HEAD error responses omit their body as well', async () => {
   try {
     assert.equal(await (await serveArchive(request('v0.19.1/', 'HEAD'), async () => { throw new Error('offline'); })).text(), '');
   } finally { console.error = originalError; }
+});
+
+test('online sitemap index and URL entries use the same public version canonical', async () => {
+  const route = archiveRequest(request('v0.19.1/sitemap-index.xml'));
+  assert.equal(route.kind, 'sitemap');
+  assert.equal(archiveRequest(request('v0.15.0/sitemap.xml')).kind, 'sitemap');
+  assert.equal(route.upstream, 'https://plmn95.github.io/hxc-docs/releases/v0.19.1/sitemap-index.xml');
+  const xml = '<?xml version="1.0"?><sitemapindex><sitemap><loc>https://plmn95.github.io/vizard-docs/releases/v0.19.1/sitemap-0.xml</loc></sitemap></sitemapindex>';
+  assert.equal(onlineArchiveSitemap(xml, route), xml.replace('https://plmn95.github.io/vizard-docs', 'https://docs.hexcomposer.com/vizard-docs'));
+  const other = '<urlset><url><loc>https://plmn95.github.io/hxc-docs/releases/v0.19.1/reference/modules/isf/</loc></url><url><loc>https://example.org/</loc></url></urlset>';
+  assert.equal(onlineArchiveSitemap(other, route), other.replace('https://plmn95.github.io/hxc-docs', 'https://docs.hexcomposer.com/vizard-docs'));
+  const response = await serveArchive(request('v0.19.1/sitemap-0.xml'), async () => new Response(xml, { headers: { 'content-type': 'application/xml' } }));
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('Content-Type'), 'application/xml; charset=utf-8');
+  assert.ok((await response.text()).includes('https://docs.hexcomposer.com/vizard-docs/releases/v0.19.1/sitemap-0.xml'));
+  for (const path of ['v0.19.1/reference/sitemap-0.xml', 'v0.19.1/sitemap-evil.xml', 'v0.19.1/arbitrary.xml']) assert.equal(archiveRequest(request(path)), null);
 });

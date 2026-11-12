@@ -55,10 +55,10 @@ class ArchiveTest(unittest.TestCase):
                 config = json.loads((SCRIPT.parent.parent / 'vercel.json').read_text())
                 rewrite = next(r for r in config['rewrites'] if r['source'] == '/vizard-docs/releases/:path*')
                 self.assertEqual(rewrite['destination'], 'https://plmn95.github.io/hxc-docs/releases/:path*')
-                directory = config['rewrites'][0]
+                directory = next(r for r in config['rewrites'] if r['source'] == '/vizard-docs/releases/:path*/index.html')
                 self.assertEqual(directory['source'], '/vizard-docs/releases/:path*/index.html')
                 self.assertEqual(directory['destination'], '/api/archive?archivePath=:path*/index.html')
-                page = config['rewrites'][1]
+                page = next(r for r in config['rewrites'] if r['source'] == '/vizard-docs/releases/:path*/')
                 self.assertEqual(page['source'], '/vizard-docs/releases/:path*/')
                 self.assertEqual(page['destination'], '/api/archive?archivePath=:path*/')
                 import shutil

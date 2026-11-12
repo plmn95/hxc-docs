@@ -14,13 +14,17 @@ export function archiveRequest(request) {
   const path = paths[0];
   const [version, ...parts] = path.split('/');
   if (!versionPattern.test(version)) return null;
+  if (parts.length === 1 && /^sitemap(?:-(?:index|[0-9]+))?\.xml$/.test(parts[0])) {
+    const filename = parts[0];
+    return { version, kind: 'sitemap', canonical: `${origin}${prefix}${version}/${filename}`, upstream: `${mirror}${version}/${filename}` };
+  }
   if (parts.at(-1) === 'index.html') parts.pop();
   else if (parts.at(-1) === '') parts.pop();
   else return null;
   if (parts.some((part) => !/^[A-Za-z0-9_-]+$/.test(part))) return null;
   const page = parts.length ? `${parts.join('/')}/` : '';
   const canonical = `${origin}${prefix}${version}/${page}`;
-  return { version, page, canonical, upstream: `${mirror}${version}/${page}index.html`, isIndex: path.endsWith('/index.html') };
+  return { version, kind: 'html', page, canonical, upstream: `${mirror}${version}/${page}index.html`, isIndex: path.endsWith('/index.html') };
 }
 
 // Patch only metadata and the existing current-manual link in the online response.
@@ -65,6 +69,12 @@ export function onlineArchiveHtml(html, { version, page, canonical }) {
   return edits.sort((a, b) => b.start - a.start).reduce((result, edit) => result.slice(0, edit.start) + edit.value + result.slice(edit.end), html);
 }
 
+export function onlineArchiveSitemap(xml, { version }) {
+  const canonicalPrefix = `${origin}${prefix}${version}/`;
+  return xml.replaceAll(`https://plmn95.github.io/vizard-docs/releases/${version}/`, canonicalPrefix)
+    .replaceAll(`${mirror}${version}/`, canonicalPrefix);
+}
+
 export async function serveArchive(request, fetchPage = fetch) {
   const route = archiveRequest(request);
   if (!route) return new Response(request.method === 'HEAD' ? null : 'Manual page not found.', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
@@ -72,15 +82,17 @@ export async function serveArchive(request, fetchPage = fetch) {
   try {
     const response = await fetchPage(route.upstream, { redirect: 'error', signal: AbortSignal.timeout(10000) });
     if (response.status === 404) return new Response(request.method === 'HEAD' ? null : 'Manual page not found.', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
-    if (!response.ok || !response.headers.get('content-type')?.includes('text/html')) throw new Error(`Unexpected archive response: ${response.status}`);
-    const html = await response.text();
+    const contentType = response.headers.get('content-type') ?? '';
+    const isSitemap = route.kind === 'sitemap';
+    if (!response.ok || (isSitemap ? !/(?:text|application)\/xml/.test(contentType) : !contentType.includes('text/html'))) throw new Error(`Unexpected archive response: ${response.status}`);
+    const source = await response.text();
     const headers = {
-      'Content-Type': 'text/html; charset=utf-8',
+      'Content-Type': isSitemap ? 'application/xml; charset=utf-8' : 'text/html; charset=utf-8',
       'Cache-Control': 'public, max-age=0, must-revalidate',
       'CDN-Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=86400',
       Link: `<${route.canonical}>; rel="canonical"`,
     };
-    return new Response(request.method === 'HEAD' ? null : onlineArchiveHtml(html, route), { headers });
+    return new Response(request.method === 'HEAD' ? null : (isSitemap ? onlineArchiveSitemap(source, route) : onlineArchiveHtml(source, route)), { headers });
   } catch (error) {
     console.error('Archived manual unavailable:', route.version, route.page, error.message);
     return new Response(request.method === 'HEAD' ? null : 'The archived manual is temporarily unavailable. Please try again later.', {
