@@ -59,3 +59,6 @@ To change the ring's pulse speed, adjust `LFO 1`'s `RATE` using
 
 For other loop blends and delays, see
 [FEEDBACK](../../reference/modules/feedback/).
+
+Compare feedback before and after CRT processing in the
+[CRT and feedback example](https://hexcomposer.com/cathodemer-alternative/#patching).

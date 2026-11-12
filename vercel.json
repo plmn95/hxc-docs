@@ -13,6 +13,16 @@
       "source": "/edit/:path*",
       "destination": "https://plmn95.github.io/hxc-docs/edit/:path*",
       "permanent": false
+    },
+    {
+      "source": "/vizard-docs/releases/:version",
+      "destination": "/vizard-docs/releases/:version/",
+      "permanent": true
+    },
+    {
+      "source": "/vizard-docs/releases/:version/:page((?:[^./]+/)*[^./]+)",
+      "destination": "/vizard-docs/releases/:version/:page/",
+      "permanent": true
     }
   ],
   "headers": [
@@ -45,8 +55,16 @@
   ],
   "rewrites": [
     {
+      "source": "/vizard-docs/releases/:version/:sitemap(sitemap(?:-(?:index|[0-9]+))?\\.xml)",
+      "destination": "/api/archive?archivePath=:version/:sitemap"
+    },
+    {
+      "source": "/vizard-docs/releases/:path*/index.html",
+      "destination": "/api/archive?archivePath=:path*/index.html"
+    },
+    {
       "source": "/vizard-docs/releases/:path*/",
-      "destination": "https://plmn95.github.io/hxc-docs/releases/:path*/index.html"
+      "destination": "/api/archive?archivePath=:path*/"
     },
     {
       "source": "/vizard-docs/releases/:path*",
