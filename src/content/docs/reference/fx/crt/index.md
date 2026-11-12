@@ -6,6 +6,9 @@ description: "Effects that simulate the physical traits of a CRT tube: scanlines
 Effects that simulate the physical traits of a CRT tube: scanlines, phosphor
 glow and decay, deflection instability, and lens curvature.
 
+Try [Make a CRT Feedback Tunnel](../../../guides/crt-feedback/) to adjust
+these effects in a supplied patch with recursive hexagon outlines.
+
 - [Scan Lines](scan-lines/)
 - [Phosphor Mask](phosphor-mask/)
 - [Vignette](vignette/)
