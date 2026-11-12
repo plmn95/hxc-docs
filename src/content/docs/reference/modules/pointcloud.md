@@ -10,6 +10,8 @@ In the volume shapes, `Galaxy Spiral`, `Noise Blob`, and `Strange Attractor`,
 each point keeps the color sampled before rotation. Turning the shape
 turns the picture and its depth with it; the back shows the picture mirrored.
 `Spectrum` wraps the image into a ring that expands with the audio input.
+For a song-driven example with a starting patch, see
+[Make an Audio Spectrum](../../../guides/audio-spectrum/).
 
 On any output shape, Sphere, the volume shapes, Galaxy Spiral, Noise Blob,
 Strange Attractor and Spectrum stay round and fit the shorter side of the
