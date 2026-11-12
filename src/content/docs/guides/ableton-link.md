@@ -15,9 +15,9 @@ one computer or devices on the same local network.
 
 1. Enable Link in the other app. For another computer or device, connect both
    to the same local network.
-2. In the `Modulation` window's BPM strip, set `Ableton Link` to `Enabled`.
-   The same control is available in Mixer Mode. Allow local-network access
-   if the operating system asks.
+2. In the `Modulation` window's BPM strip, set a local `BPM` of at least
+   `20`, then set `Ableton Link` to `Enabled`. The same control is available
+   in Mixer Mode. Allow local-network access if the operating system asks.
 3. In `Modulation > LFO`, engage `BPM SYNC` and choose a length of `1` beat.
    Assign it to a visible parameter, such as a shape's size.
 4. Check the peer count beside `Ableton Link`. A count above zero means
@@ -98,6 +98,10 @@ It does not move another participant's clock or compensate its audio.
 Recheck it after changing screens, projectors or output routes.
 
 ## If no peers appear
+
+If the `Ableton Link` control is unavailable, hover it to check whether this
+build includes Link support. A build without it cannot join a session.
+
 
 - Confirm Link is enabled in both apps and that they use the same local
   network. A guest network or wireless client isolation can separate devices

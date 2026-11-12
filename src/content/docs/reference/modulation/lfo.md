@@ -22,7 +22,9 @@ Configure it in `Modulation > LFO`, then assign it to a parameter.
 | `Glide Mode` / `Glide` | Selector, Trough | `S+H` smoothing. `Exponential` uses a response time; `Linear` uses a slew time; `Cycle` uses a `Ramp` percentage of the cycle. |
 
 Choose `Custom`, then `Edit Wavetable...` to draw a waveform.
-`Restart All` realigns the phases of all LFOs in the bank.
+With Link disabled, `Restart All` realigns the phases of all LFOs in the
+bank. While linked, it restarts free-running motion; synced LFOs stay
+aligned to the shared clock.
 
 `S+H` produces a repeatable random sequence. Two `S+H` LFOs with the same
 `Seed` still produce different values.
