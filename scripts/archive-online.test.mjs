@@ -112,3 +112,10 @@ test('online sitemap index and URL entries use the same public version canonical
   assert.ok((await response.text()).includes('https://docs.hexcomposer.com/vizard-docs/releases/v0.19.1/sitemap-0.xml'));
   for (const path of ['v0.19.1/reference/sitemap-0.xml', 'v0.19.1/sitemap-evil.xml', 'v0.19.1/arbitrary.xml']) assert.equal(archiveRequest(request(path)), null);
 });
+
+test('the online versions chooser link is repaired outside the frozen article', () => {
+  const html = '<html><head><title>Vizard</title></head><body><main>Unchanged article</main><div class="manual-links astro-ole6w4rf" data-pagefind-ignore><a href="https://plmn95.github.io/vizard-docs/versions/" class="astro-ole6w4rf">Documentation versions (online)</a></div></body></html>';
+  const result = onlineArchiveHtml(html, archiveRequest(request('v0.15.0/')));
+  assert.ok(result.includes('<main>Unchanged article</main>'));
+  assert.ok(result.includes('href="https://docs.hexcomposer.com/versions/" class="astro-ole6w4rf">Documentation versions (online)</a>'));
+});

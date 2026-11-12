@@ -27,7 +27,7 @@ export function archiveRequest(request) {
   return { version, kind: 'html', page, canonical, upstream: `${mirror}${version}/${page}index.html`, isIndex: path.endsWith('/index.html') };
 }
 
-// Patch only metadata and the existing current-manual link in the online response.
+// Patch only metadata and online current-manual/version links in the response.
 // Original ZIPs, manifests, article HTML, styles, search and media stay untouched.
 export function onlineArchiveHtml(html, { version, page, canonical }) {
   const document = parse(html, { sourceCodeLocationInfo: true });
@@ -54,10 +54,11 @@ export function onlineArchiveHtml(html, { version, page, canonical }) {
       if (key === 'og:title' || key === 'twitter:title') change(node, `<meta ${key.startsWith('og:') ? 'property' : 'name'}="${key}" content="${escape(value)} (${escape(version)} archive)">`);
       if (['description', 'og:description', 'twitter:description'].includes(key)) change(node, `<meta ${key.startsWith('og:') ? 'property' : 'name'}="${key}" content="Archived manual for ${escape(version)}. ${escape(value)}">`);
     }
-    if (notice && node.tagName === 'a' && node.sourceCodeLocation?.attrs?.href) {
+    const legacyVersions = node.tagName === 'a' && ['https://plmn95.github.io/vizard-docs/versions/', 'https://plmn95.github.io/hxc-docs/versions/'].includes(attr(node, 'href'));
+    if ((notice || legacyVersions) && node.tagName === 'a' && node.sourceCodeLocation?.attrs?.href) {
       const location = node.sourceCodeLocation.attrs.href;
       edits.push({ start: location.startOffset, end: location.endOffset,
-        value: `href="${origin}/${page}?manual=${encodeURIComponent(version)}"` });
+        value: `href="${legacyVersions ? `${origin}/versions/` : `${origin}/${page}?manual=${encodeURIComponent(version)}`}"` });
     }
     for (const child of node.childNodes ?? []) visit(child, notice);
   }
