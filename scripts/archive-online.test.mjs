@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { test } from 'node:test';
+import { test, mock } from 'node:test';
 import { archiveRequest, onlineArchiveHtml, serveArchive } from '../src/lib/archive-online.mjs';
 import { GET, HEAD } from '../api/archive.js';
 
@@ -59,8 +59,11 @@ test('GET returns transformed HTML, correct cache/Link headers and HEAD omits th
   assert.match(response.headers.get('CDN-Cache-Control'), /s-maxage=3600/);
   assert.match(await response.text(), /v0.19.1 archive/);
   assert.equal(await (await serveArchive(request('v0.19.1/reference/modules/isf/', 'HEAD'), fetchPage)).text(), '');
-  assert.equal(typeof GET, 'function');
-  assert.equal(typeof HEAD, 'function');
+  const stub = mock.method(globalThis, 'fetch', fetchPage);
+  try {
+    assert.equal((await GET(request('v0.19.1/reference/modules/isf/'))).status, 200);
+    assert.equal(await (await HEAD(request('v0.19.1/reference/modules/isf/', 'HEAD'))).text(), '');
+  } finally { stub.mock.restore(); }
 });
 
 test('index URLs redirect to the public directory canonical without fetching', async () => {
@@ -81,5 +84,15 @@ test('missing routes are 404 and upstream errors are uncached 502 responses', as
       assert.equal(result.status, 502);
       assert.equal(result.headers.get('Cache-Control'), 'no-store');
     }
+  } finally { console.error = originalError; }
+});
+
+test('HEAD error responses omit their body as well', async () => {
+  assert.equal(await (await serveArchive(request('invalid', 'HEAD'))).text(), '');
+  assert.equal(await (await serveArchive(request('v0.19.1/missing/', 'HEAD'), async () => new Response('', { status: 404 }))).text(), '');
+  const originalError = console.error;
+  console.error = () => {};
+  try {
+    assert.equal(await (await serveArchive(request('v0.19.1/', 'HEAD'), async () => { throw new Error('offline'); })).text(), '');
   } finally { console.error = originalError; }
 });

@@ -67,11 +67,11 @@ export function onlineArchiveHtml(html, { version, page, canonical }) {
 
 export async function serveArchive(request, fetchPage = fetch) {
   const route = archiveRequest(request);
-  if (!route) return new Response('Manual page not found.', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
+  if (!route) return new Response(request.method === 'HEAD' ? null : 'Manual page not found.', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
   if (route.isIndex) return new Response(null, { status: 308, headers: { Location: route.canonical } });
   try {
     const response = await fetchPage(route.upstream, { redirect: 'error', signal: AbortSignal.timeout(10000) });
-    if (response.status === 404) return new Response('Manual page not found.', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
+    if (response.status === 404) return new Response(request.method === 'HEAD' ? null : 'Manual page not found.', { status: 404, headers: { 'X-Robots-Tag': 'noindex' } });
     if (!response.ok || !response.headers.get('content-type')?.includes('text/html')) throw new Error(`Unexpected archive response: ${response.status}`);
     const html = await response.text();
     const headers = {
@@ -83,7 +83,7 @@ export async function serveArchive(request, fetchPage = fetch) {
     return new Response(request.method === 'HEAD' ? null : onlineArchiveHtml(html, route), { headers });
   } catch (error) {
     console.error('Archived manual unavailable:', route.version, route.page, error.message);
-    return new Response('The archived manual is temporarily unavailable. Please try again later.', {
+    return new Response(request.method === 'HEAD' ? null : 'The archived manual is temporarily unavailable. Please try again later.', {
       status: 502, headers: { 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex' },
     });
   }
