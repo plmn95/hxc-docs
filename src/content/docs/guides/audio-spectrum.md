@@ -43,3 +43,6 @@ For live input, choose a device or application in
 [Settings > Audio](../../reference/windows/settings/#audio-sources).
 See [POINTCLOUD](../../reference/modules/pointcloud/) for the other shapes
 and rendering controls.
+
+To drive individual parameters with audio level or frequency bands, see
+[Audio-Reactive](../../reference/modulation/audio-reactive/).
