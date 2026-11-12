@@ -55,6 +55,9 @@ stays transparent. See
 
 ## Recipes
 
+For a portable patch that combines a rotating loop with CRT effects, follow
+[Make a CRT Feedback Tunnel](../../../guides/crt-feedback/).
+
 | Result | Settings |
 |---|---|
 | Input plus one repeat at the same level | `Loop Blend` `Replace`, `Amount` 1, `Decay` 0, `Blend` `Add`, `Dry/Wet` 0.50 |

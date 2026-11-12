@@ -1,0 +1,238 @@
+{
+  "aux_sends": [],
+  "chain_groups": [],
+  "chain_order": [
+    0,
+    1
+  ],
+  "env": [],
+  "feedbacks": [
+    {
+      "amount": 0.72,
+      "blend_mode": 2,
+      "decay": 0.958,
+      "delay_div": 2,
+      "delay_ms": 0,
+      "delay_sync": false,
+      "enable": 1,
+      "hold_div": 2,
+      "hold_ms": 0,
+      "hold_sync": false,
+      "inject_target": {
+        "type": "FEEDBACK",
+        "instance_id": 1
+      },
+      "input_source": -1,
+      "insert_fx": [
+        {
+          "effect_type": 12,
+          "enabled": true,
+          "mix": 1,
+          "post": false,
+          "stepped0": 0,
+          "stepped1": 0,
+          "p0": 0,
+          "p1": 0,
+          "p2": 0.009,
+          "p3": 0.009,
+          "p4": 1.15,
+          "p5": 0,
+          "transform_version": 2
+        },
+        {
+          "effect_type": 23,
+          "enabled": true,
+          "mix": 1,
+          "post": true,
+          "stepped0": 0,
+          "stepped1": 0,
+          "p0": 2.5,
+          "p1": 0.35,
+          "p2": 0,
+          "p3": 0,
+          "p4": -2.5,
+          "p5": -0.35
+        },
+        {
+          "effect_type": 18,
+          "enabled": true,
+          "mix": 1,
+          "post": true,
+          "stepped0": 0,
+          "stepped1": 0,
+          "p0": 126,
+          "p1": 0.85
+        },
+        {
+          "effect_type": 22,
+          "enabled": true,
+          "mix": 1,
+          "post": true,
+          "stepped0": 0,
+          "stepped1": 0,
+          "p0": 3.6,
+          "p1": 1.15
+        },
+        {
+          "effect_type": 21,
+          "enabled": true,
+          "mix": 1,
+          "post": true,
+          "stepped0": 0,
+          "stepped1": 0,
+          "p0": 0.14
+        },
+        {
+          "effect_type": 20,
+          "enabled": true,
+          "mix": 1,
+          "post": true,
+          "stepped0": 0,
+          "stepped1": 0,
+          "p0": 0.3
+        }
+      ],
+      "loop_blend": 2,
+      "mix": 0.79,
+      "muted": 0,
+      "sends": []
+    }
+  ],
+  "fx": [],
+  "isf": [],
+  "lfo": [
+    {
+      "bpm_sync": false,
+      "density": 8.0,
+      "duty": 50.0,
+      "fold_amount": 0.0,
+      "glide": 0.0,
+      "glide_mode": 0,
+      "harmonic_gain": 0.5,
+      "harmonic_spread": 2.0,
+      "harmonics": 1,
+      "level": 1.0,
+      "name": "Slow orbit",
+      "phase_offset": 0,
+      "rate": 0.125,
+      "seed": 0,
+      "sync_div": 2,
+      "wave": 0,
+      "wavetable_b64": "gIOGiYyPkpWYm56ipaeqrbCztrm8vsHExsnLztDT1dfa3N7g4uTm6Orr7e7w8fP09fb4+fr6+/z9/f7+/v/////////+/v79/fz7+vr5+Pb19PPx8O7t6+ro5uTi4N7c2tfV09DOy8nGxMG+vLm2s7Ctqqelop6bmJWSj4yJhoN/fHl2c3BtamdkYV1aWFVST0xJRkNBPjs5NjQxLywqKCUjIR8dGxkXFRQSEQ8ODAsKCQcGBQUEAwICAQEBAAAAAAAAAAEBAQICAwQFBQYHCQoLDA4PERIUFRcZGx0fISMlKCosLzE0Njk7PkFDRklMT1JVWFpdYWRnam1wc3Z5fA=="
+    },
+    {
+      "bpm_sync": false,
+      "density": 8.0,
+      "duty": 50.0,
+      "fold_amount": 0.0,
+      "glide": 0.0,
+      "glide_mode": 0,
+      "harmonic_gain": 0.5,
+      "harmonic_spread": 2.0,
+      "harmonics": 1,
+      "level": 1.0,
+      "name": "Slow rise",
+      "phase_offset": 0.25,
+      "rate": 0.125,
+      "seed": 0,
+      "sync_div": 2,
+      "wave": 0,
+      "wavetable_b64": "gIOGiYyPkpWYm56ipaeqrbCztrm8vsHExsnLztDT1dfa3N7g4uTm6Orr7e7w8fP09fb4+fr6+/z9/f7+/v/////////+/v79/fz7+vr5+Pb19PPx8O7t6+ro5uTi4N7c2tfV09DOy8nGxMG+vLm2s7Ctqqelop6bmJWSj4yJhoN/fHl2c3BtamdkYV1aWFVST0xJRkNBPjs5NjQxLywqKCUjIR8dGxkXFRQSEQ8ODAsKCQcGBQUEAwICAQEBAAAAAAAAAAEBAQICAwQFBQYHCQoLDA4PERIUFRcZGx0fISMlKCosLzE0Njk7PkFDRklMT1JVWFpdYWRnam1wc3Z5fA=="
+    }
+  ],
+  "loop": {
+    "audio_crossfade": 0,
+    "audio_crossfade_beats": 0,
+    "bars": 2,
+    "beats": 8,
+    "crossfade": 0,
+    "crossfade_beats": 0,
+    "enabled": true,
+    "seconds": 8,
+    "unit": "seconds"
+  },
+  "macros": [],
+  "mod_assignments": [
+    {
+      "id": 1,
+      "source_type": "LFO",
+      "source_index": 0,
+      "target_type": "SHAPE",
+      "target_index": 0,
+      "param_name": "posOffsetX",
+      "amount": 0.15,
+      "center_shift": 0,
+      "rectify": false
+    },
+    {
+      "id": 2,
+      "source_type": "LFO",
+      "source_index": 1,
+      "target_type": "SHAPE",
+      "target_index": 0,
+      "param_name": "posOffsetY",
+      "amount": 0.1,
+      "center_shift": 0,
+      "rectify": false
+    }
+  ],
+  "modules": [
+    {
+      "type": "SHAPE",
+      "instance_id": 0,
+      "name": "Hexagon source"
+    },
+    {
+      "type": "FEEDBACK",
+      "instance_id": 1,
+      "name": "Recursive memory"
+    }
+  ],
+  "name": "CRT feedback study",
+  "noise": [],
+  "oscillators": [],
+  "pointclouds": [],
+  "returns": [],
+  "shapes": [
+    {
+      "blend_mode": 0,
+      "color_b": 1.0,
+      "color_g": 1.0,
+      "color_r": 1.0,
+      "depth": 3,
+      "edge_smooth": 0.0015,
+      "enabled": 1,
+      "fill_opacity": 1.0,
+      "insert_fx": [],
+      "mix": 1,
+      "mix_mode": 0,
+      "muted": 0,
+      "outline_color_b": 1,
+      "outline_color_g": 0.88,
+      "outline_color_r": 0.78,
+      "outline_mode": 1,
+      "outline_opacity": 0.78,
+      "outline_style": 1,
+      "outline_width": 0.005,
+      "p0": 3.0,
+      "p1": 2.0,
+      "p2": 0.0,
+      "p3": 0.0,
+      "poly_n": 6,
+      "pos_x": 0,
+      "pos_y": 0,
+      "primitive": 4,
+      "rot_per_lvl_deg": 24,
+      "scale_factor": 0.72,
+      "sends": [],
+      "size": 0.72,
+      "super_exp": 3.0
+    }
+  ],
+  "sources": [],
+  "sprites": [],
+  "texts": [],
+  "time": [],
+  "vizard_app_version": "1.0.0",
+  "vizard_version": 1
+}

@@ -1,0 +1,228 @@
+{
+  "schemaVersion": 1,
+  "captureDate": "2026-11-12",
+  "baseline": {
+    "app": "Hex Composer native ExportSession",
+    "version": "0.22.0",
+    "distribution": "Frozen native renderer CLI used for export; not a released desktop-app capture",
+    "executableSha256": "a09a711ce7a153a2ac7f3408ca440b64bac28359d63a9b81fa57cf6a21b7948d",
+    "platform": "macOS arm64",
+    "sourceTreeSha256": "5af77ab6da62d5d1e80d615282395adc7ebf21f9e0c2ed919df7a1362378595a",
+    "sourceTreeHashMethod": "Sorted relative src path, NUL, file bytes, NUL, as recorded in source-native-provenance.md."
+  },
+  "processing": {
+    "script": "scripts/prepare-doc-images.mjs",
+    "operations": "Decode the first frame of the preserved native 1200x800 export with FFmpeg, retain the full frame, then losslessly encode the public PNG. No resizing, annotations, redactions, generated UI, or changed image content.",
+    "frameExtraction": "ffmpeg -v error -nostdin -n -i stage-4-native.mp4 -frames:v 1 originals/01-crt-feedback-native-output.png",
+    "sharpVersion": "0.35.4",
+    "libvipsVersion": "8.18.6"
+  },
+  "nativeExport": {
+    "sourceRecord": "authoring/captures/2026-11-12/source-native-provenance.md",
+    "sourceRecordSha256": "91a53d616529d868841ffbaac9bd05e065054141c82e711f1a6128df2011f1e8",
+    "sourceLog": "authoring/captures/2026-11-12/source-native-export.log",
+    "sourceLogSha256": "4e7b7a0e0be4ccafd84f567a48d1fce9e896bd9016239697e2cc067550a33042",
+    "preservedSourceLocation": "Sibling retrovid/output/website-crt-feedback/2026-11-12/stage-4-native.mp4",
+    "sourceVideoSha256": "f9f6f165b16a8a1293941e7d4b5cb7fb1cfd6cebeecd1fa8b0b5e6c4dd1e9783",
+    "sourcePatchSha256": "d2a7deb4bcf4501e6d57853cccc6e2b6d1c63442a83307c0f864e53763538274",
+    "frame": 0,
+    "width": 1200,
+    "height": 800,
+    "fps": 30,
+    "durationSeconds": 8,
+    "warmupSeconds": 8,
+    "frameCount": 240,
+    "notes": "The preserved export log reports Completed and closed after 240 frames. The source patch is byte-identical to public/examples/crt-feedback.hxc. This was not a new native export or a live desktop-app check.",
+    "sourceRecordCorrection": {
+      "issue": "The preserved source-native-provenance.md originally names plmn95/retrovid as the repository owner. That attribution is incorrect; the source record is retained byte-for-byte to preserve its evidence hash.",
+      "correctRepository": "https://github.com/3rd-Party-Guy/retrovid",
+      "serializerCommit": "ecff26ed8f0b93ef50a50360ae88f16c5c4ef024",
+      "verification": "The correct owner and unchanged commit were verified during review from the local app Git remote and the published v1.0.0 release."
+    }
+  },
+  "patchSettings": {
+    "chain": [
+      "SHAPE: Hexagon source",
+      "FEEDBACK: Recursive memory"
+    ],
+    "feedback": {
+      "Dry/Wet": 0.79,
+      "Blend": "Screen",
+      "Amount": 0.72,
+      "Decay": 0.958,
+      "Loop Blend": "Screen"
+    },
+    "inserts": [
+      {
+        "name": "Transform",
+        "stage": "Pre",
+        "Zoom X": 0.009,
+        "Zoom Y": 0.009,
+        "Rotation": 1.15,
+        "Edges": 0
+      },
+      {
+        "name": "Convergence Error",
+        "stage": "Post",
+        "R X": 2.5,
+        "R Y": 0.35,
+        "G X": 0,
+        "G Y": 0,
+        "B X": -2.5,
+        "B Y": -0.35
+      },
+      {
+        "name": "Scan Lines",
+        "stage": "Post",
+        "Density": 126,
+        "Sharpness": 0.85
+      },
+      {
+        "name": "Glow",
+        "stage": "Post",
+        "Radius": 3.6,
+        "Intensity": 1.15
+      },
+      {
+        "name": "Barrel",
+        "stage": "Post",
+        "Amount": 0.14
+      },
+      {
+        "name": "Vignette",
+        "stage": "Post",
+        "Amount": 0.3
+      }
+    ],
+    "modulation": "Two sine LFOs at 0.125 Hz move SHAPE X by 0.15 and Y by 0.10; the second LFO has a 0.25-cycle phase offset.",
+    "verification": "Values inspected directly in the exact downloadable JSON; native output reviewed visually. Control location, numeric entry, save and reopen were not verified in the released desktop app."
+  },
+  "images": [
+    {
+      "id": "crt-feedback-result",
+      "task": "Recognize the recursive hexagon patch with CRT finish before adjusting its trail and glow.",
+      "page": "src/content/docs/guides/crt-feedback.md",
+      "patch": "public/examples/crt-feedback.hxc",
+      "source": "authoring/captures/2026-11-12/originals/01-crt-feedback-native-output.png",
+      "published": "public/images/guides/crt-feedback/result.png",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 1200,
+        "height": 800
+      },
+      "resize": null,
+      "sourceKind": "Native renderer output, not a desktop UI screenshot",
+      "captureTiming": "First decoded frame after one eight-second loop of warmup; eight-second render at 30fps.",
+      "verifiedChecks": [
+        "Compared the source stage-4.hxc with the final downloadable patch: bytes and SHA-256 are identical.",
+        "Confirmed the preserved video has one 1200x800 stream at 30fps with 240 frames.",
+        "Decoded frame 0 to PNG without cropping or scaling; visually inspected the resulting hexagon outlines and CRT finish.",
+        "Rechecked the frozen exporter executable hash against the preserved native provenance."
+      ],
+      "remainingChecks": [
+        "Open the exact download in the released desktop app and confirm its visible result.",
+        "Locate and edit Dry/Wet, Decay, and Glow controls in the released app.",
+        "Save As a copy, wait for completed write, and reopen the saved copy.",
+        "Verify affected workflow on Windows and Linux."
+      ],
+      "sourceDimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "publishedDimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "sourceSha256": "f3c2713a6eaa2832ef4e1dd47e0b0e24494506af98e66a5f41c8a507fa5a0a47",
+      "publishedSha256": "4726f6d54459aaed2229dabe1bb1a48bb7a62edb2be0f2958a2001bcc9241d36"
+    }
+  ],
+  "examples": [
+    {
+      "path": "public/examples/crt-feedback.hxc",
+      "sha256": "d2a7deb4bcf4501e6d57853cccc6e2b6d1c63442a83307c0f864e53763538274",
+      "appVersion": "1.0.0",
+      "verifiedChecks": [
+        "Copied the exact website download without reserializing it.",
+        "Inspected JSON settings, module order, six inserts, two LFOs and their assignments.",
+        "Inspected every JSON string; no nonempty external file/font/media references, device input, song reference, or absolute path is present."
+      ],
+      "reusedAutomatedEvidence": {
+        "source": "authoring/captures/2026-11-12/source-native-provenance.md",
+        "description": "Existing compatibility check used production v1.0.0 serializer source at ecff26ed8f0b93ef50a50360ae88f16c5c4ef024 to load, save and reload the exact download. This session did not repeat the serializer executable or infer live UI behavior from it.",
+        "sourceRepository": "https://github.com/3rd-Party-Guy/retrovid"
+      },
+      "externalReferenceAudit": "All JSON strings inspected; no nonempty external paths or media references are present.",
+      "remainingChecks": "Opening, numeric entry, Save As completion, and reopening in the released app remain unverified; the page states this limitation."
+    }
+  ],
+  "releasedAppVerification": {
+    "status": "Not completed for this guide.",
+    "notes": "The released app was inspected without replacing its existing project. No guide patch was loaded, no guide controls were changed, and no guide save/reopen was performed. The preview and existing production-serializer checks establish native output and file compatibility, not the complete released-app procedure."
+  },
+  "independentReview": {
+    "kind": "Source and readability review only; not a live app check.",
+    "result": "Reviewed against the exact patch, FEEDBACK reference, STYLE_GUIDE.md, AUTHORING.md, and the hex-docs skill. Revised the introduction to describe opening a finished patch and kept optional Decay/Glow changes rather than requiring every change to be undone."
+  },
+  "browserReview": {
+    "date": "2026-11-12",
+    "browser": "In-app browser",
+    "kind": "Independent rendered-document review; not a released-app procedure check.",
+    "viewports": [
+      {
+        "width": 1440,
+        "height": 1000
+      },
+      {
+        "width": 390,
+        "height": 844
+      }
+    ],
+    "verifiedChecks": [
+      "The 1200x800 result image loaded.",
+      "Relative documentation-base URLs for the patch, CRT reference, and FEEDBACK reference resolved correctly.",
+      "Desktop and phone steps were legible with no horizontal overflow.",
+      "The new guide appeared in the Guides sidebar.",
+      "No console errors were observed."
+    ],
+    "screenshots": [
+      {
+        "path": "authoring/reviews/2026-11-12/crt-feedback-desktop.png",
+        "sha256": "db3f43bcc43033f3a8b1a797ccb9e78197feef958dd763ef910357af4f1f1dfb"
+      },
+      {
+        "path": "authoring/reviews/2026-11-12/crt-feedback-phone-steps.png",
+        "sha256": "6ef6ea2da419d296a87cb099237a0ae80f5c147e46786222d0627121096c3ce7"
+      },
+      {
+        "path": "authoring/reviews/2026-11-12/crt-feedback-phone.png",
+        "sha256": "9f67550f347bacf3dc3848bf4170a61b76e21e3c8c500c09208925d6ef061bad"
+      }
+    ],
+    "limitation": "This verifies the guide website presentation only. Opening the .hxc, changing controls, numeric entry, and completed save/reopen in the released app remain unverified."
+  },
+  "automatedVerification": {
+    "date": "2026-11-12",
+    "checks": [
+      {
+        "command": "npm run check",
+        "result": "Passed: 17 docs/annotation tests, 119 authored pages validated, 122 static pages built, branding check passed."
+      },
+      {
+        "command": "PLAYWRIGHT_BROWSERS_PATH=/private/tmp/hxc-crt-feedback-playwright npm run test:editor",
+        "result": "Passed: 10 tests using the required Playwright 1.63 Chromium 1243; all 119 pages retained exact no-op Markdown and edited semantic content."
+      },
+      {
+        "command": "node scripts/prepare-doc-images.mjs authoring/captures/2026-11-12/manifest.json --check",
+        "result": "Passed: regenerated PNG crop dimensions and source/public hashes match the manifest."
+      },
+      {
+        "command": "Built relative asset and patch audit",
+        "result": "Passed: rendered guide resolves result PNG and .hxc under /hxc-docs/; both dist files match public bytes. The exact .hxc hash, documented control values, module/insert/LFO counts and no-external-path audit passed."
+      }
+    ],
+    "packagedManualVerification": "Not performed. This uses the existing PNG and .hxc conventions. Static build asset checks do not establish packaged Help-menu behavior or the released-app guide procedure.",
+    "ci": "The normal pull-request workflow still needs to run on the final commit, including its additional service/archive checks."
+  }
+}
