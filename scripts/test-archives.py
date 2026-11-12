@@ -56,8 +56,11 @@ class ArchiveTest(unittest.TestCase):
                 rewrite = next(r for r in config['rewrites'] if r['source'] == '/vizard-docs/releases/:path*')
                 self.assertEqual(rewrite['destination'], 'https://plmn95.github.io/hxc-docs/releases/:path*')
                 directory = config['rewrites'][0]
-                self.assertEqual(directory['source'], '/vizard-docs/releases/:path*/')
-                self.assertEqual(directory['destination'], 'https://plmn95.github.io/hxc-docs/releases/:path*/index.html')
+                self.assertEqual(directory['source'], '/vizard-docs/releases/:path*/index.html')
+                self.assertEqual(directory['destination'], '/api/archive?archivePath=:path*/index.html')
+                page = config['rewrites'][1]
+                self.assertEqual(page['source'], '/vizard-docs/releases/:path*/')
+                self.assertEqual(page['destination'], '/api/archive?archivePath=:path*/')
                 import shutil
                 shutil.rmtree('dist'); Path('dist').mkdir()
                 releases[0]['assets'] = []

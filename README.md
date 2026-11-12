@@ -59,9 +59,14 @@ Vercel serves the current manual at `docs.hexcomposer.com`. Current reading page
 on every host use that canonical origin. The GitHub Pages deployment at
 `https://plmn95.github.io/hxc-docs/` keeps serving the account-free editor and frozen release manuals; `/edit/...` on Vercel
 redirects to that editor. The canonical `/versions/` page lists the existing frozen
-manuals without copying or rebuilding them. Vercel proxies
-`/vizard-docs/releases/...` to `/hxc-docs/releases/...` on GitHub Pages, so the
-frozen files retain their embedded asset and navigation paths unchanged. The
+manuals without copying or rebuilding them. Vercel serves
+`/vizard-docs/releases/...` from the frozen GitHub Pages manuals. `api/archive.js` adjusts only the online HTML response: titles and
+descriptions identify the archived version, canonical and Open Graph URLs use
+the public archive URL, and the archive notice links to the current page on
+`docs.hexcomposer.com`. Article content stays unchanged. Assets continue through
+the compatibility proxy, preserving embedded navigation, media and search paths.
+The ZIPs, manifests and files assembled on GitHub Pages remain byte-identical.
+This online metadata layer does not run in installed/offline manuals. The
 GitHub Pages versions chooser also links through this compatibility proxy.
 The old `plmn95.github.io/vizard-docs/` address is no longer hosted by this
 repository. Vercel fetches public release metadata
