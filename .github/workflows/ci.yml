@@ -1,18 +1,65 @@
 name: Validate documentation
 
 on:
-  pull_request:
   workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'PR number explicitly authorized by the maintainer'
+        required: true
+        type: string
+      authorize_tests:
+        description: 'The human maintainer authorized tests for this PR and commit'
+        required: true
+        type: boolean
+        default: false
 
 permissions:
   contents: read
 
+concurrency:
+  group: ${{ github.workflow }}-pr-${{ inputs.pr_number }}
+  cancel-in-progress: false
+
 jobs:
-  build:
+  authorize:
+    name: Authorize this PR head
+    if: github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.authorize_tests == true
     runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      authorized: ${{ steps.guard.outputs.authorized }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+          sparse-checkout: scripts/ci
+      - name: Require explicit PR authorization
+        id: guard
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          AUTHORIZE_TESTS: ${{ inputs.authorize_tests }}
+          AUTHORIZING_ACTOR: ${{ github.triggering_actor }}
+        run: python3 scripts/ci/authorize-pr-tests.py
+
+  build:
+    needs: authorize
+    if: github.event_name == 'workflow_dispatch' && github.run_attempt == 1 && inputs.authorize_tests == true && needs.authorize.outputs.authorized == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
       - name: Check out repository
         uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+      - name: Test PR authorization guard
+        run: python3 scripts/ci/test-authorize-pr-tests.py
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
@@ -30,3 +77,11 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Verify full-page editor and complete Markdown corpus
         run: npm run test:editor
+      - name: Recheck current PR head
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ inputs.pr_number }}
+          AUTHORIZE_TESTS: ${{ inputs.authorize_tests }}
+          AUTHORIZING_ACTOR: ${{ github.triggering_actor }}
+        run: python3 scripts/ci/authorize-pr-tests.py

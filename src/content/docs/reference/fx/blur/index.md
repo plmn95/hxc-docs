@@ -9,4 +9,5 @@ neighbors, uniformly, directionally, or radially.
 - [Gaussian Blur](gaussian-blur/)
 - [Box Blur](box-blur/)
 - [Motion Blur](motion-blur/)
+- [Directional Smear](directional-smear/)
 - [Radial Blur](radial-blur/)

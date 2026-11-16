@@ -35,7 +35,7 @@ page in the current documentation, where corrections can be suggested.
 3. Install dependencies with `npm ci`.
 4. Edit files under `src/content/docs/`.
 5. Run `npm run check`.
-6. Open a pull request describing what changed and why.
+6. Open a draft pull request describing what changed and why.
 
 Use Node.js 22.12 or newer. Keep each pull request focused on one correction or
 closely related group of pages.
@@ -45,6 +45,24 @@ For a new guide, screenshot, comparison, or downloadable patch, follow
 checks, the contribution editor, and offline assets. Existing image blocks
 must survive a prose correction; the account-free editor is not an asset
 upload service. Propose new image files through a repository change.
+
+## Hosted validation
+
+Opening, pushing, reopening, or changing the readiness of a pull request does
+not start documentation CI. Keep the pull request draft and run checks locally.
+
+After the human maintainer explicitly authorizes hosted tests for this PR and
+commit, dispatch **Validate documentation** on its head branch with `pr_number`
+and `authorize_tests: true`. Validation refuses missing authorization, stale
+heads, closed or fork PRs, API failures, and reruns. A retry needs a fresh
+authorized dispatch. The head is checked again after validation, so an older
+commit cannot establish success for a newer one. If CI has been stopped, wait
+for the human's explicit authorization to resume it for that PR.
+
+The input records an authorization; an agent using a human account's credentials
+still needs the human's direct permission. Run the guard's boundary regressions
+locally with `python3 scripts/ci/test-authorize-pr-tests.py`. Main-branch deployment
+keeps its separate publishing workflow.
 
 ## Writing and product accuracy
 
