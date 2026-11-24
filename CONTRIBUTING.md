@@ -32,13 +32,14 @@ page in the current documentation, where corrections can be suggested.
 
 1. Fork and clone this repository.
 2. Create a branch for the documentation change.
-3. Install dependencies with `npm ci`.
+3. Select Node.js with `nvm install && nvm use`, then install dependencies with `npm ci`.
 4. Edit files under `src/content/docs/`.
 5. Run `npm run check`.
-6. Open a pull request describing what changed and why.
+6. Open a draft pull request describing what changed and why.
 
-Use Node.js 22.12 or newer. Keep each pull request focused on one correction or
-closely related group of pages.
+Use the latest Node.js 26.x patch release, as recorded in `.nvmrc`, or select that
+major with your preferred version manager. Keep each pull request focused on
+one correction or closely related group of pages.
 
 For a new guide, screenshot, comparison, or downloadable patch, follow
 [AUTHORING.md](AUTHORING.md). It covers capture provenance, complete task

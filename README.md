@@ -9,12 +9,22 @@ The published site is available at
 ## Local development
 
 Hex Composer Documentation uses [Starlight](https://starlight.astro.build/) and
-requires Node.js 22.12 or newer.
+Node.js 26.x, matching the build and deployment workflows. Use the latest
+patch release within that major; future major upgrades are explicit changes.
 
 ```sh
+nvm install
+nvm use
 npm ci
 npm run dev
 ```
+
+If you use another version manager, select the major recorded in `.nvmrc`.
+`npm ci` and build entry points reject a different Node major. Vercel uses
+`engines.node` in `package.json`; keep its dashboard setting at 26.x too.
+For a major upgrade, update the app repository's manual-building toolchain first,
+then publish the stricter docs engine requirement. Keep `.nvmrc`, `engines.node`,
+and the lockfile's root engine declaration aligned.
 
 The development server prints the local URL. To validate the documentation and
 create a production build, run:
