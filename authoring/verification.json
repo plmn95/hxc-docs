@@ -109,8 +109,9 @@
         "authoring/reviews/2026-11-24/feedback-capture.md": "7cb4b55728c4351ce294ac1b525a2e05f211a02790471c5fb88da8deaadf34fc",
         "authoring/reviews/2026-11-24/feedback-controls-desktop.png": "cd27d99b98eb59ea07b5313690f5845e14afaf0cbb65c6ac797e3c1e54bddff8",
         "authoring/reviews/2026-11-24/feedback-controls-phone.png": "8528853346d3cd371d0a23e20a693ffc1be4abc161dc8c9a630e1b645a6367d2",
+        "authoring/reviews/2026-11-27/signal-chain-empty-areas.md": "c9842434d206689926c0fa244179768862ee5358f442eade659489e3b9211fdd",
         "public/images/guides/feedback-trails/feedback-chain-controls.png": "1113f3b384321f25647b081a3e1fc17f9a557daee4e9d8c9933364090daf1ac9",
-        "src/content/docs/concepts/signal-chain.md": "dffb77d834653a0da4bf00b26154c6de1a4cf369453f959dde64205eded8adb7",
+        "src/content/docs/concepts/signal-chain.md": "38ec13126aae3c58c9760a2065e6e7119e3fb56e673ecd3963ab97e9c9df1619",
         "src/content/docs/guides/crt-feedback.md": "de8e202ebf4f1e8a55173729b077d93d704f35ccc06cbb77041571af391d0205",
         "src/content/docs/guides/feedback-trails.md": "58d23e0214b5fb1e8cb0d648075067c99a4959d4db937347a0ad68e7117cdc6c",
         "src/content/docs/reference/modules/feedback.md": "6b3d745dc7f8e4da9874fd5bc1f5dd004b2881bd40871d3419e3a2b7652cfa85"
@@ -126,9 +127,10 @@
             "src/content/docs/guides/crt-feedback.md"
           ],
           "evidence": [
-            "authoring/reviews/2026-11-24/feedback-capture.md"
+            "authoring/reviews/2026-11-24/feedback-capture.md",
+            "authoring/reviews/2026-11-27/signal-chain-empty-areas.md"
           ],
-          "reason": "Reuses the identified source/reader review of the CHAIN locations, state semantics, routing exception, and related FEEDBACK instructions. It does not establish native interaction."
+          "reason": "Reuses the identified source/reader review of the CHAIN locations, state semantics, routing exception, and related FEEDBACK instructions. It does not establish native interaction. The 2026-11-27 Empty areas edit was reviewed separately and leaves the CHAIN content unchanged."
         },
         {
           "kind": "native-observation",
