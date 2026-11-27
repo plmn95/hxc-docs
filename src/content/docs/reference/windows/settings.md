@@ -15,7 +15,7 @@ bottom can be copied when reporting a problem.
 | `Recording` | Quality, frame rate, codec, audio inclusion, output folder, and filename pattern. |
 | `Patches` | `Embed assets in save files` includes referenced images, sprites, video, and the patch's song. It makes patches portable and increases file size. |
 | `Appearance` | `UI Scale`: `Auto`, `100%`, `125%`, `150%`, or `200%`. |
-| `Interaction` | `Fine Mouse Control` adjusts Shift-drag sensitivity, from `20% (Coarser)` to `1% (Finest)`. `Show tooltips` controls hover help. |
+| `Interaction` | `Fine Mouse Control` adjusts Shift-drag sensitivity, from `20% (Coarser)` to `1% (Finest)`. `Show tooltips`, on by default, shows hover help once the pointer has rested on a control for half a second. Moving the pointer, clicking, scrolling or pressing a key hides it. The `(?)` hints still open with the switch off. |
 
 ## Audio sources
 
