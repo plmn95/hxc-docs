@@ -86,9 +86,27 @@ module is bright, they can still light an empty area.
 
 Effects built for a whole picture see the chain over black: an `INSERT`'s
 Insert FX, `SCOPE`'s Insert FX, `FEEDBACK`'s `Pre` and `Post` Insert FX, and
-ISF filters. They behave exactly as on a black background, and wherever they
+ISF filters. They draw exactly as on a black background, and wherever they
 draw nothing the area stays empty. An effect that lights an empty area, such
-as a `Glow` halo or `Invert` turning black to white, makes that area visible. A
+as a `Glow` halo or `Invert` turning black to white, makes that area visible.
+
+Effects that move or blur the picture take its empty areas with them:
+[Transform](../../reference/fx/distort/transform/),
+[3D Tilt](../../reference/fx/distort/3d-tilt/),
+[Kaleidoscope](../../reference/fx/distort/kaleidoscope/),
+[Wave Warp](../../reference/fx/distort/wave-warp/),
+[Barrel](../../reference/fx/crt/barrel/),
+[Deflection Error](../../reference/fx/crt/deflection-error/),
+[Pixelate](../../reference/fx/filter/pixelate/),
+[Block Crunch](../../reference/fx/glitch/block-crunch/) and every effect in
+[Blur](../../reference/fx/blur/). A see-through picture that Transform moves
+leaves its old place empty, and its dark parts still cover what is behind
+them at the new place. A blur softens the edge of the empty areas along with
+the picture. `FEEDBACK`'s `Pre` Insert FX and ISF filters keep the empty
+areas where they were, and so do effects whose result depends on the picture
+itself or on earlier frames, such as `Datamosh`, `Morph` and `Rutt-Etra`.
+
+A
 generator's own Insert FX run on that module's picture before it enters the
 chain, so they see its see-through areas. [Transform](../../reference/fx/distort/transform/)'s
 `Edges` set to Empty makes the area around a moved or shrunk picture empty

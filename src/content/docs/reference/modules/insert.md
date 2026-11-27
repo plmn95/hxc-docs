@@ -20,4 +20,6 @@ INSERT modules. See
 [Insert FX Chains](../../../concepts/insert-fx-chains/).
 
 Insert FX process the chain or bus over black. Dark areas remain transparent
-unless the input already had picture there.
+unless the input had picture there. Effects that move or blur the picture,
+such as `Transform`, carry those areas with it. See
+[Empty areas](../../../concepts/signal-chain/#empty-areas).

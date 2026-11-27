@@ -21,10 +21,10 @@ whatever the other settings.
 
 ## Edges and the horizon
 
-Empty leaves the frame around the turned image see-through. Like
-Transform's Empty, that only shows a layer underneath when 3D Tilt sits in a
-generator's own Insert FX; in an `INSERT`, `SCOPE` or `FEEDBACK` Insert FX
-the `Output` window shows it as black. See
+Empty leaves the frame around the turned image see-through, with the same
+results in each place as [Transform's Empty](../transform/#edges). A
+picture that is already partly see-through keeps its empty areas as it
+turns, except in a `FEEDBACK` `Pre` Insert FX. See
 [Empty areas](../../../../concepts/signal-chain/#empty-areas).
 
 Mirror and Tile repeat the image across the whole plane, out to the

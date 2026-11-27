@@ -16,7 +16,9 @@ Offsets, scales, flips and rotates the whole image around its center.
 
 ## Edges
 
-Empty only shows a layer underneath when Transform sits in a generator's own Insert FX, such as a `SOURCE`'s: the shrunk picture then enters the chain with see-through surroundings. In an `INSERT`, `SCOPE` or `FEEDBACK` Insert FX the area becomes empty for the rest of the chain, which the `Output` window shows as black. See [Empty areas](../../../../concepts/signal-chain/#empty-areas).
+In a generator's own Insert FX, such as a `SOURCE`'s, Empty lets the shrunk picture enter the chain with see-through surroundings. In an `INSERT` that reads an AUX bus, the chain shows through around the bus picture. In an `INSERT` on the chain, or in `SCOPE` or `FEEDBACK` Insert FX, the area becomes empty for the rest of the chain, which the `Output` window shows as black.
+
+A picture that is already partly see-through, such as an AUX bus fed by a `SCOPE`, keeps its empty areas as Transform moves, shrinks or turns it. Its dark parts still cover what is behind them at the new place. `FEEDBACK` `Pre` is the exception: there the empty areas stay where they were. See [Empty areas](../../../../concepts/signal-chain/#empty-areas).
 
 As a `FEEDBACK` `Pre` insert, Transform runs on every lap. Extend keeps stretching the edge outward, so streaks build up. Empty clears the surround every lap, which turns a slow zoom out into a tunnel with a clean border. Mirror and Tile repeat the shrinking loop inside itself and fill the whole frame.
 
